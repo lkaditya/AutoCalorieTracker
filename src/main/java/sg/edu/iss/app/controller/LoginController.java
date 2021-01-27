@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import sg.edu.iss.app.model.Login;
+import sg.edu.iss.app.model.User;
 import sg.edu.iss.app.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +35,7 @@ public class LoginController {
 
 		if (user != null) {
 			view = new ModelAndView("welcome");
-			view.addObject("username", user.getusername());
+			view.addObject("username", user.getUsername());
 		}
 		else
 		{
