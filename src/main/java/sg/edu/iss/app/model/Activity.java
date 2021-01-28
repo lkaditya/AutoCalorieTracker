@@ -12,11 +12,11 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Activties {
+public class Activity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String activtyName;
+	private String activityName;
 	private double caloriesBurnt;
 	private ActivityLevel activityLevel;
 	

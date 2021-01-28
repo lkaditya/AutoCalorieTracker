@@ -27,5 +27,5 @@ public class DietPlan {
 	private User user;
 	
 	@ManyToOne
-	private Activties activty;
+	private Activity activity;
 }
