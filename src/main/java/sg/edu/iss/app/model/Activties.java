@@ -1,7 +1,6 @@
 package sg.edu.iss.app.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,14 +11,14 @@ import lombok.Data;
 
 @Entity
 @Data
-public class DailyHistory {
+public class Activties {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Date uploadDate;
-	private User user;
-	private ArrayList<Food> listOfFood;
+	private String activtyName;
+	private double caloriesBurnt;
+	private ActivityLevel activityLevel;
+	private ArrayList<DietPlan> dietPlans;
 	
 	
-
 }

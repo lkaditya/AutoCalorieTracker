@@ -12,14 +12,12 @@ import lombok.Data;
 
 @Entity
 @Data
-public class DailyHistory {
+public class DietPlan {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Date uploadDate;
-	private User user;
 	private ArrayList<Food> listOfFood;
-	
-	
-
+	private Date date;
+	private User user;
+	private Activties activty;
 }

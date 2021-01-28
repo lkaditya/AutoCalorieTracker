@@ -24,8 +24,9 @@ public class User {
 	private ActivityLevel activityLevel;
 	private String password;
 	private ArrayList<DailyHistory> listOfDailyHistory;
-	
-	
+	private ArrayList<DietPlan> listOfDietPlan;
+	private double recommendedCalories;
+	private ArrayList<FoodImage> listOfFoodImage;
 	
 	
 
