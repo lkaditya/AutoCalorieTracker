@@ -67,6 +67,9 @@ public class MLModelController {
 //		Path source = Paths.get("src/main/resources/static/image/img1.jpg");
 //		InputStream is = new FileInputStream(source.toFile());
 
+		
+		String username=image.getOriginalFilename().split("_")[0];
+		System.out.println(username);
 		InputStream is = image.getInputStream();
 		BufferedImage originalImage = ImageIO.read(is);
 		File outputfile = new File(FILE_PATH_ROOT+"savedimage.png");//think what name it is
@@ -76,14 +79,13 @@ public class MLModelController {
 		ImageLoader iml= new ImageLoader(length,width,channel);
 		//INDArray features2= iml.asMatrix(originalImage);
 		String info=iml.asMatrix(originalImage).shapeInfoToString();
-		System.out.println(info);
 		INDArray features2= iml.asMatrix(originalImage).reshape(1,channel,width,length);
-		
+	
 		// get the prediction
 		double max=0.0;
 		int maxindex=0;
 		for(int x=0;x<mapping.size();x++) {
-			double el=model.output(features2).getDouble(x);
+			double el=model.output(features2).getRow(0).getDouble(x);
 			if(el>max) {
 				max=el;
 				maxindex=x;
@@ -94,7 +96,7 @@ public class MLModelController {
 		String name=mapping.get(maxindex);
 		//Food fooddata= foodservice.findFoodByName(name);
 		Food fooddata = new Food(name,200.0);
-		System.out.println(name);
+		System.out.println(name+"_"+max);
 		
 		return new ResponseEntity<>(fooddata, HttpStatus.OK);
 	}
