@@ -17,7 +17,6 @@ public class DailyHistory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Date uploadDate;
 	
 	@ManyToOne
 	private User user;

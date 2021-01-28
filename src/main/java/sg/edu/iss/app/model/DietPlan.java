@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -17,10 +18,14 @@ public class DietPlan {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@OneToMany(mappedBy="dietPlan")
 	private ArrayList<Food> listOfFood;
 	private Date date;
 	
 	@ManyToOne
 	private User user;
+	
+	@ManyToOne
 	private Activties activty;
 }
