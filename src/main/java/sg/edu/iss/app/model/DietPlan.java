@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -18,6 +19,8 @@ public class DietPlan {
 	private Long id;
 	private ArrayList<Food> listOfFood;
 	private Date date;
+	
+	@ManyToOne
 	private User user;
 	private Activties activty;
 }

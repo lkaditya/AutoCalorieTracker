@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -23,9 +24,16 @@ public class User {
 	private String email;
 	private ActivityLevel activityLevel;
 	private String password;
+	
+	@OneToMany(mappedBy="user")
 	private ArrayList<DailyHistory> listOfDailyHistory;
+	
+	@OneToMany(mappedBy="user")
 	private ArrayList<DietPlan> listOfDietPlan;
+	
 	private double recommendedCalories;
+	
+	@OneToMany(mappedBy="user")
 	private ArrayList<FoodImage> listOfFoodImage;
 	
 	
