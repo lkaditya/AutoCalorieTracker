@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -21,6 +23,8 @@ public class User {
 	private int birthYear;
 	private int height;
 	private int weight;
+	@NotNull
+	@Email
 	private String email;
 	private ActivityLevel activityLevel;
 	private String password;
@@ -35,8 +39,6 @@ public class User {
 	
 	@OneToMany(mappedBy="user")
 	private List<FoodImage> listOfFoodImage;
-	
-	
 
 	public User() {
 		// TODO Auto-generated constructor stub

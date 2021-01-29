@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+    <script type="text/javascript">
+    google.load('visualization', '1.1', {'packages':['corechart']});
+
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Days');
+        data.addColumn('number', 'Calories');
+        data.addRows([
+            ['Monday', 1100],
+            ['Tuesday', 1200],
+            ['Wednesday', 1400],
+            ['Thursday', 1100],
+            ['Friday', 1200],
+            ['Saturday', 1100],
+            ['Sunday',1300]
+        ]);
+
+        var options = {'title':'',
+            'width':400,
+            'height':300};
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+
+    }
+
+</script>
+<h1>Weekly Progress</h1>
+    <div id="content">
+        <div id="chart_div"></div>
+    </div>
+</div>
+</body>
+</html>
