@@ -111,21 +111,24 @@ public class MLModelController {
 		//database related
 		File outputfile = new File(FILE_PATH_ROOT+imagename);//think what name it is
 	    ImageIO.write(originalImage, "png", outputfile);
+
+	    //imgservice.storeNewImage(img);
+	    
+		DailyHistory hist=historyservice.findHistoryByEmailandDate(email, date);
 	    FoodImage img= new FoodImage();
 	    img.setFoodName(name);
 	    img.setUrl("http://localhost:8080/api/image/"+imagename);
 	    img.setUser(user);
-	    imgservice.storeNewImage(img);
-	    
-		DailyHistory hist=historyservice.findHistoryByEmailandDate(email, date);
 		if(hist==null) {
 			hist=new DailyHistory(); 
 			hist.setDate(date);
 			hist.setUser(user);
+			img.setDailyHistory(hist);
 			List<FoodImage>listOfFoodImages= new ArrayList<FoodImage>();
 			listOfFoodImages.add(img);
 			hist.setListOfFoodImages(listOfFoodImages);	
 		}else {
+			img.setDailyHistory(hist);
 			hist.getListOfFoodImages().add(img);
 		}
 		historyservice.save(hist);

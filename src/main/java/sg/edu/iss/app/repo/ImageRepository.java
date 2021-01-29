@@ -6,8 +6,6 @@ import sg.edu.iss.app.model.FoodImage;
 
 public interface ImageRepository extends JpaRepository<FoodImage, Long> {
 	
-	
-	public void saveImage(FoodImage img);
 		
 	
 
