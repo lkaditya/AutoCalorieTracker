@@ -4,7 +4,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
@@ -27,8 +30,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import sg.edu.iss.app.model.DailyHistory;
 import sg.edu.iss.app.model.Food;
+import sg.edu.iss.app.model.FoodImage;
+import sg.edu.iss.app.model.User;
+import sg.edu.iss.app.service.DailyHistoryService;
 import sg.edu.iss.app.service.FoodService;
+import sg.edu.iss.app.service.ImageService;
+import sg.edu.iss.app.service.UserService;
 
 @RestController
 @RequestMapping(path="/api/image")
@@ -38,6 +47,14 @@ public class MLModelController {
 	
 	@Autowired
 	private FoodService foodservice;
+	@Autowired
+	private ImageService imgservice;
+	@Autowired
+	private UserService userservice;
+	@Autowired
+	private DailyHistoryService historyservice;
+	
+	private final String modeldir="src/main/resources/model/IdentifyFoodRGB.h5";
 	private final int length=200;//64 for fruit
 	private final int width=200;//64 for fruit
 	private final int channel=3;//3 for fruit
@@ -48,6 +65,7 @@ public class MLModelController {
 	@RequestMapping("/predict")
 	public ResponseEntity<Food>predictFood(@RequestBody MultipartFile image) throws IOException, InvalidKerasConfigurationException, UnsupportedKerasConfigurationException{
 		
+		//current hardcoding mapping from python result
 		Map<Integer,String>mapping= new HashMap<Integer,String>();
 //		mapping.put(0, "apple");
 //		mapping.put(1, "banana");
@@ -59,26 +77,17 @@ public class MLModelController {
 		mapping.put(3, "fish and chips");
 		mapping.put(4, "pizza");
 
-//		String modeldir="src/main/resources/model/cnn_sample1.h5";
-		String modeldir="src/main/resources/model/IdentifyFoodRGB.h5";
 		MultiLayerNetwork model=KerasModelImport.importKerasSequentialModelAndWeights(modeldir);
 		
 //		Path source = Paths.get("src/main/resources/static/image/apple_7.jpg");
 //		Path source = Paths.get("src/main/resources/static/image/img1.jpg");
 //		InputStream is = new FileInputStream(source.toFile());
 
-		
-		String username=image.getOriginalFilename().split("_")[0];
-		System.out.println(username);
+
 		InputStream is = image.getInputStream();
 		BufferedImage originalImage = ImageIO.read(is);
-		File outputfile = new File(FILE_PATH_ROOT+"savedimage.png");//think what name it is
-		
-	    ImageIO.write(originalImage, "png", outputfile);
 
 		ImageLoader iml= new ImageLoader(length,width,channel);
-		//INDArray features2= iml.asMatrix(originalImage);
-		String info=iml.asMatrix(originalImage).shapeInfoToString();
 		INDArray features2= iml.asMatrix(originalImage).reshape(1,channel,width,length);
 	
 		// get the prediction
@@ -92,11 +101,37 @@ public class MLModelController {
 			}
 		}
 		
-
+		LocalDate date= LocalDate.now();
 		String name=mapping.get(maxindex);
-		//Food fooddata= foodservice.findFoodByName(name);
-		Food fooddata = new Food(name,200.0);
-		System.out.println(name+"_"+max);
+		String imagename=image.getOriginalFilename();
+		String email=imagename.split("_")[0];
+		System.out.println(email);
+		User user=userservice.findUserByEmail(email);
+		
+		//database related
+		File outputfile = new File(FILE_PATH_ROOT+imagename);//think what name it is
+	    ImageIO.write(originalImage, "png", outputfile);
+	    FoodImage img= new FoodImage();
+	    img.setFoodName(name);
+	    img.setUrl("http://localhost:8080/api/image/"+imagename);
+	    img.setUser(user);
+	    imgservice.storeNewImage(img);
+	    
+		DailyHistory hist=historyservice.findHistoryByEmailandDate(email, date);
+		if(hist==null) {
+			hist=new DailyHistory(); 
+			hist.setDate(date);
+			hist.setUser(user);
+			List<FoodImage>listOfFoodImages= new ArrayList<FoodImage>();
+			listOfFoodImages.add(img);
+			hist.setListOfFoodImages(listOfFoodImages);
+			historyservice.save(hist);
+		}
+	    
+	   	    
+		Food fooddata= foodservice.findFoodByName(name);
+		//Food fooddata = new Food(name,200.0);
+		System.out.println(fooddata.getName()+"_"+max);
 		
 		return new ResponseEntity<>(fooddata, HttpStatus.OK);
 	}
