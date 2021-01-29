@@ -35,7 +35,7 @@ public class LoginController {
 
 		if (user != null) {
 			view = new ModelAndView("welcome");
-			view.addObject("username", user.getUsername());
+			view.addObject("username", login.getUsername());
 		}
 		else
 		{

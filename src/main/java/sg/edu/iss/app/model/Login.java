@@ -4,6 +4,7 @@ public class Login {
 
     private String username;
     private String password;
+    private User user;
 
     public Login(String username, String password) {
         this.username = username;
