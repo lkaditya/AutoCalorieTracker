@@ -1,9 +1,9 @@
 package sg.edu.iss.app.model;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,10 +23,10 @@ public class DailyHistory {
 	@ManyToOne
 	private User user;
 	
-	@OneToMany(mappedBy="dailyHistory")
+	@OneToMany(mappedBy="dailyHistory",cascade=CascadeType.ALL)
 	private List<FoodImage> listOfFoodImages;
 	
-	private Date date;
+	private LocalDate date;
 	
 	
 
