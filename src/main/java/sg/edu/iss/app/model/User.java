@@ -1,91 +1,42 @@
 package sg.edu.iss.app.model;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import lombok.Data;
+
+@Entity
+@Data
 public class User {
-
-	private String username;
-	private String password;
-	private String firstName;
-	private String lastName;
-	private String email;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long Id;
+	private String gender;
+	private int birthYear;
 	private int height;
 	private int weight;
-	private Date birthDate;
-
-	public Date getBirthDate() {
-		return birthDate;
-	}
-
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
-	}
-
-	public ActivityLevel getActivityLevel() {
-		return activityLevel;
-	}
-
-	public void setActivityLevel(ActivityLevel activityLevel) {
-		this.activityLevel = activityLevel;
-	}
-
-	public ActivityLevel activityLevel;
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public int getHeight() {
-		return height;
-	}
-
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
-	public int getWeight() {
-		return weight;
-	}
-
-	public void setWeight(int weight) {
-		this.weight = weight;
-	}
+	private String email;
+	private ActivityLevel activityLevel;
+	private String password;
+	
+	@OneToMany(mappedBy="user")
+	private List<DailyHistory> listOfDailyHistory;
+	
+	@OneToMany(mappedBy="user")
+	private List<DietPlan> listOfDietPlan;
+	
+	private double recommendedCalories;
+	
+	@OneToMany(mappedBy="user")
+	private List<FoodImage> listOfFoodImage;
+	
+	
 
 	public User() {
 		// TODO Auto-generated constructor stub
