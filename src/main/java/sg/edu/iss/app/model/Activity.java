@@ -19,7 +19,6 @@ public class Activity {
 	private Long id;
 	private String activityName;
 	private double caloriesBurnt;
-	private ActivityLevel activityLevel;
 	
 	@OneToMany(mappedBy="activity")
 	private List<DietPlan> dietPlans;
