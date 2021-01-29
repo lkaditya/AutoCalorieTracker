@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+
+    <h1>Key in your image url</h1>
+    <h1>Know your calories</h1>
+    <form method="post" action="/main/extract">
+
+        <div class="col-xs-4">
+            <input type="text" class="form-control" placeholder=".col-xs-4" name="url">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">SHOW IMAGES AND CALCULATE THE CALORIES</button>
+        </div>
+    </form>
+
+
+    <table class="table table-bordered">
+
+
+        <tr>
+            <th>Images</th>
+            <th>FoodName</th>
+            <th>Calories</th>
+        </tr>
+        <tr th:each="foodInfo:${foodInfos}">
+            <td>
+                <img th:src="${foodInfo.foodImage}">
+            </td>
+            <td>
+                <p th:text="${foodInfo.foodName}"></p>
+            </td>
+            <td>
+                <p th:text="${foodInfo.foodCalories}">20</p>
+            </td>
+
+        </tr>
+
+    </table>
+
+
+</body>
+</html>
