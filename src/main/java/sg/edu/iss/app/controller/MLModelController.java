@@ -124,9 +124,11 @@ public class MLModelController {
 			hist.setUser(user);
 			List<FoodImage>listOfFoodImages= new ArrayList<FoodImage>();
 			listOfFoodImages.add(img);
-			hist.setListOfFoodImages(listOfFoodImages);
-			historyservice.save(hist);
+			hist.setListOfFoodImages(listOfFoodImages);	
+		}else {
+			hist.getListOfFoodImages().add(img);
 		}
+		historyservice.save(hist);
 	    
 	   	    
 		Food fooddata= foodservice.findFoodByName(name);
