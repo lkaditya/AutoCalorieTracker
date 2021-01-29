@@ -2,6 +2,7 @@ package sg.edu.iss.app.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ public class DietPlan {
 	private Long id;
 	
 	@OneToMany(mappedBy="dietPlan")
-	private ArrayList<Food> listOfFood;
+	private List<Food> listOfFood;
 	private Date date;
 	
 	@ManyToOne

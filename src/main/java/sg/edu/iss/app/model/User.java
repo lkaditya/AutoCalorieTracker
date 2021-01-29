@@ -1,6 +1,7 @@
 package sg.edu.iss.app.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,15 +26,15 @@ public class User {
 	private String password;
 	
 	@OneToMany(mappedBy="user")
-	private ArrayList<DailyHistory> listOfDailyHistory;
+	private List<DailyHistory> listOfDailyHistory;
 	
 	@OneToMany(mappedBy="user")
-	private ArrayList<DietPlan> listOfDietPlan;
+	private List<DietPlan> listOfDietPlan;
 	
 	private double recommendedCalories;
 	
 	@OneToMany(mappedBy="user")
-	private ArrayList<FoodImage> listOfFoodImage;
+	private List<FoodImage> listOfFoodImage;
 	
 	
 

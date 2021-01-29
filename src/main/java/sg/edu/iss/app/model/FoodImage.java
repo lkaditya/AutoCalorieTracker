@@ -22,4 +22,6 @@ public class FoodImage {
 	@ManyToOne
 	private User user;
 	
+	@ManyToOne
+	private DailyHistory dailyHistory;
 }

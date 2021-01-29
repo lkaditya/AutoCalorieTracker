@@ -20,6 +20,7 @@ public class Food {
 	
 	@ManyToOne
 	private DietPlan dietPlan;
+
 	
 	public Food() {
 		// TODO Auto-generated constructor stub

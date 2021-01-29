@@ -1,6 +1,7 @@
 package sg.edu.iss.app.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ public class Activity {
 	private ActivityLevel activityLevel;
 	
 	@OneToMany(mappedBy="activity")
-	private ArrayList<DietPlan> dietPlans;
+	private List<DietPlan> dietPlans;
 	
 	
 }
