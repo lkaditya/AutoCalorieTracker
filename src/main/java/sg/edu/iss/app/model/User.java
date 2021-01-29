@@ -1,5 +1,7 @@
 package sg.edu.iss.app.model;
 
+import java.util.Date;
+
 public class User {
 
 	private String username;
@@ -7,8 +9,27 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private double height;
-	private double weight;
+	private int height;
+	private int weight;
+	private Date birthDate;
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public ActivityLevel getActivityLevel() {
+		return activityLevel;
+	}
+
+	public void setActivityLevel(ActivityLevel activityLevel) {
+		this.activityLevel = activityLevel;
+	}
+
+	public ActivityLevel activityLevel;
 
 	public String getUsername() {
 		return username;
@@ -50,19 +71,19 @@ public class User {
 		this.email = email;
 	}
 
-	public double getHeight() {
+	public int getHeight() {
 		return height;
 	}
 
-	public void setHeight(double height) {
+	public void setHeight(int height) {
 		this.height = height;
 	}
 
-	public double getWeight() {
+	public int getWeight() {
 		return weight;
 	}
 
-	public void setWeight(double weight) {
+	public void setWeight(int weight) {
 		this.weight = weight;
 	}
 
