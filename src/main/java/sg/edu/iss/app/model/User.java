@@ -22,6 +22,7 @@ public class User {
 	private int height;
 	private int weight;
 	private String email;
+	//TODO:currently the activitylevel is disabled, NEED TO BE FIXED
 //	private Enum<ActivityLevel> activityLevel;
 	private String password;
 	
