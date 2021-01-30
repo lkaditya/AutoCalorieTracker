@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="/echarts/echarts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="/js/layout.js"></script>
+</head>
+
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800);
+
+    html, body {
+        font-family: 'Dosis';
+        font-weight: 300;
+    }
+
+    .header {
+        width: 100%;
+        border-bottom: 1px solid black;
+        text-align: right;
+        position: relative;
+    }
+    .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 32px;
+        font-weight: 100;
+        padding: 26px;
+        border-right: 1px solid black;
+    }
+
+
+
+    .link {
+        display: inline-block;
+        padding: 15px 0;
+        margin: 15px 25px;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #0f0f0f;
+        font-weight: 800;
+        font-size: 24px;
+    }
+    .bar {
+        width: 100%;
+        display: inline-block;
+        border-bottom: 5px solid black;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        transition: all 300ms;
+    }
+
+    body {
+        font-size: 14px;
+        line-height: 0.428571;
+        color: #333;
+        background-color: #fff;
+
+    }
+    #box{
+
+        margin:70px 312px;
+
+    }
+    #box2{
+        width: 207px;
+        height: 272px;
+        margin: -21px 5px;
+    }
+
+    #container{
+        margin-left: 414px;
+        margin-bottom: 100px;
+    }
+
+</style>
+
+
+
+
+
+<body>
+<header th:insert="layout/layout.html :: header"></header>
+<div th:replace="layout/layout.html :: menu" ></div>
+<div id="box">
+
+    <div id="main" style="width: 800px;height:400px;" class="bar-chart" align="center"></div>
+
+</div>
+
+<script src="/js/vue.js"></script>
+<script src="/js/axios-0.18.0.js"></script>
+<script type="text/javascript">
+
+    var myChart = echarts.init(document.getElementById('main'));
+
+
+    axios.get("/history/getData").then((res) => {
+        var num = res.data.data.localDataList.length - 1;
+        myChart.setOption(
+            {
+                // color: ["#7BC37D"],
+                title: {
+                    text: 'Weekly Progress'
+                },
+                tooltip: {},
+                legend: {
+                    data: ['Calories']
+                },
+                xAxis: {
+                    data: res.data.data.localDataList
+                },
+                yAxis: {
+                    type: 'value'
+                },
+
+                dataZoom: [
+                    {
+                        type: 'slider',
+                        xAxisIndex: 0,
+                        start: 10,
+                        end: 60
+                    },
+                    {
+                        type: 'inside',
+                        xAxisIndex: 0,
+                        start: 10,
+                        end: 60
+                    },
+                    {
+                        type: 'slider',
+                        yAxisIndex: 0,
+                        start: 30,
+                        end: 80
+                    },
+                    {
+                        type: 'inside',
+                        yAxisIndex: 0,
+                        start: 30,
+                        end: 80
+                    }
+                ],
+                series: [{
+                    name: 'Calories',
+                    type: 'bar',
+                    data: res.data.data.caloriesList,
+                    itemStyle: {
+                        barBoardRadius: 20,
+                        color: function (param) {
+                            // console.log(param)
+
+                            if (param.dataIndex === num) {
+                                return "#7B87C3"
+                            } else {
+                                return "#7BC37D"
+                            }
+                        }
+                    },
+                    markLine: {
+                        data: [
+                            {type: 'average', name: 'Average Calories'}
+                        ]
+                    },
+                }]
+            });
+    });
+
+
+
+    myChart.on('click', function (params) {
+        var name = params.name;
+        axios.get('/history/getImageByData?data=' + name).then((res) => {
+            if (res.data){
+
+                var imagesInfo = res.data.data.imagesInfo;
+                var foodNames = res.data.data.foodNames;
+                var Calories = res.data.data.Calories;
+
+            }
+
+
+            var info="";
+
+            for (let i = 0; i < Calories.length; i++) {
+                var div="    <div id='box2' class=\"col-sm-6 col-md-4\">\n" +
+                    "            <div class=\"thumbnail\">\n" +
+                    "                <img src=\" "+imagesInfo[i]+" \" >\n" +
+                    "                <div class=\"caption\">\n" +
+                    "                  <h3>"+foodNames[i]+"</h3>\n" +
+                    "                  <p>"+Calories[i]+" Calories</p>\n" +
+                    "            </div>\n" +
+                    "        </div>\n" +
+                    "    </div>";
+
+                info+=div;
+
+
+            }
+
+            $("#container").html(info);
+
+        })
+    })
+
+
+
+</script>
+
+
+<div id="container" class="row" >
+
+
+
+</div>
+
+<div th:replace="layout/layout.html :: footer"></div>
+</body>
+
+
+</html>

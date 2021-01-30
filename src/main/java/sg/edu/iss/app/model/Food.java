@@ -1,15 +1,13 @@
 package sg.edu.iss.app.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
-@Data
+
 public class Food {
 	
 	@Id
@@ -21,13 +19,55 @@ public class Food {
 	@ManyToOne
 	private DietPlan dietPlan;
 
-	
 	public Food() {
-		// TODO Auto-generated constructor stub
 	}
+
+	@OneToMany(mappedBy ="food")
+	private List<FoodImage> foodImage;
+
 	public Food(String name,double calorie) {
 		this.name=name;
 		this.calorie=calorie;
+	}
+
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getCalorie() {
+		return calorie;
+	}
+
+	public void setCalorie(double calorie) {
+		this.calorie = calorie;
+	}
+
+	public DietPlan getDietPlan() {
+		return dietPlan;
+	}
+
+	public void setDietPlan(DietPlan dietPlan) {
+		this.dietPlan = dietPlan;
+	}
+
+	public List<FoodImage> getFoodImage() {
+		return foodImage;
+	}
+
+	public void setFoodImage(List<FoodImage> foodImage) {
+		this.foodImage = foodImage;
 	}
 
 }
