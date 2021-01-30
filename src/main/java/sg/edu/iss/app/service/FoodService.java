@@ -11,4 +11,5 @@ public interface FoodService {
 	
 	public List<Food> findFoodByUserandDate(String username,Date date);
 
+	public Food findFoodByImageId(Long id);
 }

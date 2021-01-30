@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import lombok.Data;
 
 @Entity
-@Data
+
 public class DailyHistory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,11 +23,50 @@ public class DailyHistory {
 	@ManyToOne
 	private User user;
 	
-	@OneToMany(mappedBy="dailyHistory",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="dailyHistory")
 	private List<FoodImage> listOfFoodImages;
 	
 	private LocalDate date;
-	
-	
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public DailyHistory(Long id, User user, List<FoodImage> listOfFoodImages, LocalDate date) {
+		this.id = id;
+		this.user = user;
+		this.listOfFoodImages = listOfFoodImages;
+		this.date = date;
+	}
+
+	public DailyHistory() {
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<FoodImage> getListOfFoodImages() {
+		return listOfFoodImages;
+	}
+
+	public void setListOfFoodImages(List<FoodImage> listOfFoodImages) {
+		this.listOfFoodImages = listOfFoodImages;
+	}
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
 }

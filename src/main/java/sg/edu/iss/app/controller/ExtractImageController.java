@@ -14,7 +14,11 @@ public class ExtractImageController {
 
     private List<FoodInfo> foodInfos;
 
+    @RequestMapping("/showData")
+    public String showData(Model model){
 
+        return "mainPage";
+    }
 
     @RequestMapping("/extract")
     public String extractImages(Model model,String url){

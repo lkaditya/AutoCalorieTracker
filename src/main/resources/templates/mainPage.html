@@ -1,46 +1,152 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <!-- 引入 ECharts 文件 -->
-    <script src="../static/echarts/echarts.js"></script>
+
+    <script src="/echarts/echarts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
 </head>
 
+
+
+
+
+
+
 <body>
-<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-<div id="main" style="width: 600px;height:400px;"></div>
+
+
+<div id="main" style="width: 1000px;height:600px;"></div>
+<script src="/js/vue.js"></script>
+<script src="/js/axios-0.18.0.js"></script>
 <script type="text/javascript">
-    var chartDom = document.getElementById('main');
-    var myChart = echarts.init(chartDom);
-    var option;
 
-    option = {
-        xAxis: {
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-            type: 'value'
-        },
-        series: [{
-            data: [120, {
-                value: 200,
-                itemStyle: {
-                    color: '#000'
-                }
-            }, 150, 80, 70, 110, 130],
-            type: 'bar'
-        }]
-    };
+    var myChart = echarts.init(document.getElementById('main'));
 
-    option && myChart.setOption(option);
+
+    axios.get("/history/getData").then((res) => {
+        // var num=res.data.data.caloriesList.length;
+        // alert(num)
+        var num = res.data.data.localDataList.length - 1;
+        myChart.setOption(
+            {
+                // color: ["#7BC37D"],
+                title: {
+                    text: 'Weekly Progress'
+                },
+                tooltip: {},
+                legend: {
+                    data: ['Calories']
+                },
+                xAxis: {
+                    data: res.data.data.localDataList
+                },
+                yAxis: {
+                    type: 'value'
+                },
+
+                dataZoom: [
+                    {
+                        type: 'slider',
+                        xAxisIndex: 0,
+                        start: 10,
+                        end: 60
+                    },
+                    {
+                        type: 'inside',
+                        xAxisIndex: 0,
+                        start: 10,
+                        end: 60
+                    },
+                    {
+                        type: 'slider',
+                        yAxisIndex: 0,
+                        start: 30,
+                        end: 80
+                    },
+                    {
+                        type: 'inside',
+                        yAxisIndex: 0,
+                        start: 30,
+                        end: 80
+                    }
+                ],
+                series: [{
+                    name: 'Calories',
+                    type: 'bar',
+                    data: res.data.data.caloriesList,
+                    itemStyle: {
+                        barBoardRadius: 20,
+                        color: function (param) {
+                            // console.log(param)
+
+                            if (param.dataIndex === num) {
+                                return "#7B87C3"
+                            } else {
+                                return "#7BC37D"
+                            }
+                        }
+                    },
+                    markLine: {
+                        data: [
+                            {type: 'average', name: 'Average Calories'}
+                        ]
+                    },
+                }]
+            });
+    });
+
+
+
+    myChart.on('click', function (params) {
+        var name = params.name;
+        axios.get('/history/getImageByData?data=' + name).then((res) => {
+            if (res.data){
+
+                var imagesInfo = res.data.data.imagesInfo;
+                var foodNames = res.data.data.foodNames;
+                var Calories = res.data.data.Calories;
+
+            }
+
+
+            var info="";
+
+            for (let i = 0; i < Calories.length; i++) {
+                var div="    <div class=\"col-sm-6 col-md-4\">\n" +
+                    "            <div class=\"thumbnail\">\n" +
+                    "                <img src=\" "+imagesInfo[i]+" \" >\n" +
+                    "                <div class=\"caption\">\n" +
+                    "                  <h3>"+foodNames[i]+"</h3>\n" +
+                    "                  <p>"+Calories[i]+"</p>\n" +
+                    "            </div>\n" +
+                    "        </div>\n" +
+                    "    </div>";
+
+                info+=div;
+
+
+            }
+
+            $("#container").html(info);
+
+        })
+    })
+
+
 
 </script>
+
+
+<div id="container" class="row">
+
+
+    
+</div>
+
+
 </body>
-
-
-
-
 
 
 </html>

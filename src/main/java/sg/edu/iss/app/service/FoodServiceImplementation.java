@@ -30,4 +30,9 @@ public class FoodServiceImplementation implements FoodService{
 		return null;
 	}
 
+	@Override
+	public Food findFoodByImageId(Long id) {
+		return foodrepo.findFoodById(id);
+	}
+
 }

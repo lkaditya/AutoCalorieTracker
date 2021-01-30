@@ -22,7 +22,7 @@ public class User {
 	private int height;
 	private int weight;
 	private String email;
-	private ActivityLevel activityLevel;
+//	private Enum<ActivityLevel> activityLevel;
 	private String password;
 	
 	@OneToMany(mappedBy="user")
