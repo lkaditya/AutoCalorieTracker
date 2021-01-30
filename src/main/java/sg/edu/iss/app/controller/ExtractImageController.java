@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/main")
+@RequestMapping("/upload")
 public class ExtractImageController {
 
     private List<FoodInfo> foodInfos;
@@ -19,6 +19,7 @@ public class ExtractImageController {
 
         return "mainPage";
     }
+
 
     @RequestMapping("/extract")
     public String extractImages(Model model,String url){

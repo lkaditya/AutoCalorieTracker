@@ -41,11 +41,7 @@ public class historyController {
     private FoodService foodService;
 
 
-    @RequestMapping("/showData")
-    public String showData(Model model){
 
-        return "mainPage";
-    }
 
     @RequestMapping("/getData")
     public BarChartData getData(){

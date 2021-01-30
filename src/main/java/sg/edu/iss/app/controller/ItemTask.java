@@ -77,7 +77,7 @@ public class ItemTask {
         }
        
         if (calories.equals("")||calories==null){
-            calories="Can not find";
+            calories="NOT FOUND";
         }
 
         return  calories;

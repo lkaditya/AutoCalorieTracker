@@ -3,52 +3,107 @@
     <head>
         <meta charset="ISO-8859-1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="/js/layout.js"></script>
     </head>
+
+
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800);
+
+        html, body {
+            font-family: 'Dosis';
+            font-weight: 300;
+        }
+
+        .header {
+            width: 100%;
+            border-bottom: 1px solid black;
+            text-align: right;
+            position: relative;
+        }
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 32px;
+            font-weight: 100;
+            padding: 26px;
+            border-right: 1px solid black;
+        }
+
+
+
+        .link {
+            display: inline-block;
+            padding: 15px 0;
+            margin: 15px 25px;
+            position: relative;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #0f0f0f;
+            font-weight: 800;
+            font-size: 24px;
+        }
+        .bar {
+            width: 100%;
+            display: inline-block;
+            border-bottom: 5px solid black;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            opacity: 0;
+            transition: all 300ms;
+        }
+
+        body {
+            font-size: 14px;
+            line-height: 0.428571;
+            color: #333;
+            background-color: #fff;
+        }
+
+    </style>
+
     <body>
         <div th:fragment="header" id="header">
         </div>
         <div th:fragment="menu" id="menu">
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">Brand</a>
-                    </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">DietPlan</a></li>
-                        </ul>
-<!--                        navbar-right-->
-                        <ul class="nav navbar-nav ">
-                            <li><a href="#">Upload</a></li>
-                        </ul>
-
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><img src="../static/image/people.png"></li>
-                            <li>User1</li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-            </nav>
+            <
+            <div class="header">
+                <div class="logo">
+                    ACT
+                </div>
+                <div class="menu">
+                    <a href="#" th:href="@{/upload/showData}" class="link">
+                        <div class="title">Home</div>
+                        <div class="bar"></div>
+                    </a>
+                    <a href="#"  class="link">
+                        <div class="title">Profile</div>
+                        <div class="bar"></div>
+                    </a>
+                    <a href="#" class="link">
+                        <div class="title">DietPlan</div>
+                        <div class="bar"></div>
+                    </a>
+                    <a href="#" th:href="@{/upload/extract}" class="link">
+                        <div class="title">Upload</div>
+                        <div class="bar"></div>
+                    </a>
+                </div>
+            </div>
         </div>
 
 
         <footer th:fragment="footer" th:align="center"
-                style="position:static; bottom:0px; margin-bottom: -200px; height:80px; left:0px; right:0px; overflow:hidden;">
-            <h1>Auto Calorie Tracker</h1>
-            <p>
-                (c) copyright 2021
-            </p>
+                style="position:static; bottom:0px; margin-bottom: -200px; height:80px; left:0px; right:0px;">
+            <div>
+                <h1>Auto Calorie Tracker</h1>
+                <div>(c) copyright 2021</div>
+            </div>
+
         </footer>
 
     </body>
+
 </html>
