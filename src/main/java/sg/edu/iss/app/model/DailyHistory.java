@@ -11,9 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
+@Data
 
 public class DailyHistory {
 	@Id
@@ -23,18 +26,12 @@ public class DailyHistory {
 	@ManyToOne
 	private User user;
 	
-	@OneToMany(mappedBy="dailyHistory")
+	
+	@OneToMany(mappedBy="dailyHistory",cascade=CascadeType.ALL)
+	@JsonIgnore
 	private List<FoodImage> listOfFoodImages;
 	
 	private LocalDate date;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public DailyHistory(Long id, User user, List<FoodImage> listOfFoodImages, LocalDate date) {
 		this.id = id;
@@ -46,27 +43,4 @@ public class DailyHistory {
 	public DailyHistory() {
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public List<FoodImage> getListOfFoodImages() {
-		return listOfFoodImages;
-	}
-
-	public void setListOfFoodImages(List<FoodImage> listOfFoodImages) {
-		this.listOfFoodImages = listOfFoodImages;
-	}
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
 }

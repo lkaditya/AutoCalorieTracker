@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
@@ -27,18 +29,19 @@ public class User {
 	private String password;
 	
 	@OneToMany(mappedBy="user")
+	@JsonIgnore
 	private List<DailyHistory> listOfDailyHistory;
 	
 	@OneToMany(mappedBy="user")
+	@JsonIgnore
 	private List<DietPlan> listOfDietPlan;
 	
 	private double recommendedCalories;
 	
 	@OneToMany(mappedBy="user")
+	@JsonIgnore
 	private List<FoodImage> listOfFoodImage;
 	
-	
-
 	public User() {
 		// TODO Auto-generated constructor stub
 	}

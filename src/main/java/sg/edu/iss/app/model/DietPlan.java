@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
@@ -21,6 +23,7 @@ public class DietPlan {
 	private Long id;
 	
 	@OneToMany(mappedBy="dietPlan")
+	@JsonIgnore
 	private List<Food> listOfFood;
 	private Date date;
 	

@@ -63,7 +63,7 @@ public class MLModelController {
 
 	//predict the image submitted and store that inside the localhost server folder
 	@RequestMapping("/predict")
-	public ResponseEntity<Food>predictFood(@RequestBody MultipartFile image) throws IOException, InvalidKerasConfigurationException, UnsupportedKerasConfigurationException{
+	public ResponseEntity<Food> predictFood(@RequestBody MultipartFile image) throws IOException, InvalidKerasConfigurationException, UnsupportedKerasConfigurationException{
 		
 		//current hardcoding mapping from python result
 		Map<Integer,String>mapping= new HashMap<Integer,String>();
@@ -116,10 +116,13 @@ public class MLModelController {
 	    
 		DailyHistory hist=historyservice.findHistoryByEmailandDate(email, date);
 	    FoodImage img= new FoodImage();
-	    img.setFoodName(name);
+//	    img.setFoodName(name);
+	    Food fooddata= foodservice.findFoodByName(name);
+	    img.setFood(fooddata);
 	    img.setUrl("http://localhost:8080/api/image/"+imagename);
 	    img.setUser(user);
 		if(hist==null) {
+			System.out.println("it goes to create new history");
 			hist=new DailyHistory(); 
 			hist.setDate(date);
 			hist.setUser(user);
@@ -134,10 +137,9 @@ public class MLModelController {
 		historyservice.save(hist);
 	    
 	   	    
-		Food fooddata= foodservice.findFoodByName(name);
+		
 		//Food fooddata = new Food(name,200.0);
 		System.out.println(fooddata.getName()+"_"+max);
-		
 		return new ResponseEntity<>(fooddata, HttpStatus.OK);
 	}
 	
