@@ -19,6 +19,11 @@ public class LoginController {
 	@Autowired
 	UserService userService;
 
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView showIndex(HttpServletRequest request, HttpServletResponse response){
+		return showLogin(request, response);
+	}
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response){
 		ModelAndView view = new ModelAndView("Login");
@@ -34,7 +39,7 @@ public class LoginController {
 		User user = userService.validateUser(login);
 
 		if (user != null) {
-			view = new ModelAndView("welcome");
+			view = new ModelAndView("mainPage");
 			view.addObject("username", login.getUsername());
 		}
 		else

@@ -19,17 +19,17 @@ public class RegistrationController {
     public UserService userService;
     private Object User;
 
-    @RequestMapping(value = "/signup", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response){
         ModelAndView view = new ModelAndView("register");
         view.addObject("user", new User());
         return view;
     }
 
-    @RequestMapping(value = "/signupProcess", method = RequestMethod.POST)
+    @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
     public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,
         @ModelAttribute("user") Login login) {
         userService.register((sg.edu.iss.app.model.User) User);
-        return new ModelAndView("welcome", "username", login.getUsername());
+        return new ModelAndView("mainPage", "username", login.getUsername());
     }
 }
