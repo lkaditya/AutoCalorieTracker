@@ -86,7 +86,7 @@
 </div>
 
 <div class="signup-form">
-    <form action="/registerProcess" method="post">
+    <form th:action="@{/registerProcess}" method="post">
         <h2>Register</h2>
         <p class="hint-text">Create your account. It's free and only takes a minute.</p>
         <div class="form-group">
@@ -117,7 +117,7 @@
             <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
         </div>
     </form>
-    <div class="text-center">Already have an account? <a href="@{/login}">Sign in</a></div>
+    <div class="text-center">Already have an account? <a th:href="@{/login}">Sign in</a></div>
 </div>
 
 
