@@ -40,7 +40,7 @@ public class LoginController {
 
 		if (user != null) {
 			view = new ModelAndView("mainPage");
-			view.addObject("username", login.getUsername());
+			view.addObject("email", login.getEmail());
 		}
 		else
 		{
