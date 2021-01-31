@@ -20,7 +20,7 @@ public class UserServiceImplementation implements UserService {
 
 	@Override
 	public void register(User user) {
-
+		userrepo.save(user);
 	}
 
 	@Override
