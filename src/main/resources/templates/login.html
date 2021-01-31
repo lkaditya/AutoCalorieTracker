@@ -98,6 +98,9 @@
             <p>
                 <a th:href="@{/register}" class="btn btn-secondary">Sign up</a>
             </p>
+            <div id="message" th:text="${message}">
+
+            </div>
         </div>
     </form>
 <div th:replace="layout/layout.html :: footer"></div>
