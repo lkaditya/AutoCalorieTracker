@@ -26,6 +26,7 @@ public class User {
 	@NotNull
 	@Email
 	private String email;
+	//TODO:currently the activitylevel is disabled, NEED TO BE FIXED
 //	private Enum<ActivityLevel> activityLevel;
 	private String password;
 	
