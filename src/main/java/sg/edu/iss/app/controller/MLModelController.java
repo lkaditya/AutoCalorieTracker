@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -120,7 +121,7 @@ public class MLModelController {
 	    Food fooddata= foodservice.findFoodByName(name);
 	    img.setFood(fooddata);
 	    img.setUrl("http://localhost:8080/api/image/"+imagename);
-	    img.setUser(user);
+	    img.setEpochTime(System.currentTimeMillis());
 		if(hist==null) {
 			System.out.println("it goes to create new history");
 			hist=new DailyHistory(); 

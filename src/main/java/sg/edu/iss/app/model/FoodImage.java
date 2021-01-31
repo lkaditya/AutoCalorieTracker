@@ -1,6 +1,6 @@
 package sg.edu.iss.app.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,15 +17,13 @@ public class FoodImage {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 //	private String foodName;
-	private String url;
-	
-	@ManyToOne
-	private User user;
-	
+	private String url;		
 	@ManyToOne
 	private DailyHistory dailyHistory;
 
 	@ManyToOne
 	private Food food;
+	
+	private Long EpochTime;
 
 }

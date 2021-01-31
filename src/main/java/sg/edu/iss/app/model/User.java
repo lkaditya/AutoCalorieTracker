@@ -37,11 +37,7 @@ public class User {
 	private List<DietPlan> listOfDietPlan;
 	
 	private double recommendedCalories;
-	
-	@OneToMany(mappedBy="user")
-	@JsonIgnore
-	private List<FoodImage> listOfFoodImage;
-	
+		
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
