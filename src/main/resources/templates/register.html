@@ -86,7 +86,7 @@
 </div>
 
 <div class="signup-form">
-    <form th:action="@{/registerProcess}" method="post">
+    <form th:action="@{/registerProcess}" method="post" th:object="$user}">
         <h2>Register</h2>
         <p class="hint-text">Create your account. It's free and only takes a minute.</p>
         <div class="form-group">
