@@ -83,6 +83,8 @@ th, td {
 }
 </style>
 <body>
+<header th:insert="layout/layout.html :: header"></header>
+<div th:replace="layout/layout.html :: menu" ></div>
 <h1 style="text-align:center">My Profile</h1>
 
 <table class="table table-bordered table-hover" style="width:40%" align="center">
@@ -110,6 +112,6 @@ th, td {
 <div class="text-center">
     <a th:href="@{/editProfile}+${user.id}" class="btn btn-secondary">Edit Profile</a>
 </div>
-
+<div th:replace="layout/layout.html :: footer"></div>
 </body>
 </html>
