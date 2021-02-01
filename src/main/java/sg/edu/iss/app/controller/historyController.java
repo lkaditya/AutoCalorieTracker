@@ -102,8 +102,8 @@ public class historyController {
         for (FoodImage image : images) {
             String url = image.getUrl();
             urls.add(url);
-//            foodNames.add(image.getFoodName());
-            foodNames.add(image.getFood().getName());
+            foodNames.add(image.getFoodName());
+            //TODO : inconsistent data source for 1 set of data? need further changes??
             Calories.add(image.getFood().getCalorie());
         }
         Map<String,Object> map=new HashMap<>();

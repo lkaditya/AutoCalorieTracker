@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +14,7 @@ import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FileUtils;
 import org.datavec.image.loader.ImageLoader;
+import org.deeplearning4j.nn.graph.ComputationGraph;
 import org.deeplearning4j.nn.modelimport.keras.KerasModelImport;
 import org.deeplearning4j.nn.modelimport.keras.exceptions.InvalidKerasConfigurationException;
 import org.deeplearning4j.nn.modelimport.keras.exceptions.UnsupportedKerasConfigurationException;
@@ -79,6 +79,7 @@ public class MLModelController {
 		mapping.put(4, "pizza");
 
 		MultiLayerNetwork model=KerasModelImport.importKerasSequentialModelAndWeights(modeldir);
+//		ComputationGraph model = KerasModelImport.importKerasModelAndWeights(modeldir,false);
 		
 //		Path source = Paths.get("src/main/resources/static/image/apple_7.jpg");
 //		Path source = Paths.get("src/main/resources/static/image/img1.jpg");
@@ -89,7 +90,7 @@ public class MLModelController {
 		BufferedImage originalImage = ImageIO.read(is);
 
 		ImageLoader iml= new ImageLoader(length,width,channel);
-		INDArray features2= iml.asMatrix(originalImage).reshape(1,channel,width,length);
+		INDArray features2= iml.asMatrix(originalImage).reshape(1,width,length,channel);
 	
 		// get the prediction
 		double max=0.0;
@@ -101,6 +102,15 @@ public class MLModelController {
 				maxindex=x;
 			}
 		}
+		
+
+//			int el=model.output(features2).length;
+//			System.out.println(model.output(features2).toString());
+//			System.out.println(el);
+		    //INDArray[] output = model.output(features2);
+			
+
+
 		
 		LocalDate date= LocalDate.now();
 		String name=mapping.get(maxindex);
@@ -120,6 +130,8 @@ public class MLModelController {
 //	    img.setFoodName(name);
 	    Food fooddata= foodservice.findFoodByName(name);
 	    img.setFood(fooddata);
+	    img.setFoodName(fooddata.getName());
+	    img.setCalorie(fooddata.getCalorie());
 	    img.setUrl("http://localhost:8080/api/image/"+imagename);
 	    img.setEpochTime(System.currentTimeMillis());
 		if(hist==null) {

@@ -16,7 +16,8 @@ public class FoodImage {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-//	private String foodName;
+	private String foodName;
+	private double calorie;
 	private String url;		
 	@ManyToOne
 	private DailyHistory dailyHistory;

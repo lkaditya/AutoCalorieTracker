@@ -39,27 +39,27 @@ INSERT INTO daily_history VALUES (6,'2021-01-27', 1);
 INSERT INTO daily_history VALUES (7,'2021-01-28', 1);
 
 
-INSERT INTO food_image VALUES (1,"https://images.deliveryhero.io/image/fd-sg/Products/5570212.jpg?width=302",1,5);
-INSERT INTO food_image VALUES (2,"https://images.deliveryhero.io/image/fd-sg/Products/5543700.jpg?width=302",1,4);
-INSERT INTO food_image VALUES (3,"https://images.deliveryhero.io/image/fd-sg/Products/5514321.jpg?width=302",1,1);
-INSERT INTO food_image VALUES (4,"https://images.deliveryhero.io/image/fd-sg/Products/5514324.jpg?width=302",2,3);
+INSERT INTO food_image VALUES (1,"Korean Saucy Chicken Wings (Mildly Spiced)","https://images.deliveryhero.io/image/fd-sg/Products/5570212.jpg?width=302",1,5);
+INSERT INTO food_image VALUES (2,"Coca-Cola 330ml","https://images.deliveryhero.io/image/fd-sg/Products/5543700.jpg?width=302",1,4);
+INSERT INTO food_image VALUES (3,"Char-Grilled Meat & Rice Set","https://images.deliveryhero.io/image/fd-sg/Products/5514321.jpg?width=302",1,1);
+INSERT INTO food_image VALUES (4,"Saba Fish & Rice Set","https://images.deliveryhero.io/image/fd-sg/Products/5514324.jpg?width=302",2,3);
 
 
-INSERT INTO food_image VALUES (5,"https://images.deliveryhero.io/image/fd-sg/Products/5514332.jpg?width=302",2,1);
-INSERT INTO food_image VALUES (6,"https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",2,3);
-INSERT INTO food_image VALUES (7,"https://images.deliveryhero.io/image/fd-sg/Products/5514332.jpg?width=302",3,1);
-INSERT INTO food_image VALUES (8,"https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",3,3);
+INSERT INTO food_image VALUES (5,"Kimchi Stew","https://images.deliveryhero.io/image/fd-sg/Products/5514332.jpg?width=302",2,1);
+INSERT INTO food_image VALUES (6,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",2,3);
+INSERT INTO food_image VALUES (7,"Kimchi Stew","https://images.deliveryhero.io/image/fd-sg/Products/5514332.jpg?width=302",3,1);
+INSERT INTO food_image VALUES (8,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",3,3);
 
-INSERT INTO food_image VALUES (9,"https://images.deliveryhero.io/image/fd-sg/Products/5570212.jpg?width=302",4,5);
-INSERT INTO food_image VALUES (10,"https://images.deliveryhero.io/image/fd-sg/Products/5543700.jpg?width=302",4,4);
-INSERT INTO food_image VALUES (11,"https://images.deliveryhero.io/image/fd-sg/Products/5514321.jpg?width=302",4,1);
-INSERT INTO food_image VALUES (12,"https://images.deliveryhero.io/image/fd-sg/Products/5514324.jpg?width=302",5,3);
-INSERT INTO food_image VALUES (13,"https://images.deliveryhero.io/image/fd-sg/Products/5530498.jpg?width=302",5,4);
-INSERT INTO food_image VALUES (14,"https://images.deliveryhero.io/image/fd-sg/Products/5514328.jpg?width=302",5,5);
-INSERT INTO food_image VALUES (15,"https://images.deliveryhero.io/image/fd-sg/Products/5514332.jpg?width=302",3,1);
-INSERT INTO food_image VALUES (16,"https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",6,3);
-INSERT INTO food_image VALUES (21,"https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",6,3);
-INSERT INTO food_image VALUES (17,"https://images.deliveryhero.io/image/fd-sg/Products/5530498.jpg?width=302",6,4);
-INSERT INTO food_image VALUES (18,"https://images.deliveryhero.io/image/fd-sg/Products/5514328.jpg?width=302",7,5);
-INSERT INTO food_image VALUES (19,"https://images.deliveryhero.io/image/fd-sg/Products/5514332.jpg?width=302",7,1);
-INSERT INTO food_image VALUES (20,"https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",7,3);
+INSERT INTO food_image VALUES (9,"Korean Saucy Chicken Wings (Mildly Spiced)","https://images.deliveryhero.io/image/fd-sg/Products/5570212.jpg?width=302",4,5);
+INSERT INTO food_image VALUES (10,"Coca-Cola 330ml","https://images.deliveryhero.io/image/fd-sg/Products/5543700.jpg?width=302",4,4);
+INSERT INTO food_image VALUES (11,"Char-Grilled Meat & Rice Set","https://images.deliveryhero.io/image/fd-sg/Products/5514321.jpg?width=302",4,1);
+INSERT INTO food_image VALUES (12,"Saba Fish & Rice Set","https://images.deliveryhero.io/image/fd-sg/Products/5514324.jpg?width=302",5,3);
+INSERT INTO food_image VALUES (13,"Salmon Rice Set","https://images.deliveryhero.io/image/fd-sg/Products/5530498.jpg?width=302",5,4);
+INSERT INTO food_image VALUES (14,"Kimchi Fried Rice","https://images.deliveryhero.io/image/fd-sg/Products/5514328.jpg?width=302",5,5);
+INSERT INTO food_image VALUES (15,"Kimchi Stew","https://images.deliveryhero.io/image/fd-sg/Products/5514332.jpg?width=302",3,1);
+INSERT INTO food_image VALUES (16,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",6,3);
+INSERT INTO food_image VALUES (21,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",6,3);
+INSERT INTO food_image VALUES (17,"Salmon Rice Set","https://images.deliveryhero.io/image/fd-sg/Products/5530498.jpg?width=302",6,4);
+INSERT INTO food_image VALUES (18,"Kimchi Fried Rice","https://images.deliveryhero.io/image/fd-sg/Products/5514328.jpg?width=302",7,5);
+INSERT INTO food_image VALUES (19,"Kimchi Stew","https://images.deliveryhero.io/image/fd-sg/Products/5514332.jpg?width=302",7,1);
+INSERT INTO food_image VALUES (20,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",7,3);
