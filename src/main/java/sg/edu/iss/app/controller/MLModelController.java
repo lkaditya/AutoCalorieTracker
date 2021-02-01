@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FileUtils;
 import org.datavec.image.loader.ImageLoader;
+import org.deeplearning4j.nn.graph.ComputationGraph;
 import org.deeplearning4j.nn.modelimport.keras.KerasModelImport;
 import org.deeplearning4j.nn.modelimport.keras.exceptions.InvalidKerasConfigurationException;
 import org.deeplearning4j.nn.modelimport.keras.exceptions.UnsupportedKerasConfigurationException;
@@ -63,7 +64,7 @@ public class MLModelController {
 
 	//predict the image submitted and store that inside the localhost server folder
 	@RequestMapping("/predict")
-	public ResponseEntity<Food>predictFood(@RequestBody MultipartFile image) throws IOException, InvalidKerasConfigurationException, UnsupportedKerasConfigurationException{
+	public ResponseEntity<Food> predictFood(@RequestBody MultipartFile image) throws IOException, InvalidKerasConfigurationException, UnsupportedKerasConfigurationException{
 		
 		//current hardcoding mapping from python result
 		Map<Integer,String>mapping= new HashMap<Integer,String>();
@@ -78,6 +79,7 @@ public class MLModelController {
 		mapping.put(4, "pizza");
 
 		MultiLayerNetwork model=KerasModelImport.importKerasSequentialModelAndWeights(modeldir);
+//		ComputationGraph model = KerasModelImport.importKerasModelAndWeights(modeldir,false);
 		
 //		Path source = Paths.get("src/main/resources/static/image/apple_7.jpg");
 //		Path source = Paths.get("src/main/resources/static/image/img1.jpg");
@@ -88,7 +90,7 @@ public class MLModelController {
 		BufferedImage originalImage = ImageIO.read(is);
 
 		ImageLoader iml= new ImageLoader(length,width,channel);
-		INDArray features2= iml.asMatrix(originalImage).reshape(1,channel,width,length);
+		INDArray features2= iml.asMatrix(originalImage).reshape(1,width,length,channel);
 	
 		// get the prediction
 		double max=0.0;
@@ -100,6 +102,15 @@ public class MLModelController {
 				maxindex=x;
 			}
 		}
+		
+
+//			int el=model.output(features2).length;
+//			System.out.println(model.output(features2).toString());
+//			System.out.println(el);
+		    //INDArray[] output = model.output(features2);
+			
+
+
 		
 		LocalDate date= LocalDate.now();
 		String name=mapping.get(maxindex);
@@ -116,10 +127,15 @@ public class MLModelController {
 	    
 		DailyHistory hist=historyservice.findHistoryByEmailandDate(email, date);
 	    FoodImage img= new FoodImage();
-	    img.setFoodName(name);
+//	    img.setFoodName(name);
+	    Food fooddata= foodservice.findFoodByName(name);
+	    img.setFood(fooddata);
+	    img.setFoodName(fooddata.getName());
+	    img.setCalorie(fooddata.getCalorie());
 	    img.setUrl("http://localhost:8080/api/image/"+imagename);
-	    img.setUser(user);
+	    img.setEpochTime(System.currentTimeMillis());
 		if(hist==null) {
+			System.out.println("it goes to create new history");
 			hist=new DailyHistory(); 
 			hist.setDate(date);
 			hist.setUser(user);
@@ -134,10 +150,9 @@ public class MLModelController {
 		historyservice.save(hist);
 	    
 	   	    
-		Food fooddata= foodservice.findFoodByName(name);
+		
 		//Food fooddata = new Food(name,200.0);
 		System.out.println(fooddata.getName()+"_"+max);
-		
 		return new ResponseEntity<>(fooddata, HttpStatus.OK);
 	}
 	

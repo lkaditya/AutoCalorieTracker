@@ -1,30 +1,25 @@
 package sg.edu.iss.app.controller;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import sg.edu.iss.app.model.DailyHistory;
-import sg.edu.iss.app.model.Food;
-import sg.edu.iss.app.model.FoodImage;
-import sg.edu.iss.app.model.BarChartData;
-import sg.edu.iss.app.service.DailyHistoryService;
-import sg.edu.iss.app.service.FoodService;
-import sg.edu.iss.app.service.ImageService;
-
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import sg.edu.iss.app.model.BarChartData;
+import sg.edu.iss.app.model.DailyHistory;
+import sg.edu.iss.app.model.FoodImage;
+import sg.edu.iss.app.service.DailyHistoryService;
+import sg.edu.iss.app.service.FoodService;
+import sg.edu.iss.app.service.ImageService;
 
 
 @RequestMapping("/history")
@@ -40,6 +35,13 @@ public class historyController {
     @Autowired
     private FoodService foodService;
 
+    
+    @RequestMapping("/getTodayHistory")
+    public List<FoodImage> getHistory(@RequestParam("date")String date,@RequestParam("email")String email){
+    	DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    	LocalDate date1=LocalDate.parse(date,df);
+    	return imageService.findImageByDateAndEmail(date1, email);
+    }
 
 
 
@@ -84,7 +86,7 @@ public class historyController {
 
         return barChartData;
     }
-
+    
 
 
     @RequestMapping("/getImageByData")
@@ -101,6 +103,7 @@ public class historyController {
             String url = image.getUrl();
             urls.add(url);
             foodNames.add(image.getFoodName());
+            //TODO : inconsistent data source for 1 set of data? need further changes??
             Calories.add(image.getFood().getCalorie());
         }
         Map<String,Object> map=new HashMap<>();
@@ -110,6 +113,8 @@ public class historyController {
         BarChartData barChartData=new BarChartData(map);
         return barChartData;
     }
+    
+
 
 
 }

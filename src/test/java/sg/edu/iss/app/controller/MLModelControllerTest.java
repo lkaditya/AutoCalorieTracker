@@ -9,6 +9,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.imageio.ImageIO;
 
@@ -41,6 +45,19 @@ public class MLModelControllerTest {
 	        //return model;
 		
 
+	}
+	
+	@Test
+	void printEpoch() {
+		Long n=1612093584697L;
+		n=System.currentTimeMillis();
+        Instant i=Instant.ofEpochSecond(n);
+        ZoneId sgZone= ZoneId.of("Asia/Singapore");
+        ZonedDateTime sgdt=ZonedDateTime.ofInstant(i,sgZone);
+        System.out.println(sgdt);
+        DateTimeFormatter df= DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
+        String timeshown=df.format(sgdt.toLocalDateTime());
+        System.out.println(timeshown);
 	}
 
 }

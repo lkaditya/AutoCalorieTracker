@@ -8,8 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -23,24 +23,21 @@ public class User {
 	private int birthYear;
 	private int height;
 	private int weight;
-	@NotNull
-	@Email
 	private String email;
 	//TODO:currently the activitylevel is disabled, NEED TO BE FIXED
 //	private Enum<ActivityLevel> activityLevel;
 	private String password;
 	
 	@OneToMany(mappedBy="user")
+	@JsonIgnore
 	private List<DailyHistory> listOfDailyHistory;
 	
 	@OneToMany(mappedBy="user")
+	@JsonIgnore
 	private List<DietPlan> listOfDietPlan;
 	
 	private double recommendedCalories;
-	
-	@OneToMany(mappedBy="user")
-	private List<FoodImage> listOfFoodImage;
-
+		
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
