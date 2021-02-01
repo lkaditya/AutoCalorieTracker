@@ -9,7 +9,11 @@ public interface ImageService {
 	
 	public void storeNewImage(FoodImage img);
 	
+	public void deleteImage(Long id);
+	
 	public List<FoodImage> findByHid(Long id);
 
 	public List<FoodImage> findImageByDateAndEmail(LocalDate date, String email);
+
+	public List<FoodImage> findImageByCalories(double remainder);
 }

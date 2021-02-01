@@ -36,5 +36,19 @@ public class ImageServiceImplementation implements ImageService {
 		return res;
 	}
 
+	@Override
+	@Transactional
+	public void deleteImage(Long id) {
+		FoodImage f= imagerepo.findById(id).get();
+		imagerepo.delete(f);	
+	}
+
+	@Override
+	@Transactional
+	public List<FoodImage> findImageByCalories(double remainder) {
+		
+		return imagerepo.findAllUniqueByCalories(remainder);
+	}
+
 
 }

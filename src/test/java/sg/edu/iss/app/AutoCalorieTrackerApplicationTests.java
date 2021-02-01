@@ -3,14 +3,22 @@ package sg.edu.iss.app;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import sg.edu.iss.app.model.FoodImage;
+import sg.edu.iss.app.repo.ImageRepository;
 
 @SpringBootTest
 class AutoCalorieTrackerApplicationTests {
 
+	@Autowired
+	private ImageRepository imagerepo;
+	
 	@Test
 	void contextLoads() {
 	}
@@ -28,6 +36,13 @@ class AutoCalorieTrackerApplicationTests {
         format.setTimeZone(TimeZone.getTimeZone("Australia/Sydney"));
         formatted = format.format(date);
         System.out.println(formatted);
+	}
+	
+	@Test
+	void query() {
+		Long id=1L;
+		List<FoodImage> f= imagerepo.findAllById(id);
+		System.out.println("size= "+f.size());
 	}
 
 }
