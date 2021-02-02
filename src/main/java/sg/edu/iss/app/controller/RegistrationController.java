@@ -30,6 +30,6 @@ public class RegistrationController {
     public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,
         @ModelAttribute("user") Login login) {
         userService.register((sg.edu.iss.app.model.User) User);
-        return new ModelAndView("mainPage", "username", login.getEmail());
+        return new ModelAndView("mainPage", "email", login.getEmail());
     }
 }

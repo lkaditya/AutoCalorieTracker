@@ -57,6 +57,7 @@ public class LoginController {
 		public ModelAndView logout(HttpSession session){
 		session.removeAttribute("userSession");
 		ModelAndView view = new ModelAndView("login");
+		view.addObject("logoutMessage","You have successfully logged out");
 		return view;
 	}
 
