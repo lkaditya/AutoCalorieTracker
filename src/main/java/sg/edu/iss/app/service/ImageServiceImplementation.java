@@ -1,13 +1,17 @@
 package sg.edu.iss.app.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import sg.edu.iss.app.model.Food;
 import sg.edu.iss.app.model.FoodImage;
+import sg.edu.iss.app.repo.FoodRepository;
 import sg.edu.iss.app.repo.ImageRepository;
 
 @Service
@@ -15,6 +19,9 @@ public class ImageServiceImplementation implements ImageService {
 
 	@Autowired
 	private ImageRepository imagerepo;
+	
+	@Autowired
+	private FoodRepository foodrepo;
 
 	@Override
 	public void storeNewImage(FoodImage img) {
@@ -48,6 +55,26 @@ public class ImageServiceImplementation implements ImageService {
 	public List<FoodImage> findImageByCalories(double remainder) {
 		
 		return imagerepo.findAllUniqueByCalories(remainder);
+	}
+
+	@Override
+	@Transactional
+	public void updateImage(Long id1, String name, double cal) {
+		FoodImage a=imagerepo.findById(id1).get();
+		a.setCalorie(cal);
+		a.setFoodName(name);
+		System.out.println("name input="+name);
+		
+		String[]group=name.toLowerCase().split(" ");
+		List<String> arrlist=new ArrayList<String>(Arrays.asList(group));
+		//TODO: find more idea to map image to the correct food in case the name is similar
+		//Food f=foodrepo.findSimilarFoodByName(arrlist);
+
+		Food f=foodrepo.findByNameContains(name.toLowerCase());
+		if(f!=null) {
+			a.setFood(f);
+		}
+		imagerepo.save(a);
 	}
 
 

@@ -9,7 +9,6 @@ public interface FoodService {
 	
 	public Food findFoodByName(String name);
 	
-	public List<Food> findFoodByUserandDate(String username,Date date);
 
 	public Food findFoodByImageId(Long id);
 }

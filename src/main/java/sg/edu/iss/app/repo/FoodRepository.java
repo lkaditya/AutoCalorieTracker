@@ -1,5 +1,7 @@
 package sg.edu.iss.app.repo;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,6 +12,11 @@ public interface FoodRepository extends JpaRepository<Food, Long> {
 
 	@Query("Select x from Food x where x.name =:name")
 	public Food findFoodByName(@Param("name")String name);
+	
+	@Query("Select x from Food x where x.name in (:name) ")
+	public Food findSimilarFoodByName(@Param("name")List<String> name);
+	
+	public Food findByNameContains(String name);
 
 	@Query("Select x from Food x join x.foodImage as f where f.id =:id")
 	public Food findFoodById(@Param("id") Long id);
