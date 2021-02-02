@@ -54,9 +54,10 @@ public class LoginController {
 	}
 
 	@RequestMapping(value= "logout")
-		public String logout(HttpSession session){
+		public ModelAndView logout(HttpSession session){
 		session.removeAttribute("userSession");
-		return "login";
+		ModelAndView view = new ModelAndView("login");
+		return view;
 	}
 
 	public LoginController() {
