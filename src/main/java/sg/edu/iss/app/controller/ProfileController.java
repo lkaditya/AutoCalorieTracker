@@ -20,5 +20,6 @@ public class ProfileController {
     public ModelAndView showProfile(HttpServletRequest request, HttpServletResponse response){
         ModelAndView view = new ModelAndView("profile");
         return view;
+
     }
 }
