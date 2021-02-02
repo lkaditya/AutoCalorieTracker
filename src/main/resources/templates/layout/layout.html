@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <meta charset="ISO-8859-1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -78,7 +78,7 @@
                         <div class="title">Home</div>
                         <div class="bar"></div>
                     </a>
-                    <a href="#" th:href="@{/profile}" class="link">
+                    <a th:href="@{/profile}" class="link">
                         <div class="title">Profile</div>
                         <div class="bar"></div>
                     </a>
