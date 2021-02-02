@@ -89,9 +89,7 @@
 <body>
 <header th:insert="layout/layout.html :: header"></header>
 <div th:replace="layout/layout.html :: menu" ></div>
-<div th:object="${session.user}">
     <p>Welcome: <span th:text="*{email}">User</span>.</p>
-</div>
 <div id="box">
 
     <div id="main" style="width: 800px;height:400px;" class="bar-chart" align="center"></div>
