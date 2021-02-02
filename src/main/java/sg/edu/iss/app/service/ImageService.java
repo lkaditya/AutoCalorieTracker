@@ -1,5 +1,6 @@
 package sg.edu.iss.app.service;
 
+import sg.edu.iss.app.model.Food;
 import sg.edu.iss.app.model.FoodImage;
 
 import java.time.LocalDate;
@@ -16,4 +17,6 @@ public interface ImageService {
 	public List<FoodImage> findImageByDateAndEmail(LocalDate date, String email);
 
 	public List<FoodImage> findImageByCalories(double remainder);
+
+	public List<FoodImage> findAll();
 }

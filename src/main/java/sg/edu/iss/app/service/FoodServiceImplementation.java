@@ -35,4 +35,10 @@ public class FoodServiceImplementation implements FoodService{
 		return foodrepo.findFoodById(id);
 	}
 
+	@Override
+	public List<Food> findAll() {
+		List<Food> foodList = foodrepo.findAll();
+		return foodList;
+	}
+
 }

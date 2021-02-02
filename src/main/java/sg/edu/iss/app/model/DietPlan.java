@@ -1,15 +1,11 @@
 package sg.edu.iss.app.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,10 +18,11 @@ public class DietPlan {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany(mappedBy="dietPlan")
+	@ManyToMany
 	@JsonIgnore
-	private List<Food> listOfFood;
-	private Date date;
+	private List<Food> food=new ArrayList<>();
+
+	private LocalDate date;
 	
 	@ManyToOne
 	private User user;

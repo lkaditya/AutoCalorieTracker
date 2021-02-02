@@ -50,5 +50,11 @@ public class ImageServiceImplementation implements ImageService {
 		return imagerepo.findAllUniqueByCalories(remainder);
 	}
 
+	@Override
+	@Transactional
+	public List<FoodImage> findAll() {
+		return imagerepo.findAll();
+	}
+
 
 }

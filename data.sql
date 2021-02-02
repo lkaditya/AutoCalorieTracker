@@ -20,13 +20,18 @@ INSERT INTO USER VALUES (3, 1992, "ZAC@GMAIL.COM", "MALE", 175, "PASSWORD", 1200
 INSERT INTO diet_plan VALUES (1, '2021-01-29', 1, 3);
 
 
+#new added
+
+
+
 #food
 #id, calories, foodName, activity_id
-INSERT INTO food VALUES (1, 313, "laksa", 1);
-INSERT INTO food VALUES (2, 607, "chicken rice", 1);
-INSERT INTO food VALUES (3, 250, "cheeseburger", 1);
-INSERT INTO food VALUES (4, 230, "fish and chips", 1);
-INSERT INTO food VALUES (5, 200, "pizza", 1);
+INSERT INTO food VALUES (1, 313, "laksa");
+INSERT INTO food VALUES (2, 607, "chicken rice");
+INSERT INTO food VALUES (3, 250, "cheeseburger");
+INSERT INTO food VALUES (4, 230, "fish and chips");
+INSERT INTO food VALUES (5, 200, "pizza");
+
 
 #dailyhistory
 #id,date,user_id

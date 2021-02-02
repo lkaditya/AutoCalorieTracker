@@ -17,8 +17,11 @@ import java.time.format.DateTimeFormatter;
 import javax.imageio.ImageIO;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+import sg.edu.iss.app.model.Food;
+import sg.edu.iss.app.repo.FoodRepository;
 
 public class MLModelControllerTest {
 
@@ -58,6 +61,16 @@ public class MLModelControllerTest {
         DateTimeFormatter df= DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
         String timeshown=df.format(sgdt.toLocalDateTime());
         System.out.println(timeshown);
+	}
+
+	@Autowired
+	FoodRepository foodRepository;
+	@Test
+	void query3() { //still fail
+		String name="pizza";
+		Food f=foodRepository.findFoodByName(name);
+		System.out.println("size= "+f.toString());
+//		System.out.println(f.getName());
 	}
 
 }
