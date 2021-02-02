@@ -90,8 +90,8 @@
                         <div class="title">Upload</div>
                         <div class="bar"></div>
                     </a>
-                    <a href="#" th:href="@{/logout}" class="link">
-                        <div sec:authorize="#isAuthenticated()}" class="title" id="logout">Logout</div>
+                    <a th:href="@{/logout}" class="link">
+                        <div sec:authorize="#{isAuthenticated()}" class="title" id="logout">Logout</div>
                         <div class="bar"></div>
                     </a>
                 </div>
