@@ -28,7 +28,7 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response){
 		ModelAndView view = new ModelAndView("Login");
-		view.addObject("login", new Login());
+		view.addObject("Login", new Login());
 		return view;
 	}
 
@@ -36,7 +36,7 @@ public class LoginController {
 	public ModelAndView loginProcess(HttpServletRequest request,
 									 HttpServletResponse response,
 									 @ModelAttribute("login") Login login, HttpSession session){
-		ModelAndView view=null;
+		ModelAndView view = null;
 		User user = userService.validateUser(login);
 
 		if (user != null) {
