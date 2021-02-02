@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="ISO-8859-1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -91,11 +91,7 @@
                         <div class="bar"></div>
                     </a>
                     <a href="#" th:href="@{/logout}" class="link">
-                        <script>
-                            function returnToLogin(){
-                            location.replace(th:href="@{login}"}
-                        </script>
-                        <div class="title">Logout</div>
+                        <div sec:authorize="#isAuthenticated()}" class="title" id="logout">Logout</div>
                         <div class="bar"></div>
                     </a>
                 </div>
@@ -111,7 +107,10 @@
             </div>
 
         </footer>
-
+<script>
+    function RemoveLogout(){
+    document.getElementById("logout").style.display ="none";
+</script>
     </body>
 
 </html>
