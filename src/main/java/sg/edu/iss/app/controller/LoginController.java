@@ -36,7 +36,7 @@ public class LoginController {
 	public ModelAndView loginProcess(HttpServletRequest request,
 									 HttpServletResponse response,
 									 @ModelAttribute("login") Login login, HttpSession session){
-		ModelAndView view;
+		ModelAndView view=null;
 		User user = userService.validateUser(login);
 
 		if (user != null) {
