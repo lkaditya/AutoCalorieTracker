@@ -91,7 +91,7 @@
                         <div class="bar"></div>
                     </a>
                     <a th:href="@{/logout}" class="link">
-                        <div sec:authorize="#{isAuthenticated()}" class="title" id="logout">Logout</div>
+                        <div sec:authorize="isAuthenticated()" class="title" id="logout">Logout</div>
                         <div class="bar"></div>
                     </a>
                 </div>
