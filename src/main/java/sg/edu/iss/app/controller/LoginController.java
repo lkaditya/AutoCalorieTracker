@@ -12,6 +12,7 @@ import sg.edu.iss.app.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
@@ -34,13 +35,15 @@ public class LoginController {
 	@RequestMapping(value = "loginProcess", method = RequestMethod.POST)
 	public ModelAndView loginProcess(HttpServletRequest request,
 									 HttpServletResponse response,
-									 @ModelAttribute("login") Login login){
+									 @ModelAttribute("login") Login login, HttpSession session){
 		ModelAndView view = null;
 		User user = userService.validateUser(login);
 
 		if (user != null) {
 			view = new ModelAndView("mainPage");
 			view.addObject("email", login.getEmail());
+			user = userService.findUserByEmail(user.getEmail());
+			session.setAttribute("userSession", user);
 		}
 		else
 		{
@@ -48,6 +51,12 @@ public class LoginController {
 			view.addObject("message", "Username or Password is wrong!");
 		}
 		return view;
+	}
+
+	@RequestMapping(value= "logout")
+		public String logout(HttpSession session){
+		session.removeAttribute("userSession");
+		return "login";
 	}
 
 	public LoginController() {
