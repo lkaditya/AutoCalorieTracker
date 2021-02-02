@@ -28,7 +28,7 @@ INSERT INTO food VALUES (3, 250, "cheeseburger", 1);
 INSERT INTO food VALUES (4, 230, "fish and chips", 1);
 INSERT INTO food VALUES (5, 200, "pizza", 1);
 
-#dailyhistory
+#daily_history
 #id,date,user_id
 INSERT INTO daily_history VALUES (1,'2021-01-22', 1);
 INSERT INTO daily_history VALUES (2,'2021-01-23', 1);
@@ -39,7 +39,7 @@ INSERT INTO daily_history VALUES (6,'2021-01-27', 1);
 INSERT INTO daily_history VALUES (7,'2021-01-28', 1);
 
 #food_image
-#id,epoch_time,calorie,food_name,url,dailyhistory_id,food_id
+#id,epoch_time,calorie,food_name,url,daily_history_id,food_id
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_time, calorie, food_id) VALUES (1,"Korean Saucy Chicken Wings (Mildly Spiced)","https://images.deliveryhero.io/image/fd-sg/Products/5570212.jpg?width=302",1,1611285712,700,1);
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_time, calorie, food_id) VALUES (2,"Coca-Cola 330ml","https://images.deliveryhero.io/image/fd-sg/Products/5543700.jpg?width=302",1, 1611246112,600,2);
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_time, calorie, food_id) VALUES (3,"Char-Grilled Meat & Rice Set","https://images.deliveryhero.io/image/fd-sg/Products/5514321.jpg?width=302",1,1611285712,800,3);

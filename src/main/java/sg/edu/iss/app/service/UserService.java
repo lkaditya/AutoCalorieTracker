@@ -9,6 +9,6 @@ public interface UserService {
 
     User validateUser(Login login);
 
-    public User findUserByEmail(String email);
+    User findUserByEmail(String email);
 
 }
