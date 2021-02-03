@@ -77,5 +77,11 @@ public class ImageServiceImplementation implements ImageService {
 		imagerepo.save(a);
 	}
 
+	@Override
+	@Transactional
+	public List<FoodImage> findAll() {
+		return imagerepo.findAll();
+	}
+
 
 }

@@ -11,4 +11,6 @@ public interface FoodService {
 	
 
 	public Food findFoodByImageId(Long id);
+
+	public List<Food> findAll();
 }
