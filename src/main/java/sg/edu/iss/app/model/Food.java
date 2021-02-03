@@ -1,5 +1,6 @@
 package sg.edu.iss.app.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -24,7 +25,7 @@ public class Food {
 	private double calorie;
 	
 	@ManyToMany
-	private List<DietPlan> dietPlan;
+	private List<DietPlan> dietPlan=new ArrayList<>();
 
 	public Food() {
 	}

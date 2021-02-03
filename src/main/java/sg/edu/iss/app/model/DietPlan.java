@@ -1,5 +1,7 @@
 package sg.edu.iss.app.model;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,8 +25,8 @@ public class DietPlan {
 	
 	@ManyToMany(mappedBy="dietPlan")
 	@JsonIgnore
-	private List<Food> listOfFood;
-	private Date date;
+	private List<Food> food=new ArrayList<>();
+	private LocalDate date;
 	
 	@ManyToOne
 	private User user;
