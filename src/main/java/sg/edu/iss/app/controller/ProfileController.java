@@ -22,7 +22,7 @@ public class ProfileController {
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ModelAndView Profile(HttpServletRequest request, HttpServletResponse response, HttpSession session, @ModelAttribute("user") User user){
-        session = request.getSession();
+        session.getAttribute("userSession");
         ModelAndView view = new ModelAndView("profile");
         String name = user.getEmail();
         user = userService.findUserByEmail(name);
