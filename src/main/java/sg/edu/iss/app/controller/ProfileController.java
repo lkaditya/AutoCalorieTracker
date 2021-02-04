@@ -21,12 +21,13 @@ public class ProfileController {
     private Object User;
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public ModelAndView Profile(HttpServletRequest request, HttpServletResponse response, HttpSession session, @ModelAttribute("user") User user){
-        session.getAttribute("userSession");
+    public ModelAndView Profile(HttpServletRequest request, HttpServletResponse response, HttpSession session){
         ModelAndView view = new ModelAndView("profile");
-        view.addObject("user", user);
+        User user = (User)session.getAttribute("user");
         System.out.println("user email is"+user.getEmail());
         System.out.println("user height is " + user.getHeight());
+        
+        view.addObject("user", user);
 
         return view;
     }

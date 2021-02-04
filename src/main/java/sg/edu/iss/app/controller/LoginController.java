@@ -32,22 +32,21 @@ public class LoginController {
 		return view;
 	}
 
-	@RequestMapping(value = "loginProcess", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView loginProcess(HttpServletRequest request,
 									 HttpServletResponse response,
 									 Login login,
-									 //@ModelAttribute("user") User user,
+									 @ModelAttribute("user") User user,
 									 HttpSession session){
 		ModelAndView view;
-		User user = userService.validateUser(login);
+		user = userService.validateUser(login);
 
 		if (user != null) {
 			System.out.println("User found! -- line 45");
 			view = new ModelAndView("mainPage");
 			view.addObject("user", user);
 			user = userService.findUserByEmail(user.getEmail());
-			session = request.getSession();
-			session.setAttribute("userSession", user);
+			request.getSession().setAttribute("user", user);
 		}
 		else
 		{
