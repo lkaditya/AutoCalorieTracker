@@ -25,7 +25,6 @@ public class ProfileController {
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ModelAndView Profile(@ModelAttribute("user") User user){
         ModelAndView view = new ModelAndView("profile");
-        view.addObject("User", new User());
         String name = user.getEmail();
         user = userService.findUserByEmail(name);
         return view;

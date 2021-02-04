@@ -28,20 +28,20 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response){
 		ModelAndView view = new ModelAndView("Login");
-		view.addObject("Login", new Login());
+		view.addObject("User", new User());
 		return view;
 	}
 
 	@RequestMapping(value = "loginProcess", method = RequestMethod.POST)
 	public ModelAndView loginProcess(HttpServletRequest request,
 									 HttpServletResponse response,
-									 @ModelAttribute("login") Login login, HttpSession session){
+									 @ModelAttribute("user") User user, HttpSession session){
 		ModelAndView view = null;
-		User user = userService.validateUser(login);
+		user = userService.validateUser(user);
 
 		if (user != null) {
 			view = new ModelAndView("mainPage");
-			view.addObject("email", login.getEmail());
+			view.addObject("email", user.getEmail());
 			user = userService.findUserByEmail(user.getEmail());
 			session.setAttribute("userSession", user);
 		}
