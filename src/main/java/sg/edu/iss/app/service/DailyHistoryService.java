@@ -16,4 +16,6 @@ public interface DailyHistoryService {
 	public List<DailyHistory> findRecordByUserID(long id);
 
 	public DailyHistory findRecordByIdAndDate(long id, LocalDate date);
+	
+	public List<Integer> getSomething(long id, LocalDate date);
 }

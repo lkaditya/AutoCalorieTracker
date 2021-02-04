@@ -19,6 +19,9 @@ public interface ImageRepository extends JpaRepository<FoodImage, Long> {
 
 	@Query("select f from FoodImage f where f.food.calorie <=:limit")
     public List<FoodImage> findAllUniqueByCalories(@Param("limit") double remainder);
+	
+	@Query("select SUM(f.calorie) from FoodImage f where f.daily_history_id =:id GROUP BY f.daily_history_id")
+	public double findTotalCaloriesById(@Param("id") Long id);
 
 
 }
