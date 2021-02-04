@@ -57,16 +57,7 @@ public class DailyHistoryServiceImplementation implements DailyHistoryService {
 		for(int i = 0; i<7;i++) {
 			listOfDailyHistoryId.add(historyrepo.findIdByIdAndDate(id, date.minusDays(i)));
 		}
-		
-		
-		//get calories for each historyId
-		List<Integer> listOfDailyHistoryCalories = new ArrayList<>();
-		for(int i=0;i<7;i++) {
-			
-		}
-		
-		
-		List<DailyHistory> x = historyrepo.findRecordByUserID((long) 1);
+
 		
 		return listOfDailyHistoryId;
 	}
