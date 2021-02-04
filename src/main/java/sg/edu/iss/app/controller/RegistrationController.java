@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import sg.edu.iss.app.model.Login;
 import sg.edu.iss.app.model.User;
 import sg.edu.iss.app.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class RegistrationController {
@@ -28,8 +28,13 @@ public class RegistrationController {
 
     @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
     public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,
-        @ModelAttribute("user") Login login) {
-        userService.register((sg.edu.iss.app.model.User) User);
-        return new ModelAndView("mainPage", "email", login.getEmail());
+                                @ModelAttribute("user") User user) {
+        if (user == null){
+            System.out.println("No user");
+        }
+        userService.register(user);
+        HttpSession session = request.getSession();
+        session.setAttribute("user", user);
+        return new ModelAndView("mainPage");
     }
 }

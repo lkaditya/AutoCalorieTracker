@@ -20,7 +20,7 @@ public class ProfileController {
     private UserService userService;
     private Object User;
 
-    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    @RequestMapping(value = "/profile/view", method = RequestMethod.GET)
     public ModelAndView Profile(HttpServletRequest request, HttpServletResponse response, HttpSession session){
         ModelAndView view = new ModelAndView("profile");
         User user = (User)session.getAttribute("user");
@@ -31,9 +31,21 @@ public class ProfileController {
 
         return view;
     }
+    
+    @RequestMapping(value = "/profile/edit", method = RequestMethod.GET)
+    public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+        ModelAndView view = new ModelAndView("profile");
+        User user = (User)session.getAttribute("user");
+        System.out.println("user email is"+user.getEmail());
+        System.out.println("user height is " + user.getHeight());
+        
+        view.addObject("user", user);
 
-    @RequestMapping(value = "/editProfile", method = RequestMethod.POST)
-    public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,
+        return view;
+    }
+    
+    @RequestMapping(value = "/profile/edit", method = RequestMethod.POST)
+    public ModelAndView updateProfile(HttpServletRequest request, HttpServletResponse response,
                                 @ModelAttribute("user") User user) {
         userService.edit((sg.edu.iss.app.model.User) User);
         return new ModelAndView("mainPage", "email", user.getEmail());

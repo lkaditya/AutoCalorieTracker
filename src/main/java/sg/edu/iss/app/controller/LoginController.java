@@ -36,10 +36,10 @@ public class LoginController {
 	public ModelAndView loginProcess(HttpServletRequest request,
 									 HttpServletResponse response,
 									 Login login,
-									 @ModelAttribute("user") User user,
+									 //@ModelAttribute("user") User user,
 									 HttpSession session){
 		ModelAndView view;
-		user = userService.validateUser(login);
+		User user = userService.validateUser(login);
 
 		if (user != null) {
 			System.out.println("User found! -- line 45");
