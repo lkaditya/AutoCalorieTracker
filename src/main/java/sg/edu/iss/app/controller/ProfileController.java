@@ -23,7 +23,7 @@ public class ProfileController {
     private Object User;
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public ModelAndView Profile(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("user") User user){
+    public ModelAndView Profile(@ModelAttribute("user") User user){
         ModelAndView view = new ModelAndView("profile");
         view.addObject("User", new User());
         String name = user.getEmail();
