@@ -35,6 +35,8 @@ public class UserServiceImplementation implements UserService {
 			System.out.println("User " + login.getEmail() + " does not exist!");
 			return null;
 		} else if (existingUser.getPassword() != login.getPassword()) {
+			System.out.println("Stored password is " + existingUser.getPassword());
+			System.out.println("Entered password is " + login.getPassword());
 			System.out.println("Password for user " + login.getEmail() + " is incorrect!");
 			return null;
 		} else return existingUser;
