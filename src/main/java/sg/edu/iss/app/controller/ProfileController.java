@@ -27,7 +27,7 @@ public class ProfileController {
 
     @RequestMapping(value = "/editProfile", method = RequestMethod.GET)
     public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response){
-        ModelAndView view = new ModelAndView("register");
+        ModelAndView view = new ModelAndView("editProfile");
         view.addObject("user", new User());
         return view;
     }
