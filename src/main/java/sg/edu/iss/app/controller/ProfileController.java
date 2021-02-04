@@ -23,10 +23,12 @@ public class ProfileController {
     private Object User;
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public String Profile(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("user") User user){
+    public ModelAndView Profile(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("user") User user){
+        ModelAndView view = new ModelAndView("profile");
+        view.addObject("User", new User());
         String name = user.getEmail();
         user = userService.findUserByEmail(name);
-        return "profile";
+        return view;
     }
 
     @RequestMapping(value = "/editProfile", method = RequestMethod.POST)
