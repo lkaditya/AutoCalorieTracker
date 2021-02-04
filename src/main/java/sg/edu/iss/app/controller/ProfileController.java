@@ -24,6 +24,7 @@ public class ProfileController {
     public ModelAndView Profile(HttpServletRequest request, HttpServletResponse response, HttpSession session, @ModelAttribute("user") User user){
         session.getAttribute("userSession");
         ModelAndView view = new ModelAndView("profile");
+        view.addObject(user);
         return view;
     }
 
