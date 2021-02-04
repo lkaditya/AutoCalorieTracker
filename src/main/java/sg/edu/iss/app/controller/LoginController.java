@@ -42,7 +42,7 @@ public class LoginController {
 		User user = userService.validateUser(login);
 
 		if (user != null) {
-			System.out.println("User found! -- line 45")
+			System.out.println("User found! -- line 45");
 			view = new ModelAndView("mainPage");
 			view.addObject("user", user);
 			user = userService.findUserByEmail(user.getEmail());
