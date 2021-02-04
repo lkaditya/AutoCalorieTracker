@@ -30,11 +30,11 @@ public class UserServiceImplementation implements UserService {
 
 	@Override
 	public User validateUser(Login login) {
-		User existingUser = userrepo.findUserByEmail(login.getEmail());
+		User existingUser = userrepo.findUserByEmail(login.getEmail().toUpperCase());
 		if(existingUser==null) {
 			System.out.println("User " + login.getEmail() + " does not exist!");
 			return null;
-		} else if (existingUser.getPassword() != login.getPassword()) {
+		} else if (!(existingUser.getPassword().equals(login.getPassword()))) {
 			System.out.println("Stored password is " + existingUser.getPassword());
 			System.out.println("Entered password is " + login.getPassword());
 			System.out.println("Password for user " + login.getEmail() + " is incorrect!");
