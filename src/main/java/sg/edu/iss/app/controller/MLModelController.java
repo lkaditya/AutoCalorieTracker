@@ -94,7 +94,7 @@ public class MLModelController {
 	    img.setFoodName(fooddata.getName());
 	    img.setCalorie(fooddata.getCalorie());
 	    img.setUrl("http://localhost:8080/api/image/"+imagename);
-	    img.setEpochTime(System.currentTimeMillis());
+	    img.setEpochDateUpload(System.currentTimeMillis());
 		if(hist==null) {
 			System.out.println("it goes to create new history");
 			hist=new DailyHistory(); 

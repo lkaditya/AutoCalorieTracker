@@ -25,6 +25,6 @@ public class FoodImage {
 	@ManyToOne
 	private Food food;
 	
-	private Long EpochTime;
+	private Long EpochDateUpload;
 
 }
