@@ -31,9 +31,13 @@ public class UserServiceImplementation implements UserService {
 	@Override
 	public User validateUser(Login login) {
 		User existingUser = userrepo.findUserByEmail(login.getEmail());
-		if(existingUser==null) return null;
-		else if (existingUser.getPassword() != login.getPassword()) return null;
-		else return existingUser;
+		if(existingUser==null) {
+			System.out.println("User " + login.getEmail() + " does not exist!");
+			return null;
+		} else if (existingUser.getPassword() != login.getPassword()) {
+			System.out.println("Password for user " + login.getEmail() + " is incorrect!");
+			return null;
+		} else return existingUser;
 	}
 
 	@Override
