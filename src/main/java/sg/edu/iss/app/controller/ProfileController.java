@@ -24,6 +24,8 @@ public class ProfileController {
     public ModelAndView Profile(HttpServletRequest request, HttpServletResponse response, HttpSession session, @ModelAttribute("user") User user){
         session.getAttribute("userSession");
         ModelAndView view = new ModelAndView("profile");
+        System.out.println("user gender is"+user.getGender());
+        System.out.println("user height is " + user.getHeight());
         view.addObject(user);
         return view;
     }
