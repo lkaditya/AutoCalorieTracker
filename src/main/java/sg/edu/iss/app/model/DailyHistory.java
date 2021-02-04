@@ -32,7 +32,7 @@ public class DailyHistory {
 	private List<FoodImage> listOfFoodImages;
 	
 	private LocalDate date;
-
+	@JsonIgnore
 	public DailyHistory(Long id, User user, List<FoodImage> listOfFoodImages, LocalDate date) {
 		this.id = id;
 		this.user = user;
