@@ -36,12 +36,12 @@ public class LoginController {
 	public ModelAndView loginProcess(HttpServletRequest request,
 									 HttpServletResponse response,
 									 @ModelAttribute("user") User user, HttpSession session){
-		ModelAndView view = null;
+		ModelAndView view;
 		user = userService.validateUser(user);
 
 		if (user != null) {
 			view = new ModelAndView("mainPage");
-			view.addObject("email", user.getEmail());
+			view.addObject("user", user);
 			user = userService.findUserByEmail(user.getEmail());
 			session = request.getSession();
 			session.setAttribute("userSession", user);
