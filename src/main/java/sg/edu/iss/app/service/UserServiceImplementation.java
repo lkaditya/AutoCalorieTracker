@@ -1,6 +1,7 @@
 package sg.edu.iss.app.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import sg.edu.iss.app.model.User;
 import sg.edu.iss.app.repo.UserRepository;
@@ -25,6 +26,10 @@ public class UserServiceImplementation implements UserService {
 	@Override
 	public User findUserByEmailAndPassword(String email, String password) {
 		return userrepo.findUserByemailAndPassword(email,password);
+	}
+	
+	public int findUserIdByEmail(String email) {
+		return userrepo.findUserIdByEmail(email);
 	}
 
 }
