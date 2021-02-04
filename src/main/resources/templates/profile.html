@@ -88,25 +88,24 @@ th, td {
 <h1 style="text-align:center">My Profile</h1>
 
 <table class="table table-bordered table-hover" style="width:40%" align="center">
-    <tr th:each=" user:${users}" >
-        <th style="width:20%">Gender</th>
-            <td th:text=${user.gender}>Gender</td>
+        <th>Gender</th>
+            <td th:text="${user.gender}">Gender</td>
         </tr>
         <tr>
         <th>Birth Year</th>
-            <td th:text=${user.birth_year}>Birth Year</td>
+            <td th:text="${user.birth_year}">Birth Year</td>
         </tr>
         <tr>
         <th>Height</th>
-            <td th:text=${user.height}>Height</td>
+            <td th:text="${user.height}">Height</td>
         </tr>
         <tr>
         <th>Weight</th>
-            <td th:text=${user.weight}>Weight</td>
+            <td th:text="${user.weight}">Weight</td>
         </tr>
     <tr>
         <th>Email</th>
-        <td th:text=${user.email}>Email</td>
+        <td th:text="${user.email}">Email</td>
     </tr>
 </table>
 <div class="text-center">
