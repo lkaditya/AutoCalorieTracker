@@ -43,6 +43,7 @@ public class LoginController {
 			view = new ModelAndView("mainPage");
 			view.addObject("email", user.getEmail());
 			user = userService.findUserByEmail(user.getEmail());
+			session = request.getSession();
 			session.setAttribute("userSession", user);
 		}
 		else
