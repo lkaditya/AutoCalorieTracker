@@ -36,9 +36,6 @@ public class ProfileController {
     public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
         ModelAndView view = new ModelAndView("profile");
         User user = (User)session.getAttribute("user");
-        System.out.println("user email is"+user.getEmail());
-        System.out.println("user height is " + user.getHeight());
-        
         view.addObject("user", user);
 
         return view;

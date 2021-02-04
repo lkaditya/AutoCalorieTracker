@@ -29,9 +29,6 @@ public class RegistrationController {
     @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
     public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,
                                 @ModelAttribute("user") User user) {
-        if (user == null){
-            System.out.println("No user");
-        }
         userService.register(user);
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
