@@ -28,4 +28,11 @@ public class ProfileController {
         return "profile";
     }
 
+    @RequestMapping(value = "/editProfile", method = RequestMethod.POST)
+    public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,
+                                @ModelAttribute("user") Login login) {
+        userService.edit((sg.edu.iss.app.model.User) User);
+        return new ModelAndView("mainPage", "email", login.getEmail());
+    }
+
 }
