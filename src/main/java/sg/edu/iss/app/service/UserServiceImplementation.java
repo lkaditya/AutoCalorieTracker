@@ -24,6 +24,11 @@ public class UserServiceImplementation implements UserService {
 	}
 
 	@Override
+	public void edit(User user){
+		userrepo.save(user);
+	}
+
+	@Override
 	public User validateUser(Login login) {
 		return userrepo.findUserByemail(login.getEmail());
 	}

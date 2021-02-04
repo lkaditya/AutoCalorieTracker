@@ -54,11 +54,11 @@ public class LoginController {
 	}
 
 	@RequestMapping(value= "logout")
-		public ModelAndView logout(HttpSession session){
+		public String logout(HttpSession session){
 		session.removeAttribute("userSession");
 		ModelAndView view = new ModelAndView("login");
 		view.addObject("logoutMessage","You have successfully logged out");
-		return view;
+		return "/login";
 	}
 
 	public LoginController() {

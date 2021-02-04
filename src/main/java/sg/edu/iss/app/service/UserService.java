@@ -7,6 +7,8 @@ public interface UserService {
 
     void register(User user);
 
+    void edit(User user);
+
     User validateUser(Login login);
 
     User findUserByEmail(String email);

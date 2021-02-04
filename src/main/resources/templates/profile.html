@@ -90,27 +90,27 @@ th, td {
 <table class="table table-bordered table-hover" style="width:40%" align="center">
     <tr th:each=" user:${users}" >
         <th style="width:20%">Gender</th>
-            <td th:text=${user.gender}></td>
+            <td th:text=${user.gender}>Gender</td>
         </tr>
         <tr>
         <th>Birth Year</th>
-            <td th:text=${user.birthYear}></td>
+            <td th:text=${user.birthYear}>Birth Year</td>
         </tr>
         <tr>
         <th>Height</th>
-            <td th:text=${user.height}></td>
+            <td th:text=${user.height}>Height</td>
         </tr>
         <tr>
         <th>Weight</th>
-            <td th:text=${user.weight}></td>
+            <td th:text=${user.weight}>Weight</td>
         </tr>
     <tr>
         <th>Email</th>
-        <td th:text=${user.email}></td>
+        <td th:text=${user.email}>Email</td>
     </tr>
 </table>
 <div class="text-center">
-    <a th:href="@{/editProfile}+${user.id}" class="btn btn-secondary">Edit Profile</a>
+    <a th:href="@{/editProfile}" class="btn btn-secondary">Edit Profile</a>
 </div>
 <div th:replace="layout/layout.html :: footer"></div>
 </body>
