@@ -17,7 +17,7 @@ public class User {
 	private Long Id;
 	private String gender;
 	@Min(1900)
-	private int birth_year;
+	private int birthYear;
 	@Min(100)
 	private int height;
 	@Min(30)
