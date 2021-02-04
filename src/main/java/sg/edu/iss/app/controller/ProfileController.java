@@ -13,6 +13,7 @@ import sg.edu.iss.app.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class ProfileController {
@@ -22,7 +23,8 @@ public class ProfileController {
     private Object User;
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public String Profile(User user ){
+    public String Profile(User user){
+        user = userService.validateUser(user);
         String name = user.getEmail();
         user = userService.findUserByEmail(name);
         return "profile";

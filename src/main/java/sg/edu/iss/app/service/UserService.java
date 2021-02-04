@@ -11,6 +11,8 @@ public interface UserService {
 
     User validateUser(Login login);
 
+    User validateUser(User user);
+
     User findUserByEmail(String email);
 
 }
