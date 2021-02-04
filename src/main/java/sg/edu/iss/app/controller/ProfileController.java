@@ -3,11 +3,9 @@ package sg.edu.iss.app.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import sg.edu.iss.app.model.Login;
 import sg.edu.iss.app.model.User;
 import sg.edu.iss.app.service.UserService;
 
@@ -23,7 +21,8 @@ public class ProfileController {
     private Object User;
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public ModelAndView Profile(@ModelAttribute("user") User user){
+    public ModelAndView Profile(HttpSession session, @ModelAttribute("user") User user){
+        session.getAttribute(String.valueOf(user));
         ModelAndView view = new ModelAndView("profile");
         String name = user.getEmail();
         user = userService.findUserByEmail(name);
