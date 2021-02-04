@@ -24,7 +24,6 @@ public class ProfileController {
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public String Profile(User user){
-        user = userService.validateUser(user);
         String name = user.getEmail();
         user = userService.findUserByEmail(name);
         return "profile";
