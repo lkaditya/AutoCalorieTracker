@@ -44,7 +44,6 @@ public class LoginController {
 			view.addObject("email", user.getEmail());
 			user = userService.findUserByEmail(user.getEmail());
 			session = request.getSession();
-			System.out.println("user height is" + user.getHeight());
 			session.setAttribute("userSession", user);
 		}
 		else
