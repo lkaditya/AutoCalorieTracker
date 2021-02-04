@@ -24,8 +24,7 @@ public class User {
 	private int height;
 	private int weight;
 	private String email;
-	//TODO:currently the activitylevel is disabled, NEED TO BE FIXED
-//	private Enum<ActivityLevel> activityLevel;
+	private String activityLevel;
 	private String password;
 	
 	@OneToMany(mappedBy="user")
@@ -40,6 +39,11 @@ public class User {
 		
 	public User() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public User(String email, String password) {
+		this.email=email;
+		this.password=password;
 	}
 
 }

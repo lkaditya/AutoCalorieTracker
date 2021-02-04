@@ -22,4 +22,9 @@ public class UserServiceImplementation implements UserService {
 		return user;
 	}
 
+	@Override
+	public User findUserByEmailAndPassword(String email, String password) {
+		return userrepo.findUserByemailAndPassword(email,password);
+	}
+
 }
