@@ -15,7 +15,7 @@ public class UserServiceImplementation implements UserService {
 
 	@Override
 	public User findUserByEmail(String email) {
-		return userrepo.findUserByemail(email);
+		return userrepo.findUserByEmail(email);
 	}
 
 	@Override
@@ -30,11 +30,14 @@ public class UserServiceImplementation implements UserService {
 
 	@Override
 	public User validateUser(Login login) {
-		return userrepo.findUserByemail(login.getEmail());
+		User existingUser = userrepo.findUserByEmail(login.getEmail());
+		if(existingUser==null) return null;
+		else if (existingUser.getPassword() != login.getPassword()) return null;
+		else return existingUser;
 	}
 
 	@Override
 	public User validateUser(User user) {
-		return userrepo.findUserByemail(user.getEmail());
+		return userrepo.findUserByEmail(user.getEmail());
 	}
 }

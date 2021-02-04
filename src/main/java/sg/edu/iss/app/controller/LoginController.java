@@ -35,11 +35,14 @@ public class LoginController {
 	@RequestMapping(value = "loginProcess", method = RequestMethod.POST)
 	public ModelAndView loginProcess(HttpServletRequest request,
 									 HttpServletResponse response,
-									 @ModelAttribute("user") User user, HttpSession session){
+									 Login login,
+									 //@ModelAttribute("user") User user,
+									 HttpSession session){
 		ModelAndView view;
-//		user = userService.validateUser(user);
+		User user = userService.validateUser(login);
 
 		if (user != null) {
+			System.out.println("User found! -- line 45")
 			view = new ModelAndView("mainPage");
 			view.addObject("user", user);
 			user = userService.findUserByEmail(user.getEmail());
@@ -48,6 +51,7 @@ public class LoginController {
 		}
 		else
 		{
+			System.out.println("Logged in user is NULL! -- line 53");
 			view = new ModelAndView("login");
 			view.addObject("message", "Username or Password is wrong!");
 		}

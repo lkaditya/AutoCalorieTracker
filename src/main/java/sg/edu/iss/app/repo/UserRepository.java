@@ -8,7 +8,6 @@ import sg.edu.iss.app.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 	
-	@Query("Select x from User x where x.email=:mail")
-	public User findUserByemail(@Param("mail")String email);
+	public User findUserByEmail(String email);
 
 }
