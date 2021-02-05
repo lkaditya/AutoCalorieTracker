@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 
 public interface DietPlanService {
-    public void savePlan(DietPlan dietPlan);
+    void savePlan(DietPlan dietPlan);
 
-    public DietPlan findByDate(LocalDate date,long id);
+    DietPlan findByDate(LocalDate date, long id);
 }
