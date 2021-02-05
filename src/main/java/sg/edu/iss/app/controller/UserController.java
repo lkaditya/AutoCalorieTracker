@@ -15,6 +15,12 @@ public class UserController {
 	
 	@Autowired
 	private UserService userservice;
+	
+	@PostMapping("/register")
+    public User registerUser (@RequestBody User user){
+    	userservice.saveUser(user);
+    	return user;
+    }
 
 
 	@PostMapping("/authenticate")
@@ -22,7 +28,10 @@ public class UserController {
     	String email=user.getEmail();
     	String password=user.getPassword();
     	User a=userservice.findUserByEmailAndPassword(email, password);
-    	return a ;
+    	if(a.getPassword().contentEquals(user.getPassword())) {
+    		return a;
+    	}
+    	return null ;
     }
 
 }

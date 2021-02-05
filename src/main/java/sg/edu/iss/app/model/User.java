@@ -38,12 +38,22 @@ public class User {
 	private double recommendedCalories;
 		
 	public User() {
-		// TODO Auto-generated constructor stub
+
 	}
 	
 	public User(String email, String password) {
 		this.email=email;
 		this.password=password;
+	}
+
+	public User(String gender, int birthYear, int height, int weight, String email, String activityLevel,
+			String password) {
+		this(email,password);
+		this.gender = gender;
+		this.birthYear = birthYear;
+		this.height = height;
+		this.weight = weight;
+		this.activityLevel = activityLevel;
 	}
 
 }
