@@ -107,7 +107,7 @@ form
 <div id="profile/edit"></div>
 
 <div class="form">
-<form th:action="@{/profile/view}" method="post" th:Object="${user}">
+<form th:action="@{/profile/edit}" method="post" th:Object="${user}">
     <h1 style="text-align:center">Edit Profile</h1>
     <div class="form-group">
         <input type="number" class="form-control" name="height" placeholder="Height"  th:field="*{height}">
