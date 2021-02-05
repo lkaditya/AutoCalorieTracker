@@ -103,7 +103,6 @@
             <label for="female"> Female</label>
             <input type="radio" id="female" name="female" value="FEMALE" required="required" th:field="*{gender}">
         </div>
-
         <div class="form-group">
             <input type="number" class="form-control" name="birth_year" placeholder="Birth Year" required="required" th:field="*{birth_year}">
         </div>
@@ -112,6 +111,14 @@
         </div>
         <div class="form-group">
             <input type="number" class="form-control" name="weight" placeholder="Weight" required="required" th:field="*{weight}">
+        </div>
+        <div class="form-group">
+            <label for="Sedentary"> Male </label>
+            <input type="radio" id="Sedentary" name="sedentary" value="Sedentary" required="required" th:field="*{activityLevel}">
+            <label for="Light Activity"> Light Activity</label>
+            <input type="radio" id="Light Activity" name="Light Activity" value="Light Activity" required="required" th:field="*{activityLevel}">
+            <label for="Moderate Activity"> Moderate Activity</label>
+            <input type="radio" id="Moderate Activity" name="Moderate Activity" value="Moderate Activity" required="required" th:field="*{activityLevel}">
         </div>
 <!--        <div class="form-group">
             <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
