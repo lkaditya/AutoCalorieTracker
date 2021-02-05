@@ -31,7 +31,7 @@ public class DietPlanController {
 
     @RequestMapping("/showPlan")
     public String showPlan(Model model){
-        User user = userService.findUserById(1L);
+        User user = userService.findById(1L);
         LocalDate date = LocalDate.now();
 
         Random random=new Random();
@@ -121,7 +121,7 @@ public class DietPlanController {
 
     @RequestMapping("/showTomorrowPlan")
     public String showTomorrowPlan(Model model){
-        User user = userService.findUserById(1L);
+        User user = userService.findById(1L);
         LocalDate date = LocalDate.now();
         LocalDate tomorrow = date.plusDays(1);
 

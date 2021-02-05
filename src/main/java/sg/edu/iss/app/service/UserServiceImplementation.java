@@ -19,11 +19,6 @@ public class UserServiceImplementation implements UserService {
 	}
 
 	@Override
-	public User findUserById(Long id) {
-		return userrepo.findByUserId();
-	}
-
-	@Override
 	public User findUserByEmailAndPassword(String email, String password) {
 		return null;
 	}
@@ -31,6 +26,11 @@ public class UserServiceImplementation implements UserService {
 	@Override
 	public void saveUser(User user) {
 
+	}
+
+	@Override
+	public User findById(long l) {
+		return userrepo.findById();
 	}
 
 	@Override
