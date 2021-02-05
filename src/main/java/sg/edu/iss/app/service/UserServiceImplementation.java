@@ -30,7 +30,7 @@ public class UserServiceImplementation implements UserService {
 
 	@Override
 	public User findById(long l) {
-		return userrepo.findById();
+		return userrepo.findById(1L);
 	}
 
 	@Override
