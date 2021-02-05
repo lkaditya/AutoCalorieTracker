@@ -96,7 +96,7 @@ form
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
-    text-align: left;
+    text-align: center;
     width:40%;
 }
 
@@ -104,8 +104,9 @@ form
 <body>
 <header th:insert="layout/layout.html :: header"></header>
 <div th:replace="layout/layout.html :: menu" ></div>
+<div id="profile/edit"></div>
 
-<div class="signup-form">
+<div class="form">
 <form th:action="@{/profile/view}" method="post" th:Object="${user}">
     <h1 style="text-align:center">Edit Profile</h1>
     <div class="form-group">
