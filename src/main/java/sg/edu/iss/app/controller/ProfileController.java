@@ -32,13 +32,13 @@ public class ProfileController {
         return view;
     }
     
-//    @RequestMapping(value = "/profile/edit", method = RequestMethod.GET)
-//   public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-//        ModelAndView view = new ModelAndView("profile");
-//  User user = (User)session.getAttribute("user");
-//        view.addObject("user", user)
-//      return view;
-//    }
+    @RequestMapping(value = "/profile/edit", method = RequestMethod.GET)
+    public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+        ModelAndView view = new ModelAndView("editProfile");
+        User user = (User)session.getAttribute("user");
+        view.addObject("user", user);
+        return view;
+    }
     
     @RequestMapping(value = "/profile/edit", method = RequestMethod.POST)
     public ModelAndView updateProfile(HttpServletRequest request, HttpServletResponse response,
