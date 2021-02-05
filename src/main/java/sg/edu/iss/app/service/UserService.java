@@ -15,10 +15,10 @@ public interface UserService {
 
     User findUserByEmail(String email);
 
-	public User findById(Long id);
+	User findUserById(Long id);
 	
-	public User findUserByEmailAndPassword(String email, String password);
+	User findUserByEmailAndPassword(String email, String password);
 
-	public void saveUser(User user);
+	void saveUser(User user);
 
 }

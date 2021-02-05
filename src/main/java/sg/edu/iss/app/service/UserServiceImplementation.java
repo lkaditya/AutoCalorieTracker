@@ -19,8 +19,8 @@ public class UserServiceImplementation implements UserService {
 	}
 
 	@Override
-	public User findById(Long id) {
-		return null;
+	public User findUserById(Long id) {
+		return userrepo.findByUserId();
 	}
 
 	@Override
