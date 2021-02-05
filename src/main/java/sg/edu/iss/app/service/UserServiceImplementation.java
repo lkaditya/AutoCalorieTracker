@@ -19,6 +19,21 @@ public class UserServiceImplementation implements UserService {
 	}
 
 	@Override
+	public User findById(Long id) {
+		return null;
+	}
+
+	@Override
+	public User findUserByEmailAndPassword(String email, String password) {
+		return null;
+	}
+
+	@Override
+	public void saveUser(User user) {
+
+	}
+
+	@Override
 	public void register(User user) {
 		userrepo.save(user);
 	}
