@@ -42,10 +42,11 @@ public class ProfileController {
     
     @RequestMapping(value = "/profile/edit", method = RequestMethod.POST)
     public ModelAndView updateProfile(HttpServletRequest request, HttpServletResponse response,
-                                @ModelAttribute("user") User user) {
+                                @ModelAttribute("user") User user, HttpSession session) {
         ModelAndView view = new ModelAndView("editProfile");
         userService.edit((sg.edu.iss.app.model.User) User);
-        return new ModelAndView("mainPage", "user", user.getEmail());
+        user = (User)session.getAttribute("user");
+        return new ModelAndView("profile", "user", user.getEmail());
     }
 
 }
