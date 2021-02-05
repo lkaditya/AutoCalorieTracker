@@ -42,7 +42,7 @@ public class WeeklyHistoryController {
     	
     	DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     	LocalDate date1=LocalDate.parse(date,df);
-    	date1=LocalDate.of(2021, 01, 28); //temporary
+//    	date1=LocalDate.of(2021, 01, 29); //temporary
     	
     	
 		List<Integer> listOfDailyHistoryId = new ArrayList<>();

@@ -86,7 +86,11 @@ public class ImageServiceImplementation implements ImageService {
 	@Override
 	@Transactional
 	public int findTotalCaloriesByDailyHistoryId(long id) {
-		return imagerepo.findTotalCaloriesById(id);
+		Integer result = imagerepo.findTotalCaloriesById(id);
+		if(result==null) {
+			result = 0;
+		}
+		return result;
 	}
 	
 
