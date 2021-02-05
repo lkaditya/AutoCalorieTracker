@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!--    <link rel="stylesheet" type="text/css" th:href="@{/css/css-upload.css}">-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/css-dietPlan.css}">
+</head>
+
+
+
+<body>
+<header th:insert="layout/layout.html :: header"></header>
+<div th:replace="layout/layout.html :: menu" ></div>
+<div id="btnBox">
+    <a  class="btn btn-success" id="leftBtn" th:href="@{/plan/showPlan}">Today</a>
+
+    <a  class="btn btn-info " id="rightBtn" th:href="@{/plan/showTomorrowPlan}" >Tomorrow</a>
+</div>
+
+<div class="tableBox">
+    <h2>Daily Diet Plan</h2>
+
+    <table class="table table-bordered" >
+        <tr>
+            <th>Images</th>
+            <th>Calories</th>
+        </tr>
+        <tr th:each="foodInfo:${foodInfos}">
+            <td class="td1">
+                <p th:text="${foodInfo.food.name}"></p>
+                <img th:src="${foodInfo.url}" width="200px" height="200px">
+            </td>
+            <td class="td1">
+                <p th:text="${foodInfo.food.calorie}">20</p>
+            </td>
+
+        </tr>
+    </table>
+</div>
+
+
+<div class="tableBox">
+    <h2>Activity</h2>
+    <table class="table table-bordered" >
+        <tr>
+            <td class="td1">
+                <p th:text="${activity.activityName}"></p>
+<!--                <img th:src="${activity.}" width="200px" height="200px">-->
+            </td>
+            <td class="td1">
+                <p th:text="${activity.caloriesBurnt}">20</p>
+            </td>
+
+        </tr>
+    </table>
+</div>
+
+<div id="net">
+    <h2 th:text="'Net Calories: ' +${netCalories}"></h2>
+</div>
+
+
+
+</body>
+
+<div th:replace="layout/layout.html :: footer"></div>
+</html>

@@ -16,4 +16,8 @@ public interface ImageService {
 	public List<FoodImage> findImageByDateAndEmail(LocalDate date, String email);
 
 	public List<FoodImage> findImageByCalories(double remainder);
+
+	public List<FoodImage> findAll();
+
+	public void updateImage(Long id1, String name, double cal);
 }

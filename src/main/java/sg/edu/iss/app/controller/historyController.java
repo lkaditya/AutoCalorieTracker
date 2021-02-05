@@ -48,7 +48,15 @@ public class historyController {
     		System.out.println("id= "+id);
     		imageService.deleteImage(id);
     		return ;
-
+    }
+    
+    @RequestMapping("/updateImage")
+    public void updateImage(@RequestParam("id")String id,@RequestParam("name")String name,@RequestParam("calorie")String calorie){
+    		System.out.println("id= "+id);
+    		Long id1=Long.parseLong(id);
+    		double cal=Double.valueOf(calorie);
+    		imageService.updateImage(id1,name,cal);
+    		return ;
     }
 
     @RequestMapping("/getData")

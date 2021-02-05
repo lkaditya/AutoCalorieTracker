@@ -17,34 +17,18 @@ import java.time.format.DateTimeFormatter;
 import javax.imageio.ImageIO;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+import sg.edu.iss.app.model.Food;
+import sg.edu.iss.app.repo.FoodRepository;
 
 public class MLModelControllerTest {
 
 	@Test
-	void sendImageData() throws IOException {
-		Path source = Paths.get("src/main/resources/static/image/apple_7.jpg");
-		InputStream is = new FileInputStream(source.toFile());
-		BufferedImage originalImage = ImageIO.read(is);
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		  ImageIO.write(originalImage, "jpg", baos);
-		  byte[] bytes = baos.toByteArray();
-		  
-		  RestTemplate restTemplate = new RestTemplate();
-	      String url = "http://localhost:8080/api/prediction/image";
-
-	        //EmployeeInfo employee = new EmployeeInfo();
-//	        employee.setName("Ashish");
-//	        employee.setEmail("anyhing");
-//	        employee.setDateOfBirth("mybirthday");
-//	        employee.setLocation("home");
-	        //ResponseEntity<String> response = restTemplate.postForEntity(url, employee, String.class);
-
-	        //model.setViewName("homePage");
-	        //return model;
-		
-
+	void predictImage() throws IOException {
+		String result=new MLModelController().predictExecutePython("src/main/resources/static/image/img1.jpg");
+		System.out.println(result);
 	}
 	
 	@Test
@@ -58,6 +42,16 @@ public class MLModelControllerTest {
         DateTimeFormatter df= DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
         String timeshown=df.format(sgdt.toLocalDateTime());
         System.out.println(timeshown);
+	}
+
+	@Autowired
+	FoodRepository foodRepository;
+	@Test
+	void query3() { //still fail
+		String name="pizza";
+		Food f=foodRepository.findFoodByName(name);
+		System.out.println("size= "+f.toString());
+//		System.out.println(f.getName());
 	}
 
 }

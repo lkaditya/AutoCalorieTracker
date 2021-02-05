@@ -17,7 +17,7 @@ public class User {
 	private Long Id;
 	private String gender;
 	@Min(1900)
-	private int birth_year;
+	private int birthYear;
 	@Min(100)
 	private int height;
 	@Min(30)
@@ -25,8 +25,7 @@ public class User {
 	@Email
 	@NotNull
 	private String email;
-	//TODO:currently the activitylevel is disabled, NEED TO BE FIXED
-//	private Enum<ActivityLevel> activityLevel;
+	private String activityLevel;
 	private String password;
 	
 	@OneToMany(mappedBy="user")
@@ -40,7 +39,22 @@ public class User {
 	private double recommendedCalories;
 		
 	public User() {
-		// TODO Auto-generated constructor stub
+
+	}
+	
+	public User(String email, String password) {
+		this.email=email;
+		this.password=password;
+	}
+
+	public User(String gender, int birthYear, int height, int weight, String email, String activityLevel,
+			String password) {
+		this(email,password);
+		this.gender = gender;
+		this.birthYear = birthYear;
+		this.height = height;
+		this.weight = weight;
+		this.activityLevel = activityLevel;
 	}
 
 }
