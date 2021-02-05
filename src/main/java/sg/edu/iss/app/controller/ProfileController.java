@@ -46,6 +46,7 @@ public class ProfileController {
         ModelAndView view = new ModelAndView("editProfile");
         userService.edit(user);
         user = (User)session.getAttribute("user");
+        view.addObject("user", user);
         return new ModelAndView("profile", "user", user.getEmail());
     }
 
