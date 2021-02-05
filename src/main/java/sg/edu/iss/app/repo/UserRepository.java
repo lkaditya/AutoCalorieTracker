@@ -8,9 +8,9 @@ import sg.edu.iss.app.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 	
-	public User findUserByEmail(String email);
+	User findUserByEmail(String email);
 
 	@Query("Select x from User x where x.email=:mail and x.password =:pass")
-	public User findUserByEmailAndPassword(@Param("mail")String email,@Param("pass")String password);
+	User findUserByEmailAndPassword(@Param("mail") String email, @Param("pass") String password);
 
 }

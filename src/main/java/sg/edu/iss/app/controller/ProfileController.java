@@ -32,20 +32,20 @@ public class ProfileController {
         return view;
     }
     
-    @RequestMapping(value = "/profile/edit", method = RequestMethod.GET)
-    public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-        ModelAndView view = new ModelAndView("profile");
-        User user = (User)session.getAttribute("user");
-        view.addObject("user", user);
-
-        return view;
-    }
+//    @RequestMapping(value = "/profile/edit", method = RequestMethod.GET)
+//   public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+//        ModelAndView view = new ModelAndView("profile");
+//  User user = (User)session.getAttribute("user");
+//        view.addObject("user", user)
+//      return view;
+//    }
     
     @RequestMapping(value = "/profile/edit", method = RequestMethod.POST)
     public ModelAndView updateProfile(HttpServletRequest request, HttpServletResponse response,
                                 @ModelAttribute("user") User user) {
+        ModelAndView view = new ModelAndView("editProfile");
         userService.edit((sg.edu.iss.app.model.User) User);
-        return new ModelAndView("mainPage", "email", user.getEmail());
+        return new ModelAndView("mainPage", "user", user.getEmail());
     }
 
 }
