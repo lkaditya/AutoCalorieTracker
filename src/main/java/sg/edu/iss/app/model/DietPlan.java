@@ -24,7 +24,7 @@ public class DietPlan {
 	private Long id;
 	
 	@ManyToMany(mappedBy="dietPlan")
-	@JsonIgnore
+
 	private List<Food> food=new ArrayList<>();
 	private LocalDate date;
 	
