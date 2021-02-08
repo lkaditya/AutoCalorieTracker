@@ -58,6 +58,7 @@ public class UserServiceImplementation implements UserService {
 	
 	public double calculateBMR(User user) {
 		int currentyear=LocalDate.now().getYear();
+		int BirthYear = Integer.parseInt(user.getBirthYear());
 		if(user.getGender().equalsIgnoreCase("male")) {
 			double BMR=10*user.getWeight()+(6.25*user.getHeight())-(5*(currentyear-user.getBirthYear()))+5;
 			return BMR;
