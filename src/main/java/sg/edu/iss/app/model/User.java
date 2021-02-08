@@ -16,7 +16,6 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	private String gender;
-	@Min(1900)
 	private int birthYear;
 	@Min(100)
 	private int height;
