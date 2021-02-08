@@ -3,11 +3,14 @@ package sg.edu.iss.app.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.Data;
+import sg.edu.iss.app.service.UserService;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 @Entity
 @Data
@@ -55,5 +58,11 @@ public class User {
 		this.weight = weight;
 		this.activityLevel = activityLevel;
 	}
+
+		int[] year = IntStream.rangeClosed(1960, 2021).toArray();
+	}
+
+
+
 
 }
