@@ -41,7 +41,7 @@ public class ProfileController {
         return view;
     }
     
-    @RequestMapping(value = "/profile/edit/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/profile/edit", method = RequestMethod.POST)
     public ModelAndView updateProfile(@PathVariable("id") User user, HttpSession session) {
         ModelAndView view = new ModelAndView("editProfile");
         userService.edit(user);
