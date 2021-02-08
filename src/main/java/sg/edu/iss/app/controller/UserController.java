@@ -97,4 +97,18 @@ public class UserController {
         return a;
     }
 
+	@RequestMapping(value = "/viewReminder", method = RequestMethod.GET)
+	public User viewReminder(@RequestParam("email")String email) {
+		User a = userservice.findUserByEmail(email);
+		return a;
+	}
+
+	@RequestMapping(value = "/reminder", method = RequestMethod.POST)
+	public User reminder(@RequestBody User user) {
+		User u = userservice.findUserByEmail(user.getEmail());
+		u.setReminderCalories(user.getReminderCalories());
+		userservice.saveReminder(u);
+		return user;
+	}
+
 }

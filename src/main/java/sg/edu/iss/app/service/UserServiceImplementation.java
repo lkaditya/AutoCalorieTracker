@@ -38,7 +38,13 @@ public class UserServiceImplementation implements UserService {
 		System.out.println(cal);
 		userrepo.save(user);
 	}
-	
+
+	@Override
+	public void saveReminder(User user) {
+		userrepo.save(user);
+	}
+
+
 	public double calculateRecommendedCalorie(User user) {
 		double BMR=calculateBMR(user);
 		if(user.getActivityLevel().equalsIgnoreCase("sedentary")) {

@@ -36,6 +36,8 @@ public class User {
 	private List<DietPlan> listOfDietPlan;
 	
 	private double recommendedCalories;
+
+	private double reminderCalories;
 		
 	public User() {
 
@@ -56,4 +58,8 @@ public class User {
 		this.activityLevel = activityLevel;
 	}
 
+	public User(@Email String email, double reminderCalories) {
+		this.email = email;
+		this.reminderCalories = reminderCalories;
+	}
 }
