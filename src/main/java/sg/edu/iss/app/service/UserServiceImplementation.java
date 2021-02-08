@@ -31,18 +31,9 @@ public class UserServiceImplementation implements UserService {
 
 	@Override
 	public void saveUser(User user) {
-
-	}
-
-	@Override
-	public void register(User user) {
 		userrepo.save(user);
 	}
 
-	@Override
-	public void edit(User user){
-		userrepo.save(user);
-	}
 
 	@Override
 	public User validateUser(Login login) {
