@@ -47,10 +47,31 @@
         <h2>Activity</h2>
         <table class="table table-bordered" >
             <tr>
-                <td class="td1">
+                <td class="td1" v-if="activityName=='Cycling'">
                     <p >{{activityName}}</p>
-                    <!--                <img th:src="${activity.}" width="200px" height="200px">-->
+                    <img  th:src="@{/image/activities/Cycling.jpg}" width="200px" height="200px">
                 </td>
+                <td class="td1" v-if="activityName=='Fast walking'">
+                    <p >{{activityName}}</p>
+                    <img  th:src="@{/image/activities/Fastwalking.jpg}" width="200px" height="200px">
+                </td>
+                <td class="td1" v-if="activityName=='Jogging'">
+                    <p >{{activityName}}</p>
+                    <img  th:src="@{/image/activities/Jogging.jpg}" width="200px" height="200px">
+                </td>
+                <td class="td1" v-if="activityName=='Running'">
+                    <p >{{activityName}}</p>
+                    <img  th:src="@{/image/activities/Running.jpg}" width="200px" height="200px">
+                </td>
+                <td class="td1" v-if="activityName=='Swimming'">
+                    <p >{{activityName}}</p>
+                    <img  th:src="@{/image/activities/Swimming.jpg}" width="200px" height="200px">
+                </td>
+                <td class="td1" v-if="activityName=='Yoga'">
+                    <p >{{activityName}}</p>
+                    <img  th:src="@{/image/activities/Yoga.jpg}" width="200px" height="200px">
+                </td>
+      
                 <td class="td1 td3">
                     <p >{{caloriesBurnt}}</p>
                 </td>
