@@ -5,63 +5,122 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <!--    <link rel="stylesheet" type="text/css" th:href="@{/css/css-upload.css}">-->
     <link rel="stylesheet" type="text/css" th:href="@{/css/css-dietPlan.css}">
+    <script th:src="@{/js/vue.js}" rc="/js/vue.js"></script>
+    <script th:src="@{/js/axios-0.18.0.js}"></script>
+    <script src="/js/axios-0.18.0.js"></script>
 </head>
-
-
 
 <body>
 <header th:insert="layout/layout.html :: header"></header>
 <div th:replace="layout/layout.html :: menu" ></div>
-<div id="btnBox">
-    <a  class="btn btn-success" id="leftBtn" th:href="@{/plan/showPlan}">Today</a>
 
-    <a  class="btn btn-info " id="rightBtn" th:href="@{/plan/showTomorrowPlan}" >Tomorrow</a>
+<div id="app">
+    <h2 id="title">Daily Diet Plan</h2>
+
+
+    <div class="tableBox">
+
+        <div id="btnBox">
+            <a  class="btn btn-success" @click="handle2" id="leftBtn" >Today</a>
+            <a  class="btn btn-info" @click="handle" id="rightBtn"  >Tomorrow</a>
+        </div>
+        <table class="table table-bordered" >
+            <tr>
+                <th>Images</th>
+                <th>Calories</th>
+            </tr>
+            <tr v-for="c in tableData">
+                <td class="td1">
+                    <p >{{c.food.name}}</p>
+                    <img :src="c.url" width="200px" height="200px">
+                </td>
+                <td class="td1 td2">
+                    <p>{{c.food.calorie}}</p>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="tableBox">
+        <h2>Activity</h2>
+        <table class="table table-bordered" >
+            <tr>
+                <td class="td1">
+                    <p >{{activityName}}</p>
+                    <!--                <img th:src="${activity.}" width="200px" height="200px">-->
+                </td>
+                <td class="td1 td3">
+                    <p >{{caloriesBurnt}}</p>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+
+    <div id="net" CLASS="td2">
+        <h2 >Net Calories: {{netCalories}}</h2>
+    </div>
+
+
 </div>
 
-<div class="tableBox">
-    <h2>Daily Diet Plan</h2>
-
-    <table class="table table-bordered" >
-        <tr>
-            <th>Images</th>
-            <th>Calories</th>
-        </tr>
-        <tr th:each="foodInfo:${foodInfos}">
-            <td class="td1">
-                <p th:text="${foodInfo.food.name}"></p>
-                <img th:src="${foodInfo.url}" width="200px" height="200px">
-            </td>
-            <td class="td1">
-                <p th:text="${foodInfo.food.calorie}">20</p>
-            </td>
-
-        </tr>
-    </table>
-</div>
-
-
-<div class="tableBox">
-    <h2>Activity</h2>
-    <table class="table table-bordered" >
-        <tr>
-            <td class="td1">
-                <p th:text="${activity.activityName}"></p>
-<!--                <img th:src="${activity.}" width="200px" height="200px">-->
-            </td>
-            <td class="td1">
-                <p th:text="${activity.caloriesBurnt}">20</p>
-            </td>
-
-        </tr>
-    </table>
-</div>
-
-<div id="net">
-    <h2 th:text="'Net Calories: ' +${netCalories}"></h2>
-</div>
 
 
 
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data:{
+            tableData:[],
+            netCalories:0.0,
+            activityName:'',
+            caloriesBurnt:0.0,
+            // netCalories:[],
+
+        },
+        created() {
+            this.handle2();
+        },
+        methods:{
+            handle(){
+                axios.get('/plan/showTomorrowPlan').then((res) => {
+                    if (res.data) {
+
+                        this.tableData=res.data.data.foodInfos;
+                        this.netCalories=res.data.data.netCalories;
+                        this.activityName=res.data.data.activity.activityName;
+                        this.caloriesBurnt=res.data.data.activity.caloriesBurnt;
+                        console.log(res.data.data.activity)
+
+                    }
+                });
+            },
+
+            handle2(){
+                axios.get('/plan/showPlan').then((res) => {
+                    if (res.data) {
+
+                        this.tableData=res.data.data.foodInfos;
+                        this.netCalories=res.data.data.netCalories;
+                        this.activityName=res.data.data.activity.activityName;
+                        this.caloriesBurnt=res.data.data.activity.caloriesBurnt;
+
+
+                    }
+                });
+            }
+        }
+
+
+    })
+
+
+
+
+
+</script>
 </body>
 
 <div th:replace="layout/layout.html :: footer"></div>
