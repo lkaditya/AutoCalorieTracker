@@ -11,13 +11,13 @@ import sg.edu.iss.app.model.Food;
 public interface FoodRepository extends JpaRepository<Food, Long> {
 
 	@Query("Select x from Food x where x.name =:name")
-	public Food findFoodByName(@Param("name")String name);
+	Food findFoodByName(@Param("name") String name);
 	
 	@Query("Select x from Food x where x.name in (:name) ")
-	public Food findSimilarFoodByName(@Param("name")List<String> name);
+	Food findSimilarFoodByName(@Param("name") List<String> name);
 	
-	public Food findByNameContains(String name);
+	Food findByNameContains(String name);
 
 	@Query("Select x from Food x join x.foodImage as f where f.id =:id")
-	public Food findFoodById(@Param("id") Long id);
+	Food findFoodById(@Param("id") Long id);
 }
