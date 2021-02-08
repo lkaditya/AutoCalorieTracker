@@ -83,11 +83,11 @@
 <div id="register">
 
 </div>
-
+<img src="AppLogo.jpeg">
 <div class="signup-form">
     <form th:action="@{/registerProcess}" method="post" th:object="${user}">
-        <h2>Register</h2>
-        <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+        <h2>Welcome</h2>
+        <p class="hint-text">Sign up to start your new account</p>
         <div class="form-group">
             <input type="email" class="form-control" name="email" placeholder="Email" required="required" th:field="*{email}">
         </div>
@@ -98,13 +98,29 @@
             <input type="password" class="form-control" name="password" placeholder="Confirm Password" required="required">
         </div>
         <div class="form-group">
+            <label for="birthYear">Select Birth Year</label>
+            <select id="birthYear" name="birthYear" placeholder="Birth Year" required="required" th:field="*{birthYear}">
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
+                <option value="2009">2009</option>
+                <option value="2008">2008</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="male"> Male </label>
             <input type="radio" id="male" name="male" value="MALE" required="required" th:field="*{gender}">
             <label for="female"> Female</label>
             <input type="radio" id="female" name="female" value="FEMALE" required="required" th:field="*{gender}">
-        </div>
-        <div class="form-group">
-            <input type="number" class="form-control" name="birth_year" placeholder="Birth Year" required="required" th:field="*{birth_year}">
         </div>
         <div class="form-group">
             <input type="number" class="form-control" name="height" placeholder="Height" required="required" th:field="*{height}">
