@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +27,10 @@ public class UserController {
 	
 	@PostMapping("/register")
     public User registerUser (@RequestBody User user){
+		User a=userservice.findUserByEmail(user.getEmail());
+		if(a!=null) {
+			return null;
+		}
     	userservice.saveUser(user);
     	return user;
     }
@@ -38,7 +41,10 @@ public class UserController {
     	String email=user.getEmail();
     	String password=user.getPassword();
     	User a=userservice.findUserByEmailAndPassword(email, password);
-    	if(a.getPassword().contentEquals(user.getPassword())) {
+    	if(a==null) {
+        	return null ;
+    	}
+    	else if(a.getPassword().contentEquals(user.getPassword())) {
     		return a;
     	}
     	return null ;
