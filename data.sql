@@ -45,6 +45,8 @@ INSERT INTO daily_history VALUES (13,'2021-02-03', 1);
 INSERT INTO daily_history VALUES (14,'2021-02-04', 1);
 INSERT INTO daily_history VALUES (15,'2021-02-05', 1);
 INSERT INTO daily_history VALUES (16,'2021-02-06', 1);
+INSERT INTO daily_history VALUES (17,'2021-02-07', 1);
+INSERT INTO daily_history VALUES (18,'2021-02-08', 1);
 
 #food_image
 #id,epoch_date_upload,calorie,food_name,url,dailyhistory_id,food_id
@@ -77,19 +79,21 @@ INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload,
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (22,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",11,1612175875,800,4);
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (23,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",11,1612175875,500,1);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (24,"Kimchi Stew","https://images.deliveryhero.io/image/fd-sg/Products/5514332.jpg?width=302",12,1611714112,554,2);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (24,"Kimchi Stew","https://images.deliveryhero.io/image/fd-sg/Products/5514332.jpg?width=302",12,1611714112,859,2);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (25,"Kimchi Stew","https://images.deliveryhero.io/image/fd-sg/Products/5514332.jpg?width=302",13,1611714112,554,3);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (26,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",13,1611714202,500,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (25,"Kimchi Stew","https://images.deliveryhero.io/image/fd-sg/Products/5514332.jpg?width=302",13,1611714112,777,3);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (26,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",13,1611714202,888,1);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (27,"Kimchi Stew","https://images.deliveryhero.io/image/fd-sg/Products/5514332.jpg?width=302",14,1612436776,554,2);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (27,"Kimchi Stew","https://images.deliveryhero.io/image/fd-sg/Products/5514332.jpg?width=302",14,1612436776,900,2);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (28,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",15,1612523176,500,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (29,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",15,1612523176,500,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (28,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",15,1612523176,660,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (29,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",15,1612523176,999,1);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (30,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",16,1612609576,500,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (30,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",16,1612609576,1888,1);
 
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (30,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",17,1612609576,2222,1);
 
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (30,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",18,1612609576,2000,1);
 
 
 

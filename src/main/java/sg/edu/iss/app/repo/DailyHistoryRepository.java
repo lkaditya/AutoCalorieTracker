@@ -22,5 +22,5 @@ public interface DailyHistoryRepository extends JpaRepository<DailyHistory, Long
 	DailyHistory findRecordByData(@Param("id") Long id , @Param("date") LocalDate date);
 	
 	@Query("select d.id from DailyHistory d where d.date=:date and d.user.Id=:id ")
-	int findIdByIdAndDate(@Param("id") Long id , @Param("date") LocalDate date);
+	Integer findIdByIdAndDate(@Param("id") Long id , @Param("date") LocalDate date);
 }

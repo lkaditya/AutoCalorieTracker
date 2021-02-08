@@ -3,6 +3,7 @@ package sg.edu.iss.app.controller;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sun.xml.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+
 import sg.edu.iss.app.model.DailyHistory;
 import sg.edu.iss.app.model.FoodImage;
+import sg.edu.iss.app.model.User;
 import sg.edu.iss.app.service.DailyHistoryService;
 import sg.edu.iss.app.service.DailyHistoryServiceImplementation;
 import sg.edu.iss.app.service.ImageService;
@@ -42,36 +46,28 @@ public class WeeklyHistoryController {
     	
     	DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     	LocalDate date1=LocalDate.parse(date,df);
-//    	date1=LocalDate.of(2021, 01, 29); //temporary
     	
     	
 		List<Integer> listOfDailyHistoryId = new ArrayList<>();
-		listOfDailyHistoryId = dailyHistoryService.getSomething(id, date1);
+		listOfDailyHistoryId = dailyHistoryService.getDailyHistoryIds(id, date1);
 		
 
 		//get calories for each historyId
 		List<Integer> listOfDailyHistoryCalories = new ArrayList<>();
 		for(int i=6;i>=0;i--) {
-			listOfDailyHistoryCalories.add(imageService.findTotalCaloriesByDailyHistoryId(listOfDailyHistoryId.get(i)));
+			if(listOfDailyHistoryId.get(i) == null) {
+				listOfDailyHistoryCalories.add(0);
+			} else {
+				listOfDailyHistoryCalories.add(imageService.findTotalCaloriesByDailyHistoryId(listOfDailyHistoryId.get(i)));
+			}			
 		}
 		
+
 		return listOfDailyHistoryCalories;
     }
-//    @RequestMapping("/getDailyCalories")
-//    public List<Integer> getHistory(LocalDate lastDate){
-//		List<Integer> listOfDailyHistoryId = new ArrayList<>();
-//		listOfDailyHistoryId = dailyHistoryService.getSomething((long) 1, LocalDate.of(2021, 01, 28));
-//		
-//
-//		
-//		//get calories for each historyId
-//		List<Integer> listOfDailyHistoryCalories = new ArrayList<>();
-//		for(int i=0;i<7;i++) {
-//			
-//		}
-//		
-//		return listOfDailyHistoryId;
-//    }
-	
-	
+    
+    @RequestMapping("/getUser")
+    public User getUserByEmail(@RequestParam("email")String email) {
+    	return userService.findUserByEmail(email);
+    }
 }

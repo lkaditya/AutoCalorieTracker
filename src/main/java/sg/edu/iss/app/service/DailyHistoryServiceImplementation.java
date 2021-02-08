@@ -50,7 +50,7 @@ public class DailyHistoryServiceImplementation implements DailyHistoryService {
 		return historyrepo.findRecordByData(id,date);
 	}
 	
-	public List<Integer> getSomething(long id, LocalDate date) {
+	public List<Integer> getDailyHistoryIds(long id, LocalDate date) {
 		//list of dailyHistory id needed
 		List<Integer> listOfDailyHistoryId = new ArrayList<>();
 		//for lastday -0 to lastday-6
@@ -58,7 +58,6 @@ public class DailyHistoryServiceImplementation implements DailyHistoryService {
 			listOfDailyHistoryId.add(historyrepo.findIdByIdAndDate(id, date.minusDays(i)));
 		}
 
-		
 		return listOfDailyHistoryId;
 	}
 
