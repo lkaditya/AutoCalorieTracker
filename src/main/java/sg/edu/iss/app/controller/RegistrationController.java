@@ -24,8 +24,11 @@ public class RegistrationController {
     public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response){
 
         int[] yearArray = IntStream.rangeClosed(1960, 2021).toArray();
+        String strArray[] = new String[yearArray.length];
+        for (int i=0; i < yearArray.length; i++)
+            strArray[i] = String.valueOf(yearArray[i]);
         ModelAndView view = new ModelAndView("register");
-        view.addObject("yearArray", yearArray);
+        view.addObject("strArray", strArray);
         view.addObject("user", new User());
         return view;
     }
