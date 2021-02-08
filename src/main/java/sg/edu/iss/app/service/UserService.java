@@ -5,20 +5,18 @@ import sg.edu.iss.app.model.User;
 
 public interface UserService {
 
-    void register(User user);
-
-    void edit(User user);
-
     User validateUser(Login login);
 
     User validateUser(User user);
 
     User findUserByEmail(String email);
 
-	User findById(Long id);
+	public User findById(Long id);
 	
-	User findUserByEmailAndPassword(String email, String password);
+	public User findUserByEmailAndPassword(String email, String password);
 
-	void saveUser(User user);
+	public void saveUser(User user);
+
+	public void saveReminder(User user);
 
 }
