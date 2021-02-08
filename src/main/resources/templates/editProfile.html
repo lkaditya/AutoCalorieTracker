@@ -110,6 +110,11 @@ form
 <form th:action="@{/profile/save}" method="post" th:Object="${user}">
     <h1 style="text-align:center">Edit Profile</h1>
     <div class="form-group">
+        <fieldset>
+            <input type="hidden" th:field="*{gender}" />
+            <input type="hidden"
+                   th:field="*{birthYear}" />
+        </fieldset>
         <input type="number" class="form-control" name="height" placeholder="Height"  th:field="*{height}">
     </div>
     <div class="form-group">
