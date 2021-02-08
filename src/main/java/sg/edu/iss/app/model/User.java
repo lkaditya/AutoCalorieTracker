@@ -59,6 +59,5 @@ public class User {
 		this.activityLevel = activityLevel;
 	}
 
-		int[] year = IntStream.rangeClosed(1960, 2021).toArray();
 	}
 

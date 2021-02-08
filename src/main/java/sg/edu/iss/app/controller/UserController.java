@@ -15,10 +15,10 @@ public class UserController {
 	
 	@Autowired
 	private UserService userservice;
-	
+
 	@PostMapping("/register")
     public User registerUser (@RequestBody User user){
-    	userservice.saveUser(user);
+		userservice.saveUser(user);
     	return user;
     }
 
@@ -33,5 +33,6 @@ public class UserController {
     	}
     	return null ;
     }
+
 
 }

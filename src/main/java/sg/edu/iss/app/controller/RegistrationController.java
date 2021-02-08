@@ -12,6 +12,7 @@ import sg.edu.iss.app.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.stream.IntStream;
 
 @Controller
 public class RegistrationController {
@@ -21,7 +22,10 @@ public class RegistrationController {
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response){
+
+        int[] yearArray = IntStream.rangeClosed(1960, 2021).toArray();
         ModelAndView view = new ModelAndView("register");
+        view.addObject("yearArray", yearArray);
         view.addObject("user", new User());
         return view;
     }
