@@ -31,7 +31,7 @@ public class UserServiceImplementation implements UserService {
 
 	@Override
 	public void saveUser(User user) {
-
+	userrepo.save(user);
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class UserServiceImplementation implements UserService {
 	}
 
 	@Override
-	public void edit(User user){
+	public void edit(User user) {
 		userrepo.save(user);
 	}
 
@@ -62,4 +62,5 @@ public class UserServiceImplementation implements UserService {
 	public User validateUser(User user) {
 		return userrepo.findUserByEmail(user.getEmail());
 	}
+
 }

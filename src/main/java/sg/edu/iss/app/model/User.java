@@ -59,5 +59,5 @@ public class User {
 		this.activityLevel = activityLevel;
 	}
 
-	}
+}
 
