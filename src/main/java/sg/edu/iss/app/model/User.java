@@ -62,7 +62,3 @@ public class User {
 		int[] year = IntStream.rangeClosed(1960, 2021).toArray();
 	}
 
-
-
-
-}
