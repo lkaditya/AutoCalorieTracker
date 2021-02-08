@@ -14,10 +14,11 @@ public interface UserService {
     User validateUser(User user);
 
     User findUserByEmail(String email);
+
+	User findById(Long id);
 	
 	User findUserByEmailAndPassword(String email, String password);
 
 	void saveUser(User user);
 
-    User findById(long l);
 }
