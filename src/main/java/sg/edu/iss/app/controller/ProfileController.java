@@ -3,6 +3,7 @@ package sg.edu.iss.app.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,9 +41,8 @@ public class ProfileController {
         return view;
     }
     
-    @RequestMapping(value = "/profile/edit", method = RequestMethod.POST)
-    public ModelAndView updateProfile(HttpServletRequest request, HttpServletResponse response,
-                                @ModelAttribute("user") User user, HttpSession session) {
+    @RequestMapping(value = "/profile/edit/{id}", method = RequestMethod.POST)
+    public ModelAndView updateProfile(@PathVariable("id") User user, HttpSession session) {
         ModelAndView view = new ModelAndView("editProfile");
         userService.edit(user);
         user = (User)session.getAttribute("user");
