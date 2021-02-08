@@ -59,5 +59,12 @@ public class User {
 		this.activityLevel = activityLevel;
 	}
 
+	public User(int height, int weight, String email, String activityLevel, String password) {
+		this(email,password);
+		this.height = height;
+		this.weight = weight;
+		this.activityLevel = activityLevel;
+	}
+
 	}
 
