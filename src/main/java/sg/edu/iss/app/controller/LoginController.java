@@ -45,7 +45,7 @@ public class LoginController {
 			view = new ModelAndView("mainPage");
 			view.addObject("user", user);
 			user = userService.findUserByEmail(user.getEmail());
-			request.getSession().setAttribute("user", user);
+			session.setAttribute("user", user);
 		}
 		else
 		{
@@ -57,7 +57,7 @@ public class LoginController {
 
 	@RequestMapping(value= "logout")
 		public ModelAndView logout(HttpSession session){
-		session.removeAttribute("userSession");
+		session.removeAttribute("user");
 		ModelAndView view = new ModelAndView("login");
 		view.addObject("logoutMessage","You have successfully logged out");
 		return view;

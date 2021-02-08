@@ -9,7 +9,30 @@
     <script src="/js/layout.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}">
 </head>
+<style>
+    #container{
+        height: 1000px;
+        width: 800px;
+    }
 
+    #box2{
+
+        margin-bottom: 60px;
+    }
+    .thumbnail {
+        display: block;
+        padding: 5px;
+        margin-bottom: 20px;
+        line-height: 1.42857143;
+        background-color: #fff;
+        border: 3px solid #ddd;
+        border-radius: 3px;
+        -webkit-transition: border .2s ease-in-out;
+        -o-transition: border .2s ease-in-out;
+        transition: border .2s ease-in-out;
+        height: 280px;
+    }
+</style>
 
 <body>
 <header th:insert="layout/layout.html :: header"></header>
@@ -24,83 +47,127 @@
 <script src="/js/axios-0.18.0.js"></script>
 <script type="text/javascript">
 
+
+
+
     var myChart = echarts.init(document.getElementById('main'));
+    var checkName='';
 
 
     axios.get("/history/getData").then((res) => {
         var num = res.data.data.localDataList.length - 1;
-        myChart.setOption(
-            {
-                // color: ["#7BC37D"],
-                title: {
-                    text: 'Weekly Progress'
-                },
-                tooltip: {},
-                legend: {
-                    data: ['Calories']
-                },
-                xAxis: {
-                    data: res.data.data.localDataList
-                },
-                yAxis: {
-                    type: 'value'
-                },
 
-                dataZoom: [
-                    {
-                        type: 'slider',
-                        xAxisIndex: 0,
-                        start: 0,
-                        end: 100
-                    },
-                    {
-                        type: 'inside',
-                        xAxisIndex: 0,
-                        start: 0,
-                        end: 100
-                    },
-                    {
-                        type: 'slider',
-                        yAxisIndex: 0,
-                        start: 0,
-                        end: 100
-                    },
-                    {
-                        type: 'inside',
-                        yAxisIndex: 0,
-                        start: 0,
-                        end: 100
+        option={
+            // color: ["#7BC37D"],
+            title: {
+                text: 'Weekly Progress'
+            },
+            tooltip: {},
+            legend: {
+                data: ['Calories']
+            },
+            xAxis: {
+                data: res.data.data.localDataList
+            },
+            yAxis: {
+                type: 'value'
+            },
+
+            dataZoom: [
+                {
+                    type: 'slider',
+                    xAxisIndex: 0,
+                    start: 0,
+                    end: 100
+                },
+                {
+                    type: 'inside',
+                    xAxisIndex: 0,
+                    start: 0,
+                    end: 100
+                },
+                {
+                    type: 'slider',
+                    yAxisIndex: 0,
+                    start: 0,
+                    end: 100
+                },
+                {
+                    type: 'inside',
+                    yAxisIndex: 0,
+                    start: 0,
+                    end: 100
+                }
+            ],
+            series: [{
+                name: 'Calories',
+                type: 'bar',
+                data: res.data.data.caloriesList,
+                itemStyle: {
+                    barBoardRadius: 20,
+                    color: function (param) {
+                        if(checkName === param.name){
+                            return '#2f4554';  //点击后的颜色
+                        }else {
+                            return "#7BC37D";  //默认颜色
+                        }
+
+                        // }
                     }
-                ],
-                series: [{
-                    name: 'Calories',
-                    type: 'bar',
-                    data: res.data.data.caloriesList,
-                    itemStyle: {
-                        barBoardRadius: 20,
-                        color: function (param) {
-                            // console.log(param)
-
-                            if (param.dataIndex === num) {
-                                return "#7B87C3"
-                            } else {
-                                return "#7BC37D"
-                            }
+                },
+                markLine: {
+                    label: {
+                        normal: {
+                            position: 'right'
                         }
                     },
-                    markLine: {
-                        data: [
-                            {type: 'average', name: 'Average Calories'}
-                        ]
-                    },
-                }]
-            });
+                    data: [
+                        {type: 'average', name: 'Average Calories',
+                            label:{
+                                show:true,
+                                position:'end',
+                                formatter: '{b}: {c}'
+
+                            },
+                            lineStyle:{               //警戒线的样式  ，虚实  颜色
+
+                                color:"#3398DB",
+                            },
+
+                        },
+                        {
+                            label:{
+                                show:true,
+                                position:'end',
+                                formatter: '{b}: {c}'
+
+                            },
+                            lineStyle:{               //警戒线的样式  ，虚实  颜色
+                                type:"solid",
+                                color:"#BA402B",
+                            },
+                            name:'Recommendation Calories',
+                            yAxis:res.data.data.recommendedCalories,
+
+                        },
+                    ]
+                },
+
+
+            }]
+        }
+        myChart.setOption(option
+            );
     });
 
 
 
     myChart.on('click', function (params) {
         var name = params.name;
+
+        checkName = params.name;
+        myChart.setOption(option);
+
         axios.get('/history/getImageByData?data=' + name).then((res) => {
             if (res.data){
 
@@ -114,7 +181,7 @@
             var info="";
 
             for (let i = 0; i < Calories.length; i++) {
-                var div="    <div id='box2' class=\"col-sm-6 col-md-4\">\n" +
+                var div="    <div id='box2' height='200px' width='200px' class=\"col-sm-6 col-md-4\">\n" +
                     "            <div class=\"thumbnail\">\n" +
                     "                <img src=\" "+imagesInfo[i]+" \" >\n" +
                     "                <div class=\"caption\">\n" +
