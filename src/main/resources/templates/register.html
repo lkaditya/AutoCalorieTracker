@@ -101,9 +101,9 @@
             <label for="birthYear">Select Birth Year</label>
             <select id="birthYear" name="birthYear" placeholder="Birth Year" required="required" th:field="*{birthYear}">
                 <option value="year">Select birth Year</option>
-                <option th:each="year: ${yearArray}"
-                        th:value="${year}"
-                        th:text="${year}"></option>
+                <option th:each="birthYear: ${yearArray}"
+                        th:value="${birthYear}"
+                        th:text="${birthYear}"></option>
             </select>
         </div>
         <div class="form-group">
