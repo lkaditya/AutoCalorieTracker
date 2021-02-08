@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <style>
     @import url(https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800);
@@ -96,7 +96,7 @@ form
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
-    text-align: left;
+    text-align: center;
     width:40%;
 }
 
@@ -104,10 +104,16 @@ form
 <body>
 <header th:insert="layout/layout.html :: header"></header>
 <div th:replace="layout/layout.html :: menu" ></div>
+<div id="profile/edit"></div>
 
 <div class="form">
-<form th:action="@{/profile/edit}" method="post" th:Object="${user}">
+<form th:action="@{/profile/save}" method="post" th:Object="${user}">
     <h1 style="text-align:center">Edit Profile</h1>
+    <fieldset>
+        <input type="hidden" th:field="*{Id}" />
+        <input type="hidden" th:field="*{gender}" />
+        <input type="hidden" th:field="*{birthYear}" />
+    </fieldset>
     <div class="form-group">
         <input type="number" class="form-control" name="height" placeholder="Height"  th:field="*{height}">
     </div>
@@ -116,6 +122,9 @@ form
     </div>
     <div class="form-group">
         <input type="email" class="form-control" name="email" placeholder="Email"  th:field="*{email}">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="activity level" placeholder="Activity Level"  th:field="*{activityLevel}">
     </div>
     <div class="form-group">
         <input type="password" class="form-control" name="password" placeholder="Change Password"  th:field="*{password}">

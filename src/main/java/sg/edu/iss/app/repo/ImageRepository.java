@@ -12,13 +12,13 @@ import sg.edu.iss.app.model.FoodImage;
 public interface ImageRepository extends JpaRepository<FoodImage, Long> {
 	
     @Query("select f from FoodImage as f where f.dailyHistory.id=:id")
-	public List<FoodImage> findAllById(@Param("id") Long id);
+    List<FoodImage> findAllById(@Param("id") Long id);
 
     @Query("select f from FoodImage f where f.dailyHistory.date=:today and f.dailyHistory.user.email=:mail")
-	public List<FoodImage> findAllByDateAndName(@Param("today") LocalDate date,@Param("mail") String email);
+    List<FoodImage> findAllByDateAndName(@Param("today") LocalDate date, @Param("mail") String email);
 
 	@Query("select f from FoodImage f where f.food.calorie <=:limit and f.dailyHistory is null")
-    public List<FoodImage> findAllUniqueByCalories(@Param("limit") double remainder);
+    List<FoodImage> findAllUniqueByCalories(@Param("limit") double remainder);
 
 
 }
