@@ -44,7 +44,7 @@ public class ProfileController {
     @RequestMapping(value = "/profile/edit", method = RequestMethod.POST)
     public ModelAndView updateProfile(HttpServletRequest request, HttpServletResponse response,
                                 @ModelAttribute("user") User user) {
-        userService.edit((sg.edu.iss.app.model.User) User);
+        userService.saveUser((sg.edu.iss.app.model.User) User);
         return new ModelAndView("mainPage", "email", user.getEmail());
     }
 
