@@ -36,4 +36,4 @@ def predict(img_path,modelpath):
     
 predict(img_path,modelpath)
 end = process_time()
-print('Running time: %s Seconds'%(end-start))
+#print('Running time: %s Seconds'%(end-start))
