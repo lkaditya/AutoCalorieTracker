@@ -50,7 +50,7 @@ public class LoginController {
 		else
 		{
 			view = new ModelAndView("login");
-			view.addObject("message", "Username or Password is wrong!");
+			view.addObject("errorMessage", "Username or Password is wrong!");
 		}
 		return view;
 	}
