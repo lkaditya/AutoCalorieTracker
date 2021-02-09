@@ -10,10 +10,11 @@ INSERT INTO activity VALUES (7, "Jogging", 700);
 INSERT INTO activity VALUES (8, "Running", 900);
 
 #user
-#id,activity_level,birthyear,email,gender,height,password,recommendedcalories,weight)
-INSERT INTO USER VALUES (1, "SEDENTARY", 1980, "SUPERMAN@GMAIL.COM", "MALE", 180, "PASSWORD", 2200, 70);
-INSERT INTO USER VALUES (2, "MODERATE", 1985, "SUPERWOMAN@GMAIL.COM", "FEMALE", 170, "PASSWORD", 1700, 60);
-INSERT INTO USER VALUES (3, "ACTIVE", 1992, "ZAC@GMAIL.COM", "MALE", 175, "PASSWORD", 1200, 65);
+#id, activity_level, birthyear, email, gender, height, password, recommendedcalories, reminder_calories, weight)
+INSERT INTO USER VALUES (1, "SEDENTARY", 1980, "SUPERMAN@GMAIL.COM", "MALE", 180, "PASSWORD", 2200, 0, 70);
+INSERT INTO USER VALUES (2, "MODERATE", 1985, "SUPERWOMAN@GMAIL.COM", "FEMALE", 170, "PASSWORD", 1700, 0, 60);
+INSERT INTO USER VALUES (3, "ACTIVE", 1992, "ZAC@GMAIL.COM", "MALE", 175, "PASSWORD", 1200, 0, 65);
+
 #diet_plan
 #id, date ,activity_id, user_id
 INSERT INTO diet_plan VALUES (1, '2021-01-29', 1, 3);
@@ -94,9 +95,3 @@ INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload,
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (31,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",17,1612609576,2222,1);
 
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (32,"Ginseng Chicken Soup","https://images.deliveryhero.io/image/fd-sg/Products/5514334.jpg?width=302",18,1612609576,2000,1);
-
-
-
-
-
-
