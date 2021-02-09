@@ -51,15 +51,28 @@ body {
     line-height: 0.428571;
     color: #333;
     background-color: #fff;
+
+}
+#img1 {
+
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 20px;
+    height: 20px;
+    float: left;
 }
 
-#title{
+
+#title2{
     text-align: center;
 }
 
 #form{
 
     margin-top: 50px;
+    MARGIN-LEFT: 70PX;
 }
 
 #formbox{
@@ -87,3 +100,19 @@ td{
     height: 100px;
 }
 
+#img1 {
+
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+#box{
+
+    margin:70px 312px;
+
+}

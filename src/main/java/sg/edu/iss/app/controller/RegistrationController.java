@@ -17,7 +17,6 @@ import javax.servlet.http.HttpSession;
 public class RegistrationController {
     @Autowired
     public UserService userService;
-    private Object User;
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response){

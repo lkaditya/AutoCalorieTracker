@@ -20,6 +20,11 @@ public class ExtractImageController {
         return "mainPage";
     }
 
+    @RequestMapping("/showPlan")
+    public String showPlan(Model model){
+
+        return "dietPlan";
+    }
 
     @RequestMapping("/extract")
     public String extractImages(Model model,String url){
@@ -37,7 +42,7 @@ public class ExtractImageController {
             String html = itemTask.ItemTaskDownLoad(url);
             itemTask.parse(html,foodInfos);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("");
         }
 
         model.addAttribute("foodInfos",foodInfos);
