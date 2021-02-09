@@ -1,17 +1,13 @@
 package sg.edu.iss.app.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import com.sun.istack.NotNull;
 import lombok.Data;
+
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,8 +17,12 @@ public class User {
 	private Long Id;
 	private String gender;
 	private int birthYear;
+	@Min(100)
 	private int height;
+	@Min(30)
 	private int weight;
+	@Email
+	@NotNull
 	private String email;
 	private String activityLevel;
 	private String password;
@@ -36,9 +36,11 @@ public class User {
 	private List<DietPlan> listOfDietPlan;
 	
 	private double recommendedCalories;
+
+	private double reminderCalories;
 		
 	public User() {
-		// TODO Auto-generated constructor stub
+
 	}
 	
 	public User(String email, String password) {
@@ -46,4 +48,18 @@ public class User {
 		this.password=password;
 	}
 
+	public User(String gender, int birthYear, int height, int weight, String email, String activityLevel,
+			String password) {
+		this(email,password);
+		this.gender = gender;
+		this.birthYear = birthYear;
+		this.height = height;
+		this.weight = weight;
+		this.activityLevel = activityLevel;
+	}
+
+	public User(@Email String email, double reminderCalories) {
+		this.email = email;
+		this.reminderCalories = reminderCalories;
+	}
 }

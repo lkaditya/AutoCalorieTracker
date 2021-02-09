@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800);
+
+    html, body {
+        font-family: 'Dosis';
+        font-weight: 300;
+    }
+
+    .header {
+        width: 100%;
+        border-bottom: 1px solid black;
+        text-align: right;
+        position: relative;
+    }
+    .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 32px;
+        font-weight: 100;
+        padding: 26px;
+        border-right: 1px solid black;
+    }
+
+    .link {
+        display: inline-block;
+        padding: 15px 0;
+        margin: 15px 25px;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #0f0f0f;
+        font-weight: 800;
+        font-size: 24px;
+    }
+    .bar {
+        width: 100%;
+        display: inline-block;
+        border-bottom: 5px solid black;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        transition: all 300ms;
+    }
+
+    body {
+        font-size: 14px;
+        line-height: 0.428571;
+        color: #333;
+        background-color: #fff;
+
+    }
+    #box{
+
+        margin:70px 312px;
+
+    }
+    #box2{
+        width: 207px;
+        height: 272px;
+        margin: -21px 5px;
+    }
+
+    #container{
+        margin-left: 414px;
+        margin-bottom: 100px;
+    }
+
+</style>
+
+<body>
+<header th:insert="layout/layout.html :: header"></header>
+<div th:replace="layout/layout.html :: menu" ></div>
+
+<div id="register">
+
+</div>
+
+<div class="signup-form">
+    <form th:action="@{/registerProcess}" method="post" th:object="${user}">
+        <h2>Register</h2>
+        <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+        <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Email" required="required" th:field="*{email}">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password" required="required" th:field="*{password}">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Confirm Password" required="required">
+        </div>
+        <div class="form-group">
+            <label for="male"> Male </label>
+            <input type="radio" id="male" name="male" value="MALE" required="required" th:field="*{gender}">
+            <label for="female"> Female</label>
+            <input type="radio" id="female" name="female" value="FEMALE" required="required" th:field="*{gender}">
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control" name="birth_year" placeholder="Birth Year" required="required" th:field="*{birth_year}">
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control" name="height" placeholder="Height" required="required" th:field="*{height}">
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control" name="weight" placeholder="Weight" required="required" th:field="*{weight}">
+        </div>
+        <div class="form-group">
+            <label for="Sedentary"> Sedentary </label>
+            <input type="radio" id="Sedentary" name="sedentary" value="Sedentary" required="required" th:field="*{activityLevel}">
+            <label for="Moderate"> Moderate</label>
+            <input type="radio" id="Moderate" name="Moderate" value="Moderate" required="required" th:field="*{activityLevel}">
+            <label for="Active"> Active</label>
+            <input type="radio" id="Active" name="Active" value="Active" required="required" th:field="*{activityLevel}">
+        </div>
+<!--        <div class="form-group">
+            <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+        </div>
+        -->
+        <div class="form-group">
+            <input type="submit" class="btn btn-success btn-lg btn-block">
+        </div>
+    </form>
+    <div class="text-center">Already have an account? <a th:href="@{/login}">Sign in</a></div>
+</div>
+
+
+<div th:replace="layout/layout.html :: footer"></div>
+</body>
+</html>

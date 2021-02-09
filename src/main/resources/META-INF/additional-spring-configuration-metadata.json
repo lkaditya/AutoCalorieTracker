@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "javax.persistence.schema-generation.scripts.action",
+    "type": "java.lang.String",
+    "description": "A description for 'javax.persistence.schema-generation.scripts.action'"
+  },
+  {
+    "name": "javax.persistence.schema-generation.create-source",
+    "type": "java.lang.String",
+    "description": "A description for 'javax.persistence.schema-generation.create-source'"
+  },
+  {
+    "name": "javax.persistence.schema-generation.drop-source",
+    "type": "java.lang.String",
+    "description": "A description for 'javax.persistence.schema-generation.drop-source'"
+  }
+]}

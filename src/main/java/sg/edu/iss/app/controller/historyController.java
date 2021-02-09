@@ -21,9 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
 import sg.edu.iss.app.model.BarChartData;
 import sg.edu.iss.app.model.DailyHistory;
 import sg.edu.iss.app.model.FoodImage;
+import sg.edu.iss.app.model.User;
 import sg.edu.iss.app.service.DailyHistoryService;
 import sg.edu.iss.app.service.FoodService;
 import sg.edu.iss.app.service.ImageService;
+import sg.edu.iss.app.service.UserService;
+
+import javax.servlet.http.HttpSession;
 
 
 @RequestMapping("/history")
@@ -35,7 +39,10 @@ public class historyController {
 
     @Autowired
     private ImageService imageService;
-    
+
+    @Autowired
+    UserService userService;
+
     @RequestMapping("/getTodayHistory")
     public List<FoodImage> getHistory(@RequestParam("date")String date,@RequestParam("email")String email){
     	DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -60,13 +67,18 @@ public class historyController {
     }
 
     @RequestMapping("/getData")
-    public BarChartData getData(){
+    public BarChartData getData(HttpSession session){
 
         List<LocalDate> localDataList=new ArrayList<LocalDate>();
         List<String> localDataList2=new ArrayList<String>();
         List<Double> caloriesList=new ArrayList<Double>();
-        List<DailyHistory> recordByUserID = dailyHistoryService.findRecordByUserID(1L);
+//        User user = (User) session.getAttribute("user");
+        User user = userService.findById(1L);
+        Long id = user.getId();
 
+
+        List<DailyHistory> recordByUserID = dailyHistoryService.findRecordByUserID(1L);
+        double recommendedCalories = user.getRecommendedCalories();
 
         for (DailyHistory dailyHistory : recordByUserID) {
             double totalCalories=0.0;
@@ -95,6 +107,7 @@ public class historyController {
 
         map.put("localDataList",localDataList2);
         map.put("caloriesList",caloriesList);
+        map.put("recommendedCalories",600);
 
         BarChartData barChartData=new BarChartData(map);
 

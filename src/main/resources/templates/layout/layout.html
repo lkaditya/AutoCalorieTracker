@@ -78,7 +78,7 @@
                         <div class="title">Home</div>
                         <div class="bar"></div>
                     </a>
-                    <a href="#"  class="link">
+                    <a href="#" th:href="@{/profile/view}" class="link">
                         <div class="title">Profile</div>
                         <div class="bar"></div>
                     </a>
@@ -88,6 +88,10 @@
                     </a>
                     <a href="#" th:href="@{/upload/extract}" class="link">
                         <div class="title">Upload</div>
+                        <div class="bar"></div>
+                    </a>
+                    <a th:href="@{/login}" class="link">
+                        <div class="title" id="logout">Logout</div>
                         <div class="bar"></div>
                     </a>
                 </div>
@@ -103,7 +107,6 @@
             </div>
 
         </footer>
-
     </body>
 
 </html>
