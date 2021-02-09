@@ -30,13 +30,22 @@
         -webkit-transition: border .2s ease-in-out;
         -o-transition: border .2s ease-in-out;
         transition: border .2s ease-in-out;
-        height: 280px;
+        height: 300px;
+    }
+
+    #hello{
+        margin-left: 1500px;
+        height: 50px;
+        MARGIN-TOP: 30PX;
+        font-size: 20px;
+
     }
 </style>
 
 <body>
 <header th:insert="layout/layout.html :: header"></header>
 <div th:replace="layout/layout.html :: menu" ></div>
+<DIV id="hello" th:text="${session.user.email}"></DIV>
 <div id="box">
 
     <div id="main" style="width: 800px;height:400px;" class="bar-chart" align="center"></div>
@@ -60,7 +69,7 @@
         option={
             // color: ["#7BC37D"],
             title: {
-                text: 'Weekly Progress'
+                text: 'Weekly Calories'
             },
             tooltip: {},
             legend: {
@@ -107,9 +116,9 @@
                     barBoardRadius: 20,
                     color: function (param) {
                         if(checkName === param.name){
-                            return '#2f4554';  //点击后的颜色
+                            return '#2f4554';
                         }else {
-                            return "#7BC37D";  //默认颜色
+                            return "#7BC37D";
                         }
 
                         // }
@@ -129,7 +138,7 @@
                                 formatter: '{b}: {c}'
 
                             },
-                            lineStyle:{               //警戒线的样式  ，虚实  颜色
+                            lineStyle:{
 
                                 color:"#3398DB",
                             },
@@ -142,7 +151,7 @@
                                 formatter: '{b}: {c}'
 
                             },
-                            lineStyle:{               //警戒线的样式  ，虚实  颜色
+                            lineStyle:{
                                 type:"solid",
                                 color:"#BA402B",
                             },
@@ -174,6 +183,7 @@
                 var imagesInfo = res.data.data.imagesInfo;
                 var foodNames = res.data.data.foodNames;
                 var Calories = res.data.data.Calories;
+                var timeSeries = res.data.data.time;
 
             }
 
@@ -187,6 +197,7 @@
                     "                <div class=\"caption\">\n" +
                     "                  <h3>"+foodNames[i]+"</h3>\n" +
                     "                  <p>"+Calories[i]+" Calories</p>\n" +
+                    "                  <p>"+timeSeries[i]+"</p>\n" +
                     "            </div>\n" +
                     "        </div>\n" +
                     "    </div>";
@@ -206,8 +217,8 @@
 </script>
 
 
-<div id="container" class="row" >
 
+<div id="container" class="row" >
 
 
 </div>

@@ -1,5 +1,4 @@
 
-
 @import url(https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800);
 
 html, body {
@@ -54,6 +53,18 @@ body {
     background-color: #fff;
 
 }
+
+#img1 {
+
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
 #box{
 
     margin:70px 312px;
@@ -76,10 +87,20 @@ body {
     margin-bottom: 50px;
     text-align: center;
     width: 60%;
+    font-size: 20px;
 }
 .td1{
     width: 300px;
 
+
+}
+
+.td2{
+    color: #E92D1A;
+}
+
+.td3{
+    color: #3FDC26;
 }
 
 #leftBtn{
@@ -94,14 +115,19 @@ body {
     text-align: center;
 }
 #btnBox{
-    margin-left: 558px;
+    margin-left: 0px;
     margin-right: auto;
     margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 #net{
     margin-left: 1050px;
     margin-top: 50px;
     margin-bottom: 100px;
+}
+
+#title{
+    margin-left: 718px;
 }
 

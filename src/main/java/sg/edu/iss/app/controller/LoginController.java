@@ -2,6 +2,7 @@ package sg.edu.iss.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,26 +34,27 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView loginProcess(HttpServletRequest request,
-									 HttpServletResponse response,
-									 Login login,
-									 //@ModelAttribute("user") User user,
-									 HttpSession session){
+	public String loginProcess(HttpServletRequest request,
+							   HttpServletResponse response,
+							   Login login,
+							   //@ModelAttribute("user") User user,
+							   HttpSession session, Model model){
 		ModelAndView view;
 		User user = userService.validateUser(login);
 
 		if (user != null) {
 			view = new ModelAndView("mainPage");
-			view.addObject("user", user);
+			model.addAttribute("user", user);
 			user = userService.findUserByEmail(user.getEmail());
 			session.setAttribute("user", user);
+			return "redirect:/upload/showData";
 		}
 		else
 		{
 			view = new ModelAndView("login");
-			view.addObject("message", "Username or Password is wrong!");
+			model.addAttribute("message", "Username or Password is wrong!");
 		}
-		return view;
+		return "login";
 	}
 
 	@RequestMapping(value= "logout")
