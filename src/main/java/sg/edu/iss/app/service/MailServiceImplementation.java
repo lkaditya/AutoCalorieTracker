@@ -26,7 +26,11 @@ public class MailServiceImplementation implements MailService {
 		mailMessage.setSubject(subject);
 		mailMessage.setText(text);
 		javaMailSender.send(mailMessage);
-		
+
+	}
+
+	@Override
+	public void sendEmail(SimpleMailMessage email) {
 
 	}
 

@@ -6,6 +6,8 @@ import org.springframework.data.repository.query.Param;
 
 import sg.edu.iss.app.model.User;
 
+import java.util.Optional;
+
 public interface UserRepository extends JpaRepository<User, Long> {
 	
 	User findUserByEmail(String email);
@@ -23,4 +25,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	User findUserById(@Param("id") long Id, @Param("email") String email);
 
     User findById(long l);
+
+	Optional<User> findByResetToken(String resetToken);
 }

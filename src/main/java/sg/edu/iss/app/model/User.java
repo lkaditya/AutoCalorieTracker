@@ -29,6 +29,7 @@ public class User {
 	private String email;
 	private String activityLevel;
 	private String password;
+	private String resetToken;
 	
 	@OneToMany(mappedBy="user")
 	@JsonIgnore

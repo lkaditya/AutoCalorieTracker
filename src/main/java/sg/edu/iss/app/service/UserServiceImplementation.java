@@ -1,6 +1,7 @@
 package sg.edu.iss.app.service;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -91,5 +92,15 @@ public class UserServiceImplementation implements UserService {
 	@Override
 	public User validateUser(User user) {
 		return userrepo.findUserByEmail(user.getEmail());
+	}
+
+	@Override
+	public Optional findUserByResetToken(String resetToken) {
+		return userrepo.findByResetToken(resetToken);
+	}
+
+	@Override
+	public void save(User user) {
+		userrepo.save(user);
 	}
 }
