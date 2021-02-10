@@ -4,28 +4,20 @@ package sg.edu.iss.app.controller;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import sg.edu.iss.app.model.BarChartData;
-import sg.edu.iss.app.model.DailyHistory;
-import sg.edu.iss.app.model.FoodImage;
-import sg.edu.iss.app.model.User;
-import sg.edu.iss.app.service.DailyHistoryService;
-import sg.edu.iss.app.service.FoodService;
-import sg.edu.iss.app.service.ImageService;
-import sg.edu.iss.app.service.UserService;
+import sg.edu.iss.app.model.*;
+import sg.edu.iss.app.service.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -42,6 +34,13 @@ public class historyController {
 
     @Autowired
     UserService userService;
+
+
+    @Autowired
+    DietPlanService dietPlanService;
+
+    @Autowired
+    ActivityService activityService;
 
     @RequestMapping("/getTodayHistory")
     public List<FoodImage> getHistory(@RequestParam("date")String date,@RequestParam("email")String email){
@@ -72,12 +71,11 @@ public class historyController {
         List<LocalDate> localDataList=new ArrayList<LocalDate>();
         List<String> localDataList2=new ArrayList<String>();
         List<Double> caloriesList=new ArrayList<Double>();
-//        User user = (User) session.getAttribute("user");
-        User user = userService.findById(1L);
+        User user = (User) session.getAttribute("user");
         Long id = user.getId();
 
 
-        List<DailyHistory> recordByUserID = dailyHistoryService.findRecordByUserID(1L);
+        List<DailyHistory> recordByUserID = dailyHistoryService.findRecordByUserID(id);
         double recommendedCalories = user.getRecommendedCalories();
 
         for (DailyHistory dailyHistory : recordByUserID) {
@@ -107,7 +105,7 @@ public class historyController {
 
         map.put("localDataList",localDataList2);
         map.put("caloriesList",caloriesList);
-        map.put("recommendedCalories",600);
+        map.put("recommendedCalories",recommendedCalories);
 
         BarChartData barChartData=new BarChartData(map);
 
@@ -117,31 +115,44 @@ public class historyController {
 
 
     @RequestMapping("/getImageByData")
-    public BarChartData getData(String data){
+    public BarChartData getData(String data,HttpSession session){
+        User user = (User)session.getAttribute("user");
+
         String newData = data.replace("/", "-");
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate date= LocalDate.parse(newData, fmt);
-        DailyHistory dailyRecord = dailyHistoryService.findRecordByIdAndDate(1L, date);
+        DailyHistory dailyRecord = dailyHistoryService.findRecordByIdAndDate(user.getId(), date);
         List<FoodImage> images = imageService.findByHid(dailyRecord.getId());
         List<String> urls=new ArrayList<>();
         List<String> foodNames=new ArrayList<>();
         List<Double> Calories=new ArrayList<>();
+        List<String> timeSeries=new ArrayList<>();
         for (FoodImage image : images) {
             String url = image.getUrl();
             urls.add(url);
             foodNames.add(image.getFoodName());
             //TODO : inconsistent data source for 1 set of data? need further changes??
-            Calories.add(image.getFood().getCalorie());
+            Calories.add(image.getCalorie());
+            Long epochDateUpload = image.getEpochDateUpload();
+            String time = dateConvert(epochDateUpload);
+            timeSeries.add(time);
+
         }
         Map<String,Object> map=new HashMap<>();
         map.put("imagesInfo",urls);
         map.put("foodNames",foodNames);
         map.put("Calories",Calories);
+        map.put("time",timeSeries);
         BarChartData barChartData=new BarChartData(map);
         return barChartData;
     }
-    
 
+    public static String dateConvert(long milliSecond){
+        Date date = new Date();
+        date.setTime(milliSecond);
+        String time = new SimpleDateFormat("KK:mm aa", Locale.ENGLISH).format(date);
+        return time;
+    }
 
 
 }

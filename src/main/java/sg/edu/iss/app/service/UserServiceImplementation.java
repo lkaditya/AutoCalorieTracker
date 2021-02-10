@@ -3,6 +3,7 @@ package sg.edu.iss.app.service;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import sg.edu.iss.app.model.Login;
@@ -29,6 +30,10 @@ public class UserServiceImplementation implements UserService {
 	public User findUserByEmailAndPassword(String email, String password) {
 
 		return userrepo.findUserByEmailAndPassword(email,password);
+	}
+	
+	public int findUserIdByEmail(String email) {
+		return userrepo.findUserIdByEmail(email);
 	}
 
 	@Override

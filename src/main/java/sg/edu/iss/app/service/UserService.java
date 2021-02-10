@@ -1,6 +1,10 @@
 package sg.edu.iss.app.service;
 
+
+import org.springframework.data.repository.query.Param;
+
 import sg.edu.iss.app.model.Login;
+
 import sg.edu.iss.app.model.User;
 
 public interface UserService {
@@ -15,8 +19,12 @@ public interface UserService {
 	
 	public User findUserByEmailAndPassword(String email, String password);
 
+
+	public int findUserIdByEmail(String email);
+
 	public void saveUser(User user);
 
 	public void saveReminder(User user);
+
 
 }

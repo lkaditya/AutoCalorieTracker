@@ -82,6 +82,17 @@ public class ImageServiceImplementation implements ImageService {
 	public List<FoodImage> findAll() {
 		return imagerepo.findAll();
 	}
+	
+	@Override
+	@Transactional
+	public int findTotalCaloriesByDailyHistoryId(long id) {
+		Integer result = imagerepo.findTotalCaloriesById(id);
+		if(result==null) {
+			result = 0;
+		}
+		return result;
+	}
+	
 
 
 }

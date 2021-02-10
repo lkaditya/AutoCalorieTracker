@@ -7,13 +7,15 @@ import sg.edu.iss.app.model.DailyHistory;
 
 public interface DailyHistoryService {
 	
-	DailyHistory findHistoryByEmailandDate(String email, LocalDate date);
+	public DailyHistory findHistoryByEmailandDate(String email, LocalDate date);
 
-	void save(DailyHistory hist);
+	public void save(DailyHistory hist);
 
-	List<DailyHistory> findAll();
+	public List<DailyHistory> findAll();
 
-	List<DailyHistory> findRecordByUserID(long id);
+	public List<DailyHistory> findRecordByUserID(long id);
 
-	DailyHistory findRecordByIdAndDate(long id, LocalDate date);
+	public DailyHistory findRecordByIdAndDate(long id, LocalDate date);
+	
+	public List<Integer> getDailyHistoryIds(long id, LocalDate date);
 }

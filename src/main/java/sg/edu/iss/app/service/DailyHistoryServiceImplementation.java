@@ -1,6 +1,8 @@
 package sg.edu.iss.app.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +48,17 @@ public class DailyHistoryServiceImplementation implements DailyHistoryService {
 	@Override
 	public DailyHistory findRecordByIdAndDate(long id, LocalDate date) {
 		return historyrepo.findRecordByData(id,date);
+	}
+	
+	public List<Integer> getDailyHistoryIds(long id, LocalDate date) {
+		//list of dailyHistory id needed
+		List<Integer> listOfDailyHistoryId = new ArrayList<>();
+		//for lastday -0 to lastday-6
+		for(int i = 0; i<7;i++) {
+			listOfDailyHistoryId.add(historyrepo.findIdByIdAndDate(id, date.minusDays(i)));
+		}
+
+		return listOfDailyHistoryId;
 	}
 
 }
