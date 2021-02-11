@@ -24,7 +24,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findById(long l);
 
-	@Query("SELECT c FROM Customer c WHERE c.email = ?1")
+	@Query("SELECT u FROM User u WHERE u.email = ?1")
 	public User findByEmail(String email);
 
 	public User findByResetPasswordToken(String token);
