@@ -1,13 +1,8 @@
 package sg.edu.iss.app.service;
 
 
-import org.springframework.data.repository.query.Param;
-
 import sg.edu.iss.app.model.Login;
-
 import sg.edu.iss.app.model.User;
-
-import java.util.Optional;
 
 public interface UserService {
 
@@ -27,7 +22,11 @@ public interface UserService {
 
 	void saveReminder(User user);
 
-	Optional<User> findUserByResetToken(String resetToken);
-
 	void save(User user);
+
+	void updateResetPasswordToken(String token, String email) throws Exception;
+
+	User getByResetPasswordToken(String token);
+
+	void updatePassword(User user, String newPassword);
 }

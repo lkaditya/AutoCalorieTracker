@@ -2,11 +2,9 @@ package sg.edu.iss.app.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-
 import sg.edu.iss.app.model.User;
-
-import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 	
@@ -26,5 +24,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findById(long l);
 
-	Optional<User> findByResetToken(String resetToken);
+	@Query("SELECT c FROM Customer c WHERE c.email = ?1")
+	public User findByEmail(String email);
+
+	public User findByResetPasswordToken(String token);
+
 }

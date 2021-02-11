@@ -1,15 +1,15 @@
 package sg.edu.iss.app.service;
 
-import java.time.LocalDate;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import sg.edu.iss.app.model.Login;
 import sg.edu.iss.app.model.User;
 import sg.edu.iss.app.repo.UserRepository;
+import java.lang.Exception;
+
+import java.time.LocalDate;
 
 @Service
 public class UserServiceImplementation implements UserService {
@@ -95,12 +95,30 @@ public class UserServiceImplementation implements UserService {
 	}
 
 	@Override
-	public Optional findUserByResetToken(String resetToken) {
-		return userrepo.findByResetToken(resetToken);
+	public void save(User user) {
+		userrepo.save(user);
 	}
 
-	@Override
-	public void save(User user) {
+	public void updateResetPasswordToken(String token, String email) throws Exception {
+		User user = userrepo.findByEmail(email);
+		if (user != null) {
+			user.setResetPasswordToken(token);
+			userrepo.save(user);
+		} else {
+			throw new UsernameNotFoundException("Could not find any user with the following email :" + email);
+		}
+	}
+
+	public User getByResetPasswordToken(String token) {
+		return userrepo.findByResetPasswordToken(token);
+	}
+
+	public void updatePassword(User user, String newPassword) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encodedPassword = passwordEncoder.encode(newPassword);
+		user.setPassword(encodedPassword);
+
+		user.setResetPasswordToken(null);
 		userrepo.save(user);
 	}
 }
