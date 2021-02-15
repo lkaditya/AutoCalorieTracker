@@ -25,7 +25,7 @@ public class LoginController {
 		return showLogin(request, response);
 	}
 
-	@RequestMapping(value = "/login2", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response){
 		ModelAndView view = new ModelAndView("Login");
 		view.addObject("User", new User());
