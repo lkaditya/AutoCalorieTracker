@@ -50,24 +50,6 @@ public class UserController {
     	return null ;
     }
 	
-	@GetMapping("/reset")
-	public void sendTempPassword(@RequestParam("email")String email) {
-		
-		User user=userservice.findUserByEmail(email);
-		System.out.println(user.getPassword());
-		UUID uuid = UUID.randomUUID();
-		String tempPass="passTemp"+uuid.toString();
-		user.setPassword(tempPass);
-		System.out.println(user.getPassword());
-		userservice.saveUser(user);
-		
-		String text="Please use this temporary password to login for resetting your password \n";
-		text+="email : "+email;
-		text+="\n password : "+tempPass;
-		//send email
-		mailservice.sendSimpleMail(email, "Reset Password Query", text);
-	}
-	
 	@PostMapping("/resetPass")
     public User reset (@RequestBody User user){
     	String email=user.getEmail();

@@ -36,10 +36,10 @@ public class LoginController {
 	public ModelAndView loginProcess(HttpServletRequest request,
 									 HttpServletResponse response,
 									 Login login,
-									 //@ModelAttribute("user") User user,
+									 @ModelAttribute("user") User user,
 									 HttpSession session){
 		ModelAndView view;
-		User user = userService.validateUser(login);
+		user = userService.validateUser(login);
 
 		if (user != null) {
 			view = new ModelAndView("mainPage");

@@ -44,9 +44,15 @@ public class ProfileController {
     @RequestMapping(value = "/profile/save", method = RequestMethod.POST)
     public ModelAndView updateProfile(@ModelAttribute("user") User user, HttpSession session) {
         ModelAndView view = new ModelAndView("editProfile");
-        userService.saveUser(user);
         user = (User)session.getAttribute("user");
         view.addObject("user", user);
+        user = userService.findUserByEmail(user.getEmail());
+        user.setActivityLevel(user.getActivityLevel());
+        user.setBirthYear(user.getBirthYear());
+        user.setGender(user.getGender());
+        user.setHeight(user.getHeight());
+        user.setWeight(user.getWeight());
+        userService.saveUser(user);
         return new ModelAndView("profile", "user", user.getEmail());
 
     }
