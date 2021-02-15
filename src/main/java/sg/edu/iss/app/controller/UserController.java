@@ -25,17 +25,6 @@ public class UserController {
 	@Autowired
 	private MailService mailservice;
 	
-	@PostMapping("/register")
-    public User registerUser (@RequestBody User user){
-		User a=userservice.findUserByEmail(user.getEmail());
-		if(a!=null) {
-			return null;
-		}
-    	userservice.saveUser(user);
-    	return user;
-    }
-
-
 	@PostMapping("/authenticate")
     public User checkAuthentication (@RequestBody User user){
     	String email=user.getEmail();
