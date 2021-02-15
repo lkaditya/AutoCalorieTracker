@@ -27,12 +27,12 @@ public class LoginController {
 
 	@RequestMapping(value = "/login2", method = RequestMethod.GET)
 	public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response){
-		ModelAndView view = new ModelAndView("Login2");
+		ModelAndView view = new ModelAndView("Login");
 		view.addObject("User", new User());
 		return view;
 	}
 
-	@RequestMapping(value = "/login2", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView loginProcess(HttpServletRequest request,
 									 HttpServletResponse response,
 									 Login login,
@@ -49,7 +49,7 @@ public class LoginController {
 		}
 		else
 		{
-			view = new ModelAndView("login2");
+			view = new ModelAndView("login");
 			view.addObject("errorMessage", "Username or Password is wrong!");
 		}
 		return view;
@@ -58,7 +58,7 @@ public class LoginController {
 	@RequestMapping(value= "logout")
 		public ModelAndView logout(HttpSession session){
 		session.removeAttribute("user");
-		ModelAndView view = new ModelAndView("login2");
+		ModelAndView view = new ModelAndView("login");
 		view.addObject("logoutMessage","You have successfully logged out");
 		return view;
 	}
