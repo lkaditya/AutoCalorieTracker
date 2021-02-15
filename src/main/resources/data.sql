@@ -1,5 +1,5 @@
-#activity
-#id, activity_level, activity_name, calories_burnt (per hour)
+/*activity
+#id, activity_level, activity_name, calories_burnt (per hour)*/
 INSERT INTO activity VALUES (1, "Office work", 140);
 INSERT INTO activity VALUES (2, "Walking", 180);
 INSERT INTO activity VALUES (3, "Yoga", 280);
@@ -9,27 +9,27 @@ INSERT INTO activity VALUES (6, "Swimming", 620);
 INSERT INTO activity VALUES (7, "Jogging", 700);
 INSERT INTO activity VALUES (8, "Running", 900);
 
-#user
-#id, activity_level, birthyear, email, gender, height, password, recommendedcalories, reminder_calories, weight)
+/*user
+#id, activity_level, birthyear, email, gender, height, password, recommendedcalories, reminder_calories, weight)*/
 INSERT INTO USER VALUES (1, "SEDENTARY", 1980, "SUPERMAN@GMAIL.COM", "MALE", 180, "PASSWORD", 2200, 0, 70);
 INSERT INTO USER VALUES (2, "MODERATE", 1985, "SUPERWOMAN@GMAIL.COM", "FEMALE", 170, "PASSWORD", 1700, 0, 60);
 INSERT INTO USER VALUES (3, "ACTIVE", 1992, "ZAC@GMAIL.COM", "MALE", 175, "PASSWORD", 1200, 0, 65);
 
-#diet_plan
-#id, date ,activity_id, user_id
+/*diet_plan
+#id, date ,activity_id, user_id*/
 INSERT INTO diet_plan VALUES (1, '2021-01-29', 1, 3);
 
 
-#food
-#id, calories, foodName, activity_id
+/*food
+#id, calories, foodName, activity_id*/
 INSERT INTO food VALUES (1, 250, "hamburger");
 INSERT INTO food VALUES (2, 200, "pizza");
 INSERT INTO food VALUES (3, 93, "omelette");
 INSERT INTO food VALUES (4, 230, "fish and chips");
 INSERT INTO food VALUES (5, 450, "chicken curry");
 
-#dailyhistory
-#id,date,user_id
+/*dailyhistory
+#id,date,user_id*/
 INSERT INTO daily_history VALUES (1,'2021-01-22', 1);
 INSERT INTO daily_history VALUES (2,'2021-01-23', 1);
 INSERT INTO daily_history VALUES (3,'2021-01-24', 1);
@@ -49,8 +49,8 @@ INSERT INTO daily_history VALUES (16,'2021-02-06', 1);
 INSERT INTO daily_history VALUES (17,'2021-02-07', 1);
 INSERT INTO daily_history VALUES (18,'2021-02-08', 1);
 
-#food_image
-#id,epoch_date_upload,calorie,food_name,url,dailyhistory_id,food_id
+/*food_image
+#id,epoch_date_upload,calorie,food_name,url,dailyhistory_id,food_id*/
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (1,"hamburger","http://localhost:8080/api/image/img1.jpg",NULL,1611285712,250,1);
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (2,"pizza","http://localhost:8080/api/image/img2.jpg",NULL, 1611246112,200,2);
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (3,"omellete","http://localhost:8080/api/image/img3.jpg",NULL,1611285712,93,3);
