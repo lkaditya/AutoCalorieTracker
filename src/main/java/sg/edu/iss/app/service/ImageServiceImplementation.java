@@ -92,7 +92,11 @@ public class ImageServiceImplementation implements ImageService {
 		}
 		return result;
 	}
-	
+
+	public List<FoodImage> findAllByImageId(){
+		return imagerepo.findAllByImageId();
+	}
+
 
 
 }

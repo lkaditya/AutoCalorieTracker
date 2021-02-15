@@ -34,6 +34,7 @@ public class DietPlanController {
     @RequestMapping("/showTomorrowPlan")
     public BarChartData showTomorrowPlan(Model model, HttpSession session){
         User user = (User)session.getAttribute("user");
+        double recommendedCalories=user.getRecommendedCalories();
         LocalDate date = LocalDate.now();
         LocalDate tomorrow = date.plusDays(1);
 
@@ -55,12 +56,12 @@ public class DietPlanController {
                 total+=calorie;
             }
             double caloriesBurnt = activity.getCaloriesBurnt();
-            double netCalories=total-caloriesBurnt;
+            double netCalories=recommendedCalories-caloriesBurnt;
 
 
 
             for (Food food: foodList) {
-                FoodImage foodImage = food.getFoodImage().get(random.nextInt(food.getFoodImage().size()));
+                FoodImage foodImage = food.getFoodImage().get(0);
                 foodInfo.add(foodImage);
             }
             Map<String,Object> map=new HashMap<>();
@@ -74,11 +75,10 @@ public class DietPlanController {
 
 
         }else {
-            double recommendedCalories = user.getRecommendedCalories();
+             recommendedCalories = user.getRecommendedCalories();
 
-            List<FoodImage> foodImagesList = imageService.findAll();
+            List<FoodImage> foodImagesList = imageService.findAllByImageId();
 
-            Collections.shuffle(foodImagesList);
 
             double total=0.0;
             DietPlan dietPlan=new DietPlan();
@@ -92,19 +92,22 @@ public class DietPlanController {
             dietPlan.setActivity(activity);
             dietPlan.setUser(user);
 //            double totalCalories=0.0;
+            int count=0;
+
             for (FoodImage food:foodImagesList) {
                 double calorie = food.getFood().getCalorie();
-                if (total<=recommendedCalories){
+                if (total<=recommendedCalories&&count<3){
                     total+=calorie;
                     foodInfo.add(food);
                     food.getFood().getDietPlan().add(dietPlan);
                     dietPlan.getFood().add(food.getFood());
                 }
+                count++;
             }
             dietPlanService.savePlan(dietPlan);
 
 
-            double netCalories=total-caloriesBurnt;
+            double netCalories=recommendedCalories-caloriesBurnt;
             Map<String,Object> map=new HashMap<>();
             map.put("foodInfos",foodInfo);
             map.put("activity",activity);
@@ -127,6 +130,7 @@ public class DietPlanController {
     @RequestMapping("/showPlan")
     public BarChartData showPlan(Model model, HttpSession session){
         User user = (User)session.getAttribute("user");
+        double recommendedCalories=user.getRecommendedCalories();
         LocalDate date = LocalDate.now();
 
         Random random=new Random();
@@ -148,12 +152,12 @@ public class DietPlanController {
                 total+=calorie;
             }
             double caloriesBurnt = activity.getCaloriesBurnt();
-            double netCalories=total-caloriesBurnt;
+            double netCalories=recommendedCalories-caloriesBurnt;
             model.addAttribute("netCalories",netCalories);
 
 
             for (Food food: foodList) {
-                FoodImage foodImage = food.getFoodImage().get(random.nextInt(food.getFoodImage().size()));
+                FoodImage foodImage = food.getFoodImage().get(0);
                 foodInfo.add(foodImage);
             }
             Map<String,Object> map=new HashMap<>();
@@ -167,9 +171,9 @@ public class DietPlanController {
 
 
         }else {
-            double recommendedCalories = user.getRecommendedCalories();
+            recommendedCalories = user.getRecommendedCalories();
 
-            List<FoodImage> foodImagesList = imageService.findAll();
+            List<FoodImage> foodImagesList = imageService.findAllByImageId();
 
             Collections.shuffle(foodImagesList);
 
@@ -185,19 +189,21 @@ public class DietPlanController {
             dietPlan.setDate(date);
             dietPlan.setActivity(activity);
             dietPlan.setUser(user);
+            int count=0;
 
             for (FoodImage food:foodImagesList) {
                 double calorie = food.getFood().getCalorie();
-                if (total<=recommendedCalories){
+                if (total<=recommendedCalories&&count<3){
                     total+=calorie;
                     foodInfo.add(food);
                     food.getFood().getDietPlan().add(dietPlan);
                     dietPlan.getFood().add(food.getFood());
+                    count++;
                 }
             }
             dietPlanService.savePlan(dietPlan);
 
-            double netCalories=total-caloriesBurnt;
+            double netCalories=recommendedCalories-caloriesBurnt;
             Map<String,Object> map=new HashMap<>();
             map.put("netCalories",netCalories);
             map.put("foodInfos",foodInfo);
