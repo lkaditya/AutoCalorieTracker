@@ -6,7 +6,7 @@ import sg.edu.iss.app.model.User;
 
 public interface UserService {
 
-    User validateUser(Login login);
+	User validateUser(Login login);
 
     User validateUser(User user);
 

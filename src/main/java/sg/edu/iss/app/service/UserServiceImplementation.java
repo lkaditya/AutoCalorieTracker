@@ -1,6 +1,7 @@
 package sg.edu.iss.app.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import java.lang.Exception;
 import java.time.LocalDate;
 
 @Service
-public class UserServiceImplementation implements UserService {
+public class UserServiceImplementation implements UserService{
 
 	@Autowired
 	private UserRepository userrepo;
@@ -73,7 +74,6 @@ public class UserServiceImplementation implements UserService {
 		return BMR;
 		
 	}
-
 
 	@Override
 	public User validateUser(Login login) {
