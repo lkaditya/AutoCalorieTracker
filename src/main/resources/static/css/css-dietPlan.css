@@ -81,21 +81,18 @@ body {
     margin-bottom: 100px;
 }
 .tableBox{
-    margin-top: 50px;
-    margin-left: 300px;
-    margin-right: 100px;
-    margin-bottom: 50px;
+    alignment: center;
     text-align: center;
     width: 60%;
     font-size: 20px;
 }
 .td1{
+    text-align: center;
     width: 300px;
-
-
 }
 
 .td2{
+    text-align: center;
     color: #E92D1A;
 }
 
@@ -128,6 +125,6 @@ body {
 }
 
 #title{
-    margin-left: 718px;
+    alignment: center;
 }
 

@@ -10,10 +10,6 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}">
 </head>
 <style>
-    #container{
-        height: 1000px;
-        width: 800px;
-    }
 
     #box2{
 
@@ -36,7 +32,7 @@
     #hello{
         margin-left: 1500px;
         height: 50px;
-        MARGIN-TOP: 30PX;
+        MARGIN-TOP: 20PX;
         font-size: 20px;
 
     }
@@ -45,10 +41,11 @@
 <body>
 <header th:insert="layout/layout.html :: header"></header>
 <div th:replace="layout/layout.html :: menu" ></div>
-<DIV id="hello" th:text="${session.user.email}"></DIV>
+<div id="hello" th:text="Welcome+' &nbsp; &nbsp;'+${session.user.email}" align="right" style="margin-right: 25px; font-weight: bold" ></div>
+<h1 style="text-align:center">Daily History</h1>
 <div id="box">
 
-    <div id="main" style="width: 800px;height:400px;" class="bar-chart" align="center"></div>
+    <div id="main" style="height:400px;" class="bar-chart" align="center"></div>
 
 </div>
 
@@ -69,7 +66,7 @@
         option={
             // color: ["#7BC37D"],
             title: {
-                text: 'Weekly Calories'
+                text: '           Calories'
             },
             tooltip: {},
             legend: {
@@ -109,7 +106,7 @@
                 }
             ],
             series: [{
-                name: 'Calories',
+                name: 'Daily Calories',
                 type: 'bar',
                 data: res.data.data.caloriesList,
                 itemStyle: {

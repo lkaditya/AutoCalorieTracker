@@ -15,27 +15,27 @@
 <div th:replace="layout/layout.html :: menu" ></div>
 
 <div id="app">
-    <h2 id="title">Daily Diet Plan</h2>
+    <h2 style="text-align: center">Daily Diet Plan</h2>
 
 
     <div class="tableBox">
 
-        <div id="btnBox">
+        <div id="btnBox" th:align="center">
             <a  class="btn btn-success" @click="handle2" id="leftBtn" >Today</a>
             <a  class="btn btn-info" @click="handle" id="rightBtn"  >Tomorrow</a>
         </div>
-        <table class="table table-bordered" >
+        <table class="table table-bordered"  >
             <tr>
-                <th>Images</th>
-                <th>Calories</th>
+                <th style="text-align: center">Foods</th>
+                <th style="text-align: center">Calories</th>
             </tr>
             <tr v-for="c in tableData">
                 <td class="td1">
-                    <p >{{c.food.name}}</p>
-                    <img :src="c.url" width="200px" height="200px">
+                    <p style="font-weight: bold">{{c.food.name}}</p>
+                    <img :src="c.url" width="150px" height="100px">
                 </td>
                 <td class="td1 td2">
-                    <p>{{c.food.calorie}}</p>
+                    <p >{{c.food.calorie}}</p>
                 </td>
 
             </tr>
@@ -44,40 +44,40 @@
 
 
     <div class="tableBox">
-        <h2>Activity</h2>
+        <h2 style="alignment: left">Activity</h2>
         <table class="table table-bordered" >
             <tr>
                 <td class="td1" v-if="activityName=='Cycling'">
-                    <p >{{activityName}}</p>
-                    <img  th:src="@{/image/activities/Cycling.jpg}" width="200px" height="200px">
+                    <p style="font-weight: bold">{{activityName}}</p>
+                    <img  th:src="@{/image/activities/Cycling.jpg}" width="150px" height="100px">
                 </td>
                 <td class="td1" v-if="activityName=='Fast walking'">
-                    <p >{{activityName}}</p>
-                    <img  th:src="@{/image/activities/Fastwalking.jpg}" width="200px" height="200px">
+                    <p style="font-weight: bold">{{activityName}}</p>
+                    <img  th:src="@{/image/activities/Fastwalking.jpg}" width="150px" height="100px">
                 </td>
                 <td class="td1" v-if="activityName=='Jogging'">
-                    <p >{{activityName}}</p>
-                    <img  th:src="@{/image/activities/Jogging.jpg}" width="200px" height="200px">
+                    <p style="font-weight: bold">{{activityName}}</p>
+                    <img  th:src="@{/image/activities/Jogging.jpg}" width="150px" height="100px">
                 </td>
                 <td class="td1" v-if="activityName=='Running'">
-                    <p >{{activityName}}</p>
-                    <img  th:src="@{/image/activities/Running.jpg}" width="200px" height="200px">
+                    <p style="font-weight: bold">{{activityName}}</p>
+                    <img  th:src="@{/image/activities/Running.jpg}" width="150px" height="100px">
                 </td>
                 <td class="td1" v-if="activityName=='Swimming'">
-                    <p >{{activityName}}</p>
-                    <img  th:src="@{/image/activities/Swimming.jpg}" width="200px" height="200px">
+                    <p style="font-weight: bold">{{activityName}}</p>
+                    <img  th:src="@{/image/activities/Swimming.jpg}" width="150px" height="100px">
                 </td>
                 <td class="td1" v-if="activityName=='Yoga'">
-                    <p >{{activityName}}</p>
-                    <img  th:src="@{/image/activities/Yoga.jpg}" width="200px" height="200px">
+                    <p style="font-weight: bold">{{activityName}}</p>
+                    <img  th:src="@{/image/activities/Yoga.jpg}" width="150px" height="100px">
                 </td>
                 <td class="td1" v-if="activityName=='Office work'">
-                    <p >{{activityName}}</p>
-                    <img  th:src="@{/image/activities/Officework.jpg}" width="200px" height="200px">
+                    <p style="font-weight: bold">{{activityName}}</p>
+                    <img  th:src="@{/image/activities/Officework.jpg}" width="150px" height="100px">
                 </td>
                 <td class="td1" v-if="activityName=='Walking'">
-                    <p >{{activityName}}</p>
-                    <img  th:src="@{/image/activities/Walking.jpg}" width="200px" height="200px">
+                    <p style="font-weight: bold">{{activityName}}</p>
+                    <img  th:src="@{/image/activities/Walking.jpg}" width="150px" height="100px">
                 </td>
                 <td class="td1 td3">
                     <p >{{caloriesBurnt}}</p>
@@ -151,5 +151,5 @@
 </script>
 </body>
 
-<div th:replace="layout/layout.html :: footer"></div>
+<div th:replace="layout/layout.html :: footer" ></div>
 </html>

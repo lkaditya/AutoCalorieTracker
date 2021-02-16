@@ -1,63 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="ISO-8859-1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<head>
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-    </head>
+</head>
 
-    <body>
-        <div th:fragment="header" id="header">
+<body>
+<div th:fragment="header" id="header">
+</div>
+<div th:fragment="menu" id="menu">
+    <div class="header">
+
+            <img th:src="@{/image/logo.png}" th:align="left" style=" margin-left: 10px">
+
+        <div class="menu">
+            <a href="#" th:href="@{/upload/showData}" class="link">
+                <div class="title">Home</div>
+                <div class="bar"></div>
+            </a>
+            <a href="#" th:href="@{/profile/view}" class="link">
+                <div class="title">Profile</div>
+                <div class="bar"></div>
+            </a>
+            <a href="#" th:href="@{/upload/showPlan}" class="link">
+                <div class="title">DietPlan</div>
+                <div class="bar"></div>
+            </a>
+            <a href="#" th:href="@{/upload/extract}" class="link">
+                <div class="title">Upload</div>
+                <div class="bar"></div>
+            </a>
+
+            <a th:href="@{/login}" class="link">
+                <div class="title" id="logout">Logout</div>
+                <div class="bar"></div>
+            </a>
         </div>
-        <div th:fragment="menu" id="menu">
-            <
-            <div class="header">
-                <div class="logo">
-<!--                   <img th:src="${/image/logo2.png}" width="250px" height="70px">-->
-                    ACT
-                </div>
-                <div class="menu">
-                    <a href="#" th:href="@{/upload/showData}" class="link">
-                        <div class="title">Home</div>
-                        <div class="bar"></div>
-                    </a>
-                    <a href="#" th:href="@{/profile/view}" class="link">
-                        <div class="title">Profile</div>
-                        <div class="bar"></div>
-                    </a>
-                    <a href="#" th:href="@{/upload/showPlan}" class="link">
-                        <div class="title">DietPlan</div>
-                        <div class="bar"></div>
-                    </a>
-                    <a href="#" th:href="@{/upload/extract}" class="link">
-                        <div class="title">Upload</div>
-                        <div class="bar"></div>
-                    </a>
-
-<!--                    <a href="#" class="link link2 ">-->
-<!--                        <div th:text="'Hello: '+${session.user.email}">Upload</div>-->
-<!--                        <div class="bar"></div>-->
-<!--                    </a>-->
+    </div>
+</div>
 
 
-                    <a th:href="@{/login}" class="link">
-                        <div class="title" id="logout">Logout</div>
-                        <div class="bar"></div>
-                    </a>
-                </div>
-            </div>
-        </div>
+<footer th:fragment="footer" th:align="center"
+        style="position:fixed; bottom:0px;  height:80px; left:0px; right:0px;
+background-color: white;border-top-width: 3px;border-top-color: #dddddd">
+    <div>
+        <h1>Auto Calorie Tracker</h1>
+        <div>(c) copyright 2021</div>
+    </div>
 
+</footer>
+</body>
 
-        <footer th:fragment="footer" th:align="center"
-                style="position:static; bottom:0px; margin-bottom: -200px; height:80px; left:0px; right:0px;">
-            <div>
-                <h1>Auto Calorie Tracker</h1>
-                <div>(c) copyright 2021</div>
-            </div>
-
-        </footer>
-    </body>
-
-    <script src="/js/layout.js"></script>
+<script src="/js/layout.js"></script>
 </html>
