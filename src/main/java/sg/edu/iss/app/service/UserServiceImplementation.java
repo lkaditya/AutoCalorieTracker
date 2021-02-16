@@ -99,7 +99,7 @@ public class UserServiceImplementation implements UserService {
 		userrepo.save(user);
 	}
 
-	public void updateResetPasswordToken(String token, String email) throws Exception {
+	public void updateResetPasswordToken(String token, String email) throws UsernameNotFoundException {
 		User user = userrepo.findByEmail(email);
 		if (user != null) {
 			user.setResetPasswordToken(token);
