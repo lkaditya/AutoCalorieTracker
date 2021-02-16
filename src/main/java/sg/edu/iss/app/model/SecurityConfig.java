@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -28,11 +29,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
         auth.jdbcAuthentication().dataSource(dataSource)
         .usersByUsernameQuery("select email, password, enabled from user where email=?")
-        .authoritiesByUsernameQuery("select email, 'ROLE_USER' from user where email=?");
-    }
-
-    @Bean public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+        .authoritiesByUsernameQuery("select email, 'ROLE_USER' from user where email=?")
+        auth.jdbcAuthentication().passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Override
