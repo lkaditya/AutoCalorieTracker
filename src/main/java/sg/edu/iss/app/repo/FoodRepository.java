@@ -10,6 +10,8 @@ import sg.edu.iss.app.model.Food;
 
 public interface FoodRepository extends JpaRepository<Food, Long> {
 
+	List<Food> findAll();
+	
 	@Query("Select x from Food x where x.name =:name")
 	Food findFoodByName(@Param("name") String name);
 	
