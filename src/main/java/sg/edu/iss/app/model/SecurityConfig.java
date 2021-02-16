@@ -17,6 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 @EnableWebSecurity
@@ -28,9 +30,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
         auth.jdbcAuthentication().dataSource(dataSource)
+                .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder())
         .usersByUsernameQuery("select email, password, enabled from user where email=?")
         .authoritiesByUsernameQuery("select email, 'ROLE_USER' from user where email=?");
-        auth.jdbcAuthentication().passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Override
