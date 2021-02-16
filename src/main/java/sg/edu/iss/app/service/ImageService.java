@@ -22,4 +22,6 @@ public interface ImageService {
 	public void updateImage(Long id1, String name, double cal);
 	
 	public int findTotalCaloriesByDailyHistoryId(long id);
+	
+	public FoodImage findImageById(Long id);
 }

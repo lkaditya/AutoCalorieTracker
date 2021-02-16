@@ -222,21 +222,32 @@ public class DietPlanController {
         Random random=new Random();
         List<FoodImage> foodInfo=new ArrayList<>();
     	List<Food> listOfFood = foodService.findAll();
+    	Map<String,Object> map=new HashMap<>();
         
     	//check for existing plan
     	DietPlan plan = null;
     	try {
             plan = dietPlanService.findByDate(date1, user.getId());
-
         }catch (Exception e){
-            System.out.println("");
+            System.out.println(e);
         }
     	
     	//if there is existing dietplan
         if (!(plan==null)){
-            Activity activity = plan.getActivity();
-            List<Food> foodList = plan.getFood();
-            return null;
+        	
+        	Activity activity = plan.getActivity();
+        	List<Food> dietPlanFoods = plan.getFood();
+        	List<FoodImage> resultFoodImages = new ArrayList<>();
+        	
+        	for(Food food : dietPlanFoods) {
+        		resultFoodImages.add(imageService.findImageById(food.getId()));
+        	}
+        	
+        	//update map to send to front end
+        	map.put("activity",activity);
+            map.put("resultFoodImages",resultFoodImages);
+            
+            return map;
         } else { //if there is no existing dietplan, create dietplan
         	//create new diet plan
             DietPlan dietPlan=new DietPlan();
@@ -256,15 +267,14 @@ public class DietPlanController {
             dietPlan.setUser(user);
             
             
-//          pick 3 items from food, no repeats
+//          pick 3 numbers from food, no repeats, no crossing recommended calories
         	int maxNumberOfItems = 3;
         	int itemCounter = 0;
         	int CaloriesCounter = 0;
         	int min = 1;
         	int max = listOfFood.size();
         	List<Integer> resultFood = new ArrayList<>();
-        	
-        	while(itemCounter < maxNumberOfItems && CaloriesCounter < recommendedCalories) {
+        	        	while(itemCounter < maxNumberOfItems && CaloriesCounter < recommendedCalories) {
         		int ran = (int) (Math.random()*(max-min+1) + min);
         		int calorie = (int)listOfFood.get(ran-1).getCalorie();
         		
@@ -274,61 +284,25 @@ public class DietPlanController {
             		itemCounter++;
         		}
         	}
-            
-//            for (FoodImage food:foodImagesList) {
-//                double calorie = food.getFood().getCalorie();
-//                if (total<=recommendedCalories){
-//                    total+=calorie;
-//                    foodInfo.add(food);
-//                    food.getFood().getDietPlan().add(dietPlan);
-//                    dietPlan.getFood().add(food.getFood());
-//                }
-//            }
-            dietPlanService.savePlan(dietPlan);
-            Map<String,Object> map=new HashMap<>();
-//            map.put("netCalories",netCalories);
-            map.put("foodInfos",foodInfo);
+        	        	
+        	//get foodimages
+        	List<FoodImage> resultFoodImages = new ArrayList<>();
+        	for (int i : resultFood) {
+	    		//get food
+	    		FoodImage food = imageService.findImageById((long)i);
+	    		System.out.println(food.getId());
+	    		resultFoodImages.add(food);
+	    		food.getFood().getDietPlan().add(dietPlan);
+	    		dietPlan.getFood().add(food.getFood());
+	    		dietPlanService.savePlan(dietPlan);
+        	}
+        	
+            //update map to send to front end
+            map.put("resultFoodImages",resultFoodImages);
             map.put("activity",activity);
             
             return map;
         }
-    	//get recommended calories
-
-//    	int recommendedCalories = (int)(user.getRecommendedCalories());
-    	
-
-//
-//    	//pick 3 items from food, no repeats
-//    	int maxNumberOfItems = 3;
-//    	int itemCounter = 0;
-//    	int CaloriesCounter = 0;
-//    	int min = 1;
-//    	int max = listOfFood.size();
-//    	List<Integer> resultFood = new ArrayList<>();
-//    	
-//    	while(itemCounter < maxNumberOfItems && CaloriesCounter < recommendedCalories) {
-//    		int ran = (int) (Math.random()*(max-min+1) + min);
-//    		int calorie = (int)listOfFood.get(ran-1).getCalorie();
-//    		
-//    		if(CaloriesCounter+calorie < recommendedCalories && !result.contains(ran)){
-//    			CaloriesCounter += calorie;
-//    			resultFood.add(ran);
-//        		itemCounter++;
-//    		}
-//    	}
-//    	
-//    	for (int i : resultFood) {
-//    		System.out.println(i);
-//    	}
-//    	
-//    	//return
-//    	List<FoodImage> resultFoodImages = new ArrayList<>();
-//    	for (int i : resultFood) {
-//    		resultFoodImages.add(imageService)
-//    	}
-    	
-    	
-//    	imageService.findAllUniqueByCalories()
     }
     
     
