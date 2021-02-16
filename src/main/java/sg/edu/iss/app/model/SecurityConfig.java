@@ -25,15 +25,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
+        auth.jdbcAuthentication().passwordEncoder(new BCryptPasswordEncoder());
         auth.jdbcAuthentication().dataSource(dataSource)
         .usersByUsernameQuery("select email, password, enabled from user where email=?")
         .authoritiesByUsernameQuery("select email, 'ROLE_USER' from user where email=?");
-        auth.inMemoryAuthentication().withUser("email").roles("USER").password("{noop}password");
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
     @Override
