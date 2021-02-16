@@ -21,18 +21,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
-    @Bean
-    @ConfigurationProperties("spring.database")
-    public DataSource ds(){
-        return DataSourceBuilder.create().build();
-    }
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-        auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("select email, password where email=?");
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
