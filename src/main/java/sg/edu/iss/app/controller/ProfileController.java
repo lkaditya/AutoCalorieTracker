@@ -24,9 +24,6 @@ public class ProfileController {
     public ModelAndView Profile(HttpServletRequest request, HttpServletResponse response, HttpSession session){
         ModelAndView view = new ModelAndView("profile");
         User user = (User)session.getAttribute("user");
-//        System.out.println("user email is"+user.getEmail());
-//        System.out.println("user height is " + user.getHeight());
-        
         view.addObject("user", user);
 
         return view;
@@ -44,16 +41,8 @@ public class ProfileController {
     @RequestMapping(value = "/profile/save", method = RequestMethod.POST)
     public ModelAndView updateProfile(@ModelAttribute("user") User user, HttpSession session) {
     	ModelAndView view = new ModelAndView("editProfile");
-        //user = (User)session.getAttribute("user");
         view.addObject("user", user);
-        //user = userService.findUserByEmail(user.getEmail());
-        //user.setActivityLevel(user.getActivityLevel());
-        //user.setBirthYear(user.getBirthYear());
-        //user.setGender(user.getGender());
-        //user.setHeight(user.getHeight());
-        //user.setWeight(user.getWeight());
         userService.saveUser(user);
-        System.out.println(user + " " + user.getEmail());
         return view;
 
     }
