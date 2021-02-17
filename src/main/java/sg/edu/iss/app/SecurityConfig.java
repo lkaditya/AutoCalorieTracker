@@ -1,4 +1,4 @@
-package sg.edu.iss.app.model;
+package sg.edu.iss.app;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import sg.edu.iss.app.service.MyUserDetailsService;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -27,19 +28,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource dataSource;
 
-    @Autowired
+
+    /*@Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
         auth.jdbcAuthentication().dataSource(dataSource)
-                .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder())
         .usersByUsernameQuery("select email, password, enabled from user where email=?")
         .authoritiesByUsernameQuery("select email, 'ROLE_USER' from user where email=?");
-    }
+    }*/
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/", "/login","/register", "/forgot_password").permitAll()
+                    .antMatchers("/", "/login","/register", "/registerProcess", "/forgot_password").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
