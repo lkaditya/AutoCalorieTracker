@@ -19,12 +19,6 @@
     <beans:bean id="myUserDetailsService"
           class="sg.edu.iss.app.MyUserDetailsService"/>
 
-    <beans:bean id="passwordEncoder"
-          class="org.springframework.security
-  .crypto.bcrypt.BCryptPasswordEncoder">
-        <beans:constructor-arg value="11"/>
-    </beans:bean>
-
     <authentication-manager>
         <authentication-provider
                 user-service-ref="myUserDetailsService" >

@@ -23,7 +23,7 @@ public class MyUserPrincipal implements UserDetails {
     }
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return "{noop}"+user.getPassword();
     }
 
     @Override
@@ -49,5 +49,9 @@ public class MyUserPrincipal implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+    
+    public User getUser() {
+    	return user;
     }
 }

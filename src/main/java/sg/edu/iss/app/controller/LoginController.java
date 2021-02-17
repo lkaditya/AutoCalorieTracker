@@ -1,13 +1,16 @@
 package sg.edu.iss.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import sg.edu.iss.app.model.Login;
 import sg.edu.iss.app.model.User;
+import sg.edu.iss.app.service.MyUserPrincipal;
 import sg.edu.iss.app.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,37 +24,30 @@ public class LoginController {
 	UserService userService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView showIndex(HttpServletRequest request, HttpServletResponse response){
-		return showLogin(request, response);
+	@ResponseBody
+	public ModelAndView showIndex(Authentication auth, HttpSession session){
+		if(auth==null) return new ModelAndView("redirect:login");
+		else {
+			MyUserPrincipal principal = (MyUserPrincipal)(auth.getPrincipal());
+			User user = principal.getUser();
+			if(user==null) {
+				System.err.println("User is null!");
+				return new ModelAndView("redirect:login");
+			} else {
+				System.out.println("Obtained details for " + user.getEmail());
+				ModelAndView view = new ModelAndView("mainPage");
+				view.addObject("user", user);
+				//user = userService.findUserByEmail(user.getEmail());
+				session.setAttribute("user", user);
+				return view;
+			}			
+		}		
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response){
 		ModelAndView view = new ModelAndView("Login");
 		view.addObject("User", new User());
-		return view;
-	}
-
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView loginProcess(HttpServletRequest request,
-									 HttpServletResponse response,
-									 Login login,
-									 @ModelAttribute("user") User user,
-									 HttpSession session){
-		ModelAndView view;
-		user = userService.validateUser(login);
-
-		if (user != null) {
-			view = new ModelAndView("mainPage");
-			view.addObject("user", user);
-			user = userService.findUserByEmail(user.getEmail());
-			session.setAttribute("user", user);
-		}
-		else
-		{
-			view = new ModelAndView("login");
-			view.addObject("errorMessage", "Username or Password is wrong!");
-		}
 		return view;
 	}
 
