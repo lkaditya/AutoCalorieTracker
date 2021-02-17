@@ -46,15 +46,14 @@ public class ProfileController {
     	ModelAndView view = new ModelAndView("editProfile");
         //user = (User)session.getAttribute("user");
         view.addObject("user", user);
-        User user2 = userService.findUserByEmail(user.getEmail());
-        user2.setId(user.getId());
-        user2.setActivityLevel(user.getActivityLevel());
-        user2.setBirthYear(user.getBirthYear());
-        user2.setGender(user.getGender());
-        user2.setHeight(user.getHeight());
-        user2.setWeight(user.getWeight());
-        userService.saveUser(user2);
-        System.out.println(user2 + " " + user2.getEmail());
+        //user = userService.findUserByEmail(user.getEmail());
+        //user.setActivityLevel(user.getActivityLevel());
+        //user.setBirthYear(user.getBirthYear());
+        //user.setGender(user.getGender());
+        //user.setHeight(user.getHeight());
+        //user.setWeight(user.getWeight());
+        userService.saveUser(user);
+        System.out.println(user + " " + user.getEmail());
         return view;
 
     }

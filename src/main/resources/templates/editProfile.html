@@ -109,6 +109,9 @@ form
 <div class="form">
 <form th:action="@{/profile/save}" method="post" th:Object="${user}">
     <h1 style="text-align:center">Edit Profile</h1>
+    <fieldset>
+        <input type="hidden" th:field="*{Id}" />
+    </fieldset>
     <div class="form-group">
         <input type="text" class="form-control" name="gender" placeholder="Gender"  th:field="*{gender}" readonly>
     </div>
