@@ -23,7 +23,7 @@ public class DietPlan {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToMany(mappedBy="dietPlan")
+	@ManyToMany
 	@JsonIgnore
 	private List<Food> food=new ArrayList<>();
 	private LocalDate date;
