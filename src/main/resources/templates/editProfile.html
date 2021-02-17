@@ -96,7 +96,7 @@ form
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
+    text-align: left;
     width:40%;
 }
 
@@ -113,19 +113,23 @@ form
         <input type="hidden" th:field="*{Id}" />
     </fieldset>
     <div class="form-group">
-        <label for="gender" id="gender"> Gender :</label>
+        <label>Gender:</label>
         <input type="text" class="form-control" name="gender" placeholder="Gender"  th:field="*{gender}" readonly>
     </div>
     <div class="form-group">
+        <label>Birth Year</label>
         <input type="text" class="form-control" name="birthYear" placeholder="birthYear"  th:field="*{birthYear}" readonly>
     </div>
     <div class="form-group">
+        <label>Height</label>
         <input type="number" class="form-control" name="height" placeholder="Height"  th:field="*{height}">
     </div>
     <div class="form-group">
+        <label>Weight</label>
         <input type="number" class="form-control" name="weight" placeholder="Weight"  th:field="*{weight}" >
     </div>
     <div class="form-group">
+        <label>Email</label>
         <input type="email" class="form-control" name="email" placeholder="Email"  th:field="*{email}">
     </div>
     <div class="form-group">
