@@ -56,10 +56,6 @@ body {
 
 #img1 {
 
-    margin-left: 10px;
-    margin-bottom: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
     width: 20px;
     height: 20px;
     float: left;
@@ -77,7 +73,6 @@ body {
 }
 
 #container{
-    margin-left: 414px;
     margin-bottom: 100px;
 }
 .tableBox{
@@ -85,6 +80,7 @@ body {
     text-align: center;
     width: 60%;
     font-size: 20px;
+    margin: 0 auto;
 }
 .td1{
     text-align: center;

@@ -53,8 +53,12 @@ body {
     background-color: #fff;
 
 }
-#box{
 
+
+#box{
+    alignment: center;
+    width: 80%;
+    margin: 0 auto;
     /*margin:70px 312px;*/
 
 }
@@ -65,7 +69,13 @@ body {
 }
 
 #container{
-    margin-left: 420px;
-    margin-bottom: 100px;
+    /*margin-bottom: 100px;*/
+    alignment: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#img{
+    margin-bottom: 60px;
 }
 
