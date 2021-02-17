@@ -2,21 +2,28 @@ package sg.edu.iss.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import sg.edu.iss.app.model.User;
+import sg.edu.iss.app.service.MailService;
 import sg.edu.iss.app.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.UUID;
 
 @Controller
 public class RegistrationController {
     @Autowired
     public UserService userService;
+
+    @Autowired
+    private MailService mailservice;
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response){
@@ -33,4 +40,37 @@ public class RegistrationController {
         session.setAttribute("user", user);
         return new ModelAndView("mainPage");
     }
+
+
+    @RequestMapping("/showResetPage")
+    public String resetPassword(Model model){
+        return "resetPassword";
+    }
+
+
+    @RequestMapping("/reset")
+    public String sendTempPassword(@RequestParam("email")String email,Model model) {
+
+        User user=userService.findUserByEmail(email);
+        if (user==null){
+            model.addAttribute("message","Email doesn't exist" );
+            return "resetPassword";
+        }
+
+        System.out.println(user.getPassword());
+        UUID uuid = UUID.randomUUID();
+        String tempPass="passTemp"+uuid.toString();
+        user.setPassword(tempPass);
+        System.out.println(user.getPassword());
+        userService.saveUser(user);
+
+        String text="Please use this temporary password to login for resetting your password \n";
+        text+="email : "+email;
+        text+="\n password : "+tempPass;
+        //send email
+        mailservice.sendSimpleMail(email, "Reset Password Query", text);
+
+        return "login";
+    }
+
 }
