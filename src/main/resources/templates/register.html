@@ -93,8 +93,8 @@
             <input type="password" class="form-control" name="password" placeholder="Password" required="required" th:field="*{password}">
         </div>
         <div class="form-group">
-            <label for="birthYear">Select Birth Year</label>
-            <select id="birthYear" name="birthYear" placeholder="Birth Year" required="required" th:field="*{birthYear}">
+            <label for="userDetails">Select Birth Year</label>
+            <select id="userDetails" name="birthYear" placeholder="Birth Year" required="required" th:field="*{birthYear}">
                 <option value="birthYear"> Select birth Year</option>
                 <option th:each="year: ${strArray}"
                         th:value="${year}"
@@ -102,14 +102,14 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="gender" select id="gender">Select Gender</label>
+            <label for="userDetails">Select Gender</label>
             <label for="male" style = "display:inline-block;"> <img th:src="@{/image/m2.png}"> Male </label>
             <input type="radio" id="male" name="male" value="MALE" required="required" th:field="*{gender}">
             <label for="female" style = "display:inline-block;"> <img th:src="@{/image/female.png}"> Female </label>
             <input type="radio" id="female" name="female" value="FEMALE" required="required" th:field="*{gender}">
         </div>
         <div class="form-group">
-            <label for="height" id="height">Select Height Category</label>
+            <label for="userDetails">Select Height Category</label>
             <label for="height1" style = "display:inline-block;"> <img th:src="@{/image/m2.png}"> <160cm </label>
             <input type="radio" id="height1" name="height" value="155" required="required" th:field="*{height}">
             <label for="height2" style = "display:inline-block;"> <img th:src="@{/image/m2.png}"> 160cm-175cm</label>
@@ -118,7 +118,7 @@
             <input type="radio" id="height3" name="height" value="175" required="required" th:field="*{height}">
         </div>
         <div class="form-group">
-            <label for="weight" id="weight">Select Weight Category</label>
+            <label for="userDetails">Select Weight Category</label>
             <label for="weight1" style = "display:inline-block;"> <img th:src="@{/image/m1.png}"> <60kg </label>
             <input type="radio" id="weight1" name="weight" value="55" required="required" th:field="*{weight}">
             <label for="weight2" style = "display:inline-block;"> <img th:src="@{/image/m2.png}"> 60kg-75kg </label>
@@ -127,7 +127,7 @@
             <input type="radio" id="weight3" name="weight" value="80" required="required" th:field="*{weight}">
         </div>
         <div class="form-group">
-            <label for="activityLevel" id="activityLevel">Select Activity Level</label>
+            <label for="userDetails">Select Activity Level</label>
             <label for="Sedentary"> Sedentary </label>
             <input type="radio" id="Sedentary" name="sedentary" value="Sedentary" required="required" th:field="*{activityLevel}">
             <label for="Moderate"> Moderate</label>
