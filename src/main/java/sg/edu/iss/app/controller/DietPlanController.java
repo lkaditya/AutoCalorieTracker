@@ -172,17 +172,20 @@ public class DietPlanController {
         dietPlan.setActivity(activity);
         dietPlan.setUser(user);
         int count = 0;
-
+        List<Food>fl=new ArrayList<Food>();
         for (FoodImage food : foodImagesList) {
             double calorie = food.getFood().getCalorie();
             if (total <= recommendedCalories && count < 3) {
                 total += calorie;
                 foodInfo.add(food);
                 food.getFood().getDietPlan().add(dietPlan);
+                fl.add(food.getFood());
+                System.out.println("food accepted= "+food.getFood().getName());
                 dietPlan.getFood().add(food.getFood());
                 count++;
             }
         }
+        dietPlan.setFood(fl);
         dietPlanService.savePlan(dietPlan);
 
         double netCalories = total - caloriesBurnt;
@@ -205,7 +208,7 @@ public class DietPlanController {
         if(todaydiet==null) {
 
             todaydiet=(DietPlan)createDietPlan(date1,user).get("dietPlan");
-            todaydiet.getFood();
+            //todaydiet.getFood();
         }
         doubleplan.add(todaydiet);
         DietPlan tomorrowdiet = dietPlanService.findByDate(date2, user.getId());

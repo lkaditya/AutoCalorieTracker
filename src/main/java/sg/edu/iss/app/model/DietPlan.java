@@ -24,7 +24,6 @@ public class DietPlan {
 	private Long id;
 	
 	@ManyToMany
-	@JsonIgnore
 	private List<Food> food=new ArrayList<>();
 	private LocalDate date;
 	
