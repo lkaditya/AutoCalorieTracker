@@ -39,27 +39,30 @@
     </div>
 
 
-   <div id="tableBox" align="center">
-       <table class="table table-bordered" style="font-size: 20px" >
-           <tr>
-               <th>Images</th>
-               <th>FoodName</th>
-               <th>Calories</th>
-           </tr>
-           <tr th:each="foodInfo:${foodInfos}">
-               <td>
-                   <img th:src="${foodInfo.foodImage}">
-               </td>
-               <td>
-                   <p th:text="${foodInfo.foodName}"></p>
-               </td>
-               <td>
-                   <p th:text="${foodInfo.foodCalories}+' Calories'">20</p>
-               </td>
+  <div align="center">
+      <div class="tableBox" align="center">
+          <table class="table table-bordered" style="font-size: 20px" align="center" >
+              <tr>
+                  <th>Images</th>
+                  <th>FoodName</th>
+                  <th>Calories</th>
+              </tr>
+              <tr th:each="foodInfo:${foodInfos}">
+                  <td>
+                      <img th:src="${foodInfo.foodImage}">
+                  </td>
+                  <td>
+                      <p th:text="${foodInfo.foodName}"></p>
+                  </td>
+                  <td>
+                      <p th:text="${foodInfo.foodCalories}+' Calories'">20</p>
+                  </td>
 
-           </tr>
-       </table>
-   </div>
+              </tr>
+          </table>
+      </div>
+  </div>
+
 
 <div th:replace="layout/layout.html :: footer"></div>
 </body>

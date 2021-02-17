@@ -90,11 +90,13 @@ body {
 /*    margin-left: 20px;*/
 /*}*/
 
-#tableBox{
-    width: 1350px;
-    margin-left: 100px;
+.tableBox{
     margin-top: 50px;
 
+    margin-bottom: 50px;
+    text-align: center;
+    width: 60%;
+    font-size: 20px;
 }
 td{
     width: 100px;

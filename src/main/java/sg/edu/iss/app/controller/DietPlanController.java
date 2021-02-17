@@ -56,7 +56,7 @@ public class DietPlanController {
                 total+=calorie;
             }
             double caloriesBurnt = activity.getCaloriesBurnt();
-            double netCalories=recommendedCalories-caloriesBurnt;
+            double netCalories=total-caloriesBurnt;
 
 
 
@@ -107,7 +107,7 @@ public class DietPlanController {
             dietPlanService.savePlan(dietPlan);
 
 
-            double netCalories=recommendedCalories-caloriesBurnt;
+            double netCalories=total-caloriesBurnt;
             Map<String,Object> map=new HashMap<>();
             map.put("foodInfos",foodInfo);
             map.put("activity",activity);
@@ -152,7 +152,7 @@ public class DietPlanController {
                 total+=calorie;
             }
             double caloriesBurnt = activity.getCaloriesBurnt();
-            double netCalories=recommendedCalories-caloriesBurnt;
+            double netCalories=total-caloriesBurnt;
             model.addAttribute("netCalories",netCalories);
 
 
@@ -203,7 +203,7 @@ public class DietPlanController {
             }
             dietPlanService.savePlan(dietPlan);
 
-            double netCalories=recommendedCalories-caloriesBurnt;
+            double netCalories=total-caloriesBurnt;
             Map<String,Object> map=new HashMap<>();
             map.put("netCalories",netCalories);
             map.put("foodInfos",foodInfo);
