@@ -1,8 +1,11 @@
 package sg.edu.iss.app.controller;
 
+import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,23 +35,23 @@ public class ProfileController {
         return view;
     }
     
-    @RequestMapping(value = "/profile/edit", method = RequestMethod.GET)
-    public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+    @RequestMapping(value = "/profile/edit/{id}")
+    public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, HttpSession session,@PathVariable("id") Long id) {
         ModelAndView view = new ModelAndView("editProfile");
-        User user = (User)session.getAttribute("user");
+        User user = userService.findById(id);
         view.addObject("user", user);
 
         return view;
     }
+
     
     @RequestMapping(value = "/profile/save", method = RequestMethod.POST)
-    public ModelAndView updateProfile(@ModelAttribute("user") User user, HttpSession session) {
-        ModelAndView view = new ModelAndView("editProfile");
-        userService.saveUser(user);
-        user = (User)session.getAttribute("user");
-        view.addObject("user", user);
-        return new ModelAndView("profile", "user", user.getEmail());
+    public String updateProfile(@ModelAttribute("user") User user, HttpSession session, Model model) {
 
+        userService.saveUser(user);
+        user = userService.findById(user.getId());
+        model.addAttribute("user",user);
+        return "profile";
     }
 
 }
