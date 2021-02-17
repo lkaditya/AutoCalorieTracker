@@ -66,17 +66,5 @@ public class User {
 		this.email = email;
 		this.reminderCalories = reminderCalories;
 	}
-	
-	@Override
-	   public boolean equals(Object o) {
-	       if (this == o) return true;
-	       if (!(o instanceof User)) return false;
-	     
-	       User otherUser = (User) o;
-	     
-	       return getEmail()==otherUser.getEmail();
-
-	   }
-
 }
 
