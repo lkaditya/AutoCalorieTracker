@@ -22,7 +22,6 @@ public class Login {
     }
 
     public Login() {
-
     }
 
     public String getUsername() {

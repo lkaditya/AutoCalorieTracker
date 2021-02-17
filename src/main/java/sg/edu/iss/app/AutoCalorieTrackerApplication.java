@@ -10,5 +10,4 @@ public class AutoCalorieTrackerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AutoCalorieTrackerApplication.class, args);
 	}
-
 }

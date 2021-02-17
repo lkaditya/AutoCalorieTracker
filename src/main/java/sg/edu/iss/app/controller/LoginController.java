@@ -58,9 +58,4 @@ public class LoginController {
 		view.addObject("logoutMessage","You have successfully logged out");
 		return view;
 	}
-
-	public LoginController() {
-		// TODO Auto-generated constructor stub
-	}
-
 }

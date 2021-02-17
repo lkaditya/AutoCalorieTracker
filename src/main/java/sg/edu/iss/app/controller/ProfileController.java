@@ -25,7 +25,6 @@ public class ProfileController {
         ModelAndView view = new ModelAndView("profile");
         User user = (User)session.getAttribute("user");
         view.addObject("user", user);
-
         return view;
     }
     
@@ -34,7 +33,6 @@ public class ProfileController {
         ModelAndView view = new ModelAndView("editProfile");
         User user = (User)session.getAttribute("user");
         view.addObject("user", user);
-
         return view;
     }
     
@@ -44,7 +42,6 @@ public class ProfileController {
         view.addObject("user", user);
         userService.saveUser(user);
         return view;
-
     }
 
 }

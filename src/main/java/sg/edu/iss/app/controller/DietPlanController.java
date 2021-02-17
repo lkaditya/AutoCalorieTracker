@@ -213,10 +213,6 @@ public class DietPlanController {
             data.setData(map);
             return data;
 
-
-
-
-
         }
 
 
