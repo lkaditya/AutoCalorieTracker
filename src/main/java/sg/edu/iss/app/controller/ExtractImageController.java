@@ -45,7 +45,17 @@ public class ExtractImageController {
             System.out.println("");
         }
 
-        model.addAttribute("foodInfos",foodInfos);
+        List<FoodInfo> foodInfoList=new ArrayList<>();
+
+        for (FoodInfo foodInfo : foodInfos) {
+            String foodCalories = foodInfo.getFoodCalories();
+            if (!foodCalories.equals("NOT FOUND")){
+                foodInfoList.add(foodInfo);
+            }
+        }
+
+
+        model.addAttribute("foodInfos",foodInfoList);
         model.addAttribute("url",url);
 
         return "upload";

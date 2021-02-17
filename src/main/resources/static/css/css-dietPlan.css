@@ -76,14 +76,13 @@ body {
     margin: -21px 5px;
 }
 
-#container{
-    margin-left: 414px;
-    margin-bottom: 100px;
-}
+/*#container{*/
+/*    margin-left: 414px;*/
+/*    margin-bottom: 100px;*/
+/*}*/
 .tableBox{
     margin-top: 50px;
-    margin-left: 300px;
-    margin-right: 100px;
+
     margin-bottom: 50px;
     text-align: center;
     width: 60%;
@@ -115,8 +114,8 @@ body {
     text-align: center;
 }
 #btnBox{
-    margin-left: 0px;
-    margin-right: auto;
+    /*margin-left: 0px;*/
+    /*margin-right: auto;*/
     margin-top: 50px;
     margin-bottom: 20px;
 }
@@ -127,7 +126,7 @@ body {
     margin-bottom: 100px;
 }
 
-#title{
-    margin-left: 718px;
-}
+/*#title{*/
+/*    margin-left: 718px;*/
+/*}*/
 

@@ -14,25 +14,32 @@
 <div th:replace="layout/layout.html :: menu" ></div>
 
 
-<div id="title2">
+    <div id="title2" align="center">
         <h1>Key in your image url</h1>
         <h1>Know your calories</h1>
     </div>
 
-    <div id="formbox">
-        <form method="post" action="/upload/extract" id="form">
+    <div id="formbox" align="center" style="width:100%;text-align:center">
 
-            <div class="col-xs-4" id="inputBox">
-                    <input type="text" class="form-control" th:value="${url}" name="url">
+
+<!--            <div class="col-xs-4" id="inputBox" >-->
+
+<!--            </div>-->
+<!--            <div >-->
+
+<!--            </div>-->
+<!--        </form>-->
+        <form method="post" action="/upload/extract" id="form" class="form-horizontal">
+            <div class="form-group" align="center">
+                <input type="text" class="form-control"  id="exampleInputName2" th:value="${url}" name="url" style="width: 300px;" >
             </div>
-            <div>
-                <button type="submit" class="btn btn-primary" id="submit">SHOW IMAGES AND CALCULATE THE CALORIES</button>
-            </div>
+
+            <button type="submit" class="btn btn-primary" id="submit">SHOW IMAGES AND CALCULATE THE CALORIES</button>
         </form>
     </div>
 
 
-   <div id="tableBox">
+   <div id="tableBox" align="center">
        <table class="table table-bordered" style="font-size: 20px" >
            <tr>
                <th>Images</th>

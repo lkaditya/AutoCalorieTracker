@@ -32,7 +32,11 @@
         transition: border .2s ease-in-out;
         height: 300px;
     }
-
+    .thumbnail>img {
+        display: block;
+        max-width: 100%;
+        height: 126px;
+    }
     #hello{
         margin-left: 1500px;
         height: 50px;
@@ -45,8 +49,8 @@
 <body>
 <header th:insert="layout/layout.html :: header"></header>
 <div th:replace="layout/layout.html :: menu" ></div>
-<DIV id="hello" th:text="${session.user.email}"></DIV>
-<div id="box">
+<DIV id="hello" th:text="${session.user.email}" align="right"></DIV>
+<div id="box" align="center">
 
     <div id="main" style="width: 800px;height:400px;" class="bar-chart" align="center"></div>
 
