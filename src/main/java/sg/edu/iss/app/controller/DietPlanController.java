@@ -1,21 +1,34 @@
 package sg.edu.iss.app.controller;
 
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import sg.edu.iss.app.model.*;
-import sg.edu.iss.app.service.*;
 
-import javax.servlet.http.HttpSession;
-import javax.xml.crypto.Data;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
+import sg.edu.iss.app.model.Activity;
+import sg.edu.iss.app.model.BarChartData;
+import sg.edu.iss.app.model.DietPlan;
+import sg.edu.iss.app.model.Food;
+import sg.edu.iss.app.model.FoodImage;
+import sg.edu.iss.app.model.User;
+import sg.edu.iss.app.service.ActivityService;
+import sg.edu.iss.app.service.DietPlanService;
+import sg.edu.iss.app.service.FoodService;
+import sg.edu.iss.app.service.ImageService;
+import sg.edu.iss.app.service.UserService;
 
 @RestController
 @RequestMapping("/plan")
@@ -311,5 +324,83 @@ public class DietPlanController {
         }
     }
     
+    @RequestMapping("/showPlanAndroid")
+    public List<DietPlan> showPlan(@RequestParam("date")String date,@RequestParam("email")String email){
+    	User user = userService.findUserByEmail(email);
+    	DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    	LocalDate date1=LocalDate.parse(date,df);
+    	LocalDate date2=date1.plusDays(1);
+    	List<DietPlan>doubleplan= new ArrayList<DietPlan>();
+    	DietPlan todaydiet = dietPlanService.findByDate(date1, user.getId());
+    	if(todaydiet==null) {
+    		todaydiet=createDietPlan(date1,user);
+    	}
+    	doubleplan.add(todaydiet);
+    	DietPlan tomorrowdiet = dietPlanService.findByDate(date2, user.getId());
+    	if(tomorrowdiet==null) {
+    		tomorrowdiet=createDietPlan(date2,user);
+    	}
+    	doubleplan.add(tomorrowdiet);
+    	return doubleplan;
+    }
+    
+    public DietPlan createDietPlan(LocalDate date,User user) {
+    	DietPlan dietPlan= new DietPlan();
+    	List<Food> listOfFood=foodService.findAll();
+    	
+        List<FoodImage> foodImagesList = imageService.findAllByImageId();
+
+        Collections.shuffle(foodImagesList);
+
+        double total=0.0;
+        
+        double recommendedCalories = user.getRecommendedCalories();
+        
+        //add activity in dietplan
+        List<Activity> activities = activityService.findAll();
+        
+        
+        //should we use random activity here???
+        Random random=new Random();
+        int randomNum = random.nextInt(activities.size());
+        Activity activity = activities.get(randomNum);
+        double caloriesBurnt = activity.getCaloriesBurnt();
+        
+        dietPlan.setDate(date);
+        dietPlan.setActivity(activity);
+        dietPlan.setUser(user);
+       
+//        int count=0;
+//        for (FoodImage food:foodImagesList) {
+//            double calorie = food.getFood().getCalorie();
+//            if (total<=recommendedCalories&&count<5){
+//                total+=calorie;
+//                food.getFood().getDietPlan().add(dietPlan);
+//                dietPlan.getFood().add(food.getFood());
+//                count++;
+//            }
+//        }
+        
+        int count=0;
+        List<Food>dietfood= new ArrayList<Food>();
+        for (Food food:listOfFood) {
+            double calorie = food.getCalorie();
+            if (total<=recommendedCalories+caloriesBurnt&&count<5){
+                total+=calorie;
+                food.getDietPlan().add(dietPlan);
+                List<FoodImage> fi = new ArrayList<FoodImage>(); 
+                		fi.add(imageService.findImageById(food.getId()));
+                food.setFoodImage(fi);
+                dietfood.add(food);
+                
+               
+                count++;
+            }
+        }
+        dietPlan.setFood(dietfood);
+        dietPlanService.savePlan(dietPlan);
+    	
+    	return dietPlan;
+    }
     
 }

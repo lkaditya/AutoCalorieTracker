@@ -24,7 +24,8 @@ public class Food {
 	private String name;
 	private double calorie;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="food")
+	@JsonIgnore
 	private List<DietPlan> dietPlan=new ArrayList<>();
 
 	public Food() {

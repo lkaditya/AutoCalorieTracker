@@ -1,34 +1,34 @@
-#activity
-#id, activity_level, activity_name, calories_burnt (per hour)
-INSERT INTO activity VALUES (1, "Office work", 140);
-INSERT INTO activity VALUES (2, "Walking", 180);
-INSERT INTO activity VALUES (3, "Yoga", 280);
-INSERT INTO activity VALUES (4, "Fast walking", 280);
-INSERT INTO activity VALUES (5, "Cycling", 480);
-INSERT INTO activity VALUES (6, "Swimming", 620);
-INSERT INTO activity VALUES (7, "Jogging", 700);
-INSERT INTO activity VALUES (8, "Running", 900);
+/*activity (from myfitnesspal)
+#id, activity_level, activity_name, calories_burnt (per hour)*/
+INSERT INTO activity VALUES (1, "Office work", 100);
+INSERT INTO activity VALUES (2, "Walking", 170);
+INSERT INTO activity VALUES (3, "Yoga", 170);
+INSERT INTO activity VALUES (4, "Fast walking", 258);
+INSERT INTO activity VALUES (5, "Cycling", 408);
+INSERT INTO activity VALUES (6, "Swimming", 476);
+INSERT INTO activity VALUES (7, "Jogging", 544);
+INSERT INTO activity VALUES (8, "Running", 782);
 
-#user
-#id, activity_level, birthyear, email, gender, height, password, recommendedcalories, reminder_calories, weight)
+/*user
+#id, activity_level, birthyear, email, gender, height, password, recommendedcalories, reminder_calories, weight)*/
 INSERT INTO USER VALUES (1, "SEDENTARY", 1980, "SUPERMAN@GMAIL.COM", "MALE", 180, "PASSWORD", 2200, 0, 70);
 INSERT INTO USER VALUES (2, "MODERATE", 1985, "SUPERWOMAN@GMAIL.COM", "FEMALE", 170, "PASSWORD", 1700, 0, 60);
 INSERT INTO USER VALUES (3, "ACTIVE", 1992, "ZAC@GMAIL.COM", "MALE", 175, "PASSWORD", 1200, 0, 65);
 
-#diet_plan
-#id, date ,activity_id, user_id
+/*diet_plan
+#id, date ,activity_id, user_id*/
 INSERT INTO diet_plan VALUES (1, '2021-01-29', 1, 3);
 
-#food
-#id, calories, foodName, activity_id
+/*food
+#id, calories, foodName, activity_id*/
 INSERT INTO food VALUES (1, 640, "Hamburger");
 INSERT INTO food VALUES (2, 620, "Pizza");
 INSERT INTO food VALUES (3, 196, "Omelette");
 INSERT INTO food VALUES (4, 681, "Fish and chips");
 INSERT INTO food VALUES (5, 897, "Chicken curry");
 
-#dailyhistory
-#id,date,user_id
+/*dailyhistory
+#id,date,user_id*/
 INSERT INTO daily_history VALUES (1,'2021-01-22', 1);
 INSERT INTO daily_history VALUES (2,'2021-01-23', 1);
 INSERT INTO daily_history VALUES (3,'2021-01-24', 1);
@@ -59,8 +59,8 @@ INSERT INTO daily_history VALUES (27,'2021-02-17', 1);
 INSERT INTO daily_history VALUES (28,'2021-02-18', 1);
 INSERT INTO daily_history VALUES (29,'2021-02-19', 1);
 
-#food_image
-#id,epoch_date_upload,calorie,food_name,url,dailyhistory_id,food_id
+/*food_image
+#id,epoch_date_upload,calorie,food_name,url,dailyhistory_id,food_id*/
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (1,"Hamburger","http://localhost:8080/api/image/img1.jpg",NULL,1611285712,640,1);
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (2,"Pizza","http://localhost:8080/api/image/img2.jpg",NULL, 1611246112,620,2);
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (3,"Omelette","http://localhost:8080/api/image/img3.jpg",NULL,1611285712,196,3);
