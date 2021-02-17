@@ -33,7 +33,7 @@
 
 
    <div id="tableBox">
-       <table class="table table-bordered" >
+       <table class="table table-bordered" style="font-size: 20px" >
            <tr>
                <th>Images</th>
                <th>FoodName</th>
@@ -47,7 +47,7 @@
                    <p th:text="${foodInfo.foodName}"></p>
                </td>
                <td>
-                   <p th:text="${foodInfo.foodCalories}">20</p>
+                   <p th:text="${foodInfo.foodCalories}+' Calories'">20</p>
                </td>
 
            </tr>

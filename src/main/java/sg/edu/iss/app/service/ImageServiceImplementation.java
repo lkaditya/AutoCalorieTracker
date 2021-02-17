@@ -93,11 +93,16 @@ public class ImageServiceImplementation implements ImageService {
 		}
 		return result;
 	}
-	
 	@Override
 	@Transactional
 	public FoodImage findImageById(Long id) {
 		return imagerepo.findImageById(id);
 	}
+
+	public List<FoodImage> findAllByImageId(){
+		return imagerepo.findAllByImageId();
+	}
+
+
 
 }

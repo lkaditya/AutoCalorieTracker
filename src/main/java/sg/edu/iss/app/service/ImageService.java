@@ -24,4 +24,6 @@ public interface ImageService {
 	public int findTotalCaloriesByDailyHistoryId(long id);
 	
 	public FoodImage findImageById(Long id);
+
+	public List<FoodImage> findAllByImageId();
 }
