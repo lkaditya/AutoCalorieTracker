@@ -69,30 +69,34 @@ body {
     text-align: center;
 }
 
-#form{
+/*#form{*/
 
-    margin-top: 50px;
-    MARGIN-LEFT: 70PX;
-}
+/*    margin-top: 50px;*/
+/*    MARGIN-LEFT: 70PX;*/
+/*}*/
 
 #formbox{
-    alignment: center;
+    /*margin-left: 614px;*/
     width: 950px;
-    margin-right: 614px;
+    /*margin-bottom: 50px;*/
+    /*margin-right: 614px;*/
 }
 
-#inputBox{
-    margin-right: 600px;
-    margin-bottom: 20px;
-}
-#submit{
-    margin-left: 20px;
-}
+/*#inputBox{*/
+/*    margin-right: 600px;*/
+/*    margin-bottom: 20px;*/
+/*}*/
+/*#submit{*/
+/*    margin-left: 20px;*/
+/*}*/
 
-#tableBox{
-    width: 1350px;
-    margin-left: 100px;
+.tableBox{
+    margin-top: 50px;
 
+    margin-bottom: 50px;
+    text-align: center;
+    width: 60%;
+    font-size: 20px;
 }
 td{
     width: 100px;

@@ -1,3 +1,4 @@
+
 @import url(https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800);
 
 html, body {
@@ -120,11 +121,12 @@ body {
 }
 
 #net{
-    margin-left: 550px;
-    margin-top: 20px;
-    margin-bottom: 200px;
+    margin-left: 1050px;
+    margin-top: 50px;
+    margin-bottom: 100px;
 }
 
 /*#title{*/
 /*    margin-left: 718px;*/
 /*}*/
+

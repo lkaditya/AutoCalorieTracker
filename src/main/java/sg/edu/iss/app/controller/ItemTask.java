@@ -5,6 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import sg.edu.iss.app.model.FoodInfo;
 
@@ -13,11 +14,16 @@ import java.util.List;
 @Component
 public class ItemTask {
 
+    @Autowired
+    private HttpUtils httpUtils=new HttpUtils();
+
     private int num = 0;
 
     public String ItemTaskDownLoad(String url) throws Exception {
-        Document doc = Jsoup.connect(url).timeout(5000).ignoreContentType(true).ignoreHttpErrors(true).get();
-        String html = doc.toString();
+//        Document doc = Jsoup.connect(url).timeout(5000).ignoreContentType(true).ignoreHttpErrors(true).get();
+        String html = httpUtils.doGetHtml(url);
+//        String html = doc.toString();
+
         return html;
     }
 
@@ -25,6 +31,7 @@ public class ItemTask {
 
         Document document = Jsoup.parse(html);
         Elements elements = document.select("div.menu__items div.dish-category-section");
+
         for (Element element : elements) {
 //            long spu = Long.parseLong(element.attr("data-spu"));
             Elements skuEle = element.select("ul.dish-list li");
@@ -51,6 +58,51 @@ public class ItemTask {
             }
         }
     }
+
+
+
+    public void parseGrab(String html, List<FoodInfo> foodInfos) throws Exception {
+
+        Document document = Jsoup.parse(html);
+        Elements elements = document.select("div.menu__items div.dish-category-section");
+
+        for (Element element : elements) {
+//            long spu = Long.parseLong(element.attr("data-spu"));
+            Elements skuEle = element.select("ul.dish-list li");
+            for (Element element1 : skuEle) {
+                FoodInfo foodInfo = new FoodInfo();
+                String src = null;
+                try {
+                    src = element1.select(".photo").first().attr("data-src");
+                } catch (Exception e) {
+                    System.out.println("");
+                }
+                String name = element1.select("h3.dish-name span").first().text();
+                if (!(src == null)) {
+                    foodInfo.setFoodImage(src);
+                    foodInfo.setFoodName(name);
+                    String caloriesByName = findCaloriesByName(name);
+                    foodInfo.setFoodCalories(caloriesByName);
+                    foodInfos.add(foodInfo);
+                    num++;
+                    if (num == 10) {
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
