@@ -16,7 +16,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	private String gender;
-	private int birthYear;
+	private String birthYear;
 	@Min(100)
 	private int height;
 	@Min(30)
@@ -48,7 +48,7 @@ public class User {
 		this.password=password;
 	}
 
-	public User(String gender, int birthYear, int height, int weight, String email, String activityLevel,
+	public User(String gender, String birthYear, int height, int weight, String email, String activityLevel,
 			String password) {
 		this(email,password);
 		this.gender = gender;
