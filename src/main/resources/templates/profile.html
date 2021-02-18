@@ -37,7 +37,7 @@
     </tr>
 </table>
 <div class="text-center">
-    <a th:href="@{/profile/edit}" style="font-size: 20px;margin-bottom: 60px" class="btn btn-secondary">Edit Profile</a>
+    <a th:href="@{/profile/edit/}+${user.Id}" style="font-size: 20px;margin-bottom: 60px" class="btn btn-secondary">Edit Profile</a>
 </div>
 <div th:replace="layout/layout.html :: footer"></div>
 </body>
