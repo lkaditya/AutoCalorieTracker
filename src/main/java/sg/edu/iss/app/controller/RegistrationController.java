@@ -1,5 +1,6 @@
 package sg.edu.iss.app.controller;
 
+import org.apache.xpath.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,19 +43,19 @@ public class RegistrationController {
     }
 
 
-    @RequestMapping("/showResetPage")
-    public String resetPassword(Model model){
-        return "resetPassword";
+    @RequestMapping("/showForgetPage")
+    public String forgetPassword(Model model){
+        return "forgetPassword";
     }
 
 
-    @RequestMapping("/reset")
+    @RequestMapping("/forget")
     public String sendTempPassword(@RequestParam("email")String email,Model model) {
 
         User user=userService.findUserByEmail(email);
         if (user==null){
             model.addAttribute("message","Email doesn't exist" );
-            return "resetPassword";
+            return "forgetPassword";
         }
 
         System.out.println(user.getPassword());
@@ -71,6 +72,33 @@ public class RegistrationController {
         mailservice.sendSimpleMail(email, "Reset Password Query", text);
 
         return "login";
+    }
+
+
+    @RequestMapping("/showResetPage")
+    public String resetPassword(Model model){
+        return "resetPassword";
+    }
+
+    @RequestMapping("/reset")
+    public String reset(Model model,String email,String oldPassword,String newPassword){
+        User user = userService.findUserByEmail(email);
+        if (user==null){
+            model.addAttribute("message","Email doesn't exist");
+            return "resetPassword";
+        }
+        String password = user.getPassword();
+        if (password.equals(oldPassword)){
+            user.setPassword(newPassword);
+            userService.saveUser(user);
+            return "login";
+        }else {
+            model.addAttribute("message","Wrong password");
+            return "resetPassword";
+        }
+
+
+
     }
 
 }
