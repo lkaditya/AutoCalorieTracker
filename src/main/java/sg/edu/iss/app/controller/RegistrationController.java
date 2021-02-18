@@ -40,13 +40,30 @@ public class RegistrationController {
         return view;
     }
 
+//    @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
+//    public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,
+//                                @ModelAttribute("user") User user) {
+//        
+//    	userService.saveUser(user);
+//        HttpSession session = request.getSession();
+//        session.setAttribute("user", user);
+//        return new ModelAndView("mainPage");
+//        
+//​​​​
+//    }
+    
     @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
-    public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,
-                                @ModelAttribute("user") User user) {
+    public String  addUser(HttpServletRequest request, HttpServletResponse response,
+                                @ModelAttribute("user") User user,Model model) {
+        User userByEmail = userService.findUserByEmail(user.getEmail());
+        if(userByEmail!=null){
+            model.addAttribute("message","Email have been registered ");
+            return "register";
+        }
         userService.saveUser(user);
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
-        return new ModelAndView("mainPage");
+        return "mainPage";
     }
 
 
