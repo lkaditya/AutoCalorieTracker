@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.UUID;
+import java.util.stream.IntStream;
 
 @Controller
 public class RegistrationController {
@@ -28,7 +29,13 @@ public class RegistrationController {
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response){
+
+        int[] yearArray = IntStream.rangeClosed(1960, 2021).toArray();
+        String strArray[] = new String[yearArray.length];
+        for (int i=0; i < yearArray.length; i++)
+            strArray[i] = String.valueOf(yearArray[i]);
         ModelAndView view = new ModelAndView("register");
+        view.addObject("strArray", strArray);
         view.addObject("user", new User());
         return view;
     }
