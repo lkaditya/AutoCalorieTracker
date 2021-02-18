@@ -1,21 +1,34 @@
 package sg.edu.iss.app.controller;
 
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import sg.edu.iss.app.model.*;
-import sg.edu.iss.app.service.*;
 
-import javax.servlet.http.HttpSession;
-import javax.xml.crypto.Data;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
+import sg.edu.iss.app.model.Activity;
+import sg.edu.iss.app.model.BarChartData;
+import sg.edu.iss.app.model.DietPlan;
+import sg.edu.iss.app.model.Food;
+import sg.edu.iss.app.model.FoodImage;
+import sg.edu.iss.app.model.User;
+import sg.edu.iss.app.service.ActivityService;
+import sg.edu.iss.app.service.DietPlanService;
+import sg.edu.iss.app.service.FoodService;
+import sg.edu.iss.app.service.ImageService;
+import sg.edu.iss.app.service.UserService;
 
 @RestController
 @RequestMapping("/plan")
@@ -175,7 +188,7 @@ public class DietPlanController {
         List<Food>fl=new ArrayList<Food>();
         for (FoodImage food : foodImagesList) {
             double calorie = food.getFood().getCalorie();
-            if (total <= recommendedCalories && count < 3) {
+            if (total <= recommendedCalories && count < 5) {
                 total += calorie;
                 foodInfo.add(food);
                 food.getFood().getDietPlan().add(dietPlan);
