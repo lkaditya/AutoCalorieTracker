@@ -26,7 +26,7 @@
 			<th>Gender</th>
         	<td>       
 		        <div class="form-group">
-		        	<select name="Gender" th:field="*{gender}"  >
+		        	<select name="gender">
 					    <option value="MALE">MALE</option>
 					    <option value="FEMALE">FEMALE</option>
 	  				</select>
@@ -57,10 +57,10 @@
 			<th>Activity Level</th>
 			<td>
 		    	<div class="form-group">
-		        	<select name="activityLevel" th:field="*{activityLevel}" th:name="activityLevel">
-					    <option  name="activityLevel" value="SEDENTARY">SEDENTARY</option>
-					    <option name="activityLevel" value="MODERATE">MODERATE</option>
-					    <option name="activityLevel" value="ACTIVE">ACTIVE</option>
+		        	<select name="activityLevel">
+					    <option value="SEDENTARY">SEDENTARY</option>
+					    <option value="MODERATE">MODERATE</option>
+					    <option value="ACTIVE">ACTIVE</option>
 	  				</select>		    	
             	<!-- <input type="text" class="form-control" name="activity level" placeholder="Activity Level" th:field="*{activityLevel}">-->
         		</div>

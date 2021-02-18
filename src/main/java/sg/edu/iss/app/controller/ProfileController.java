@@ -51,6 +51,8 @@ public class ProfileController {
         userService.saveUser(user);
         user = userService.findById(user.getId());
         model.addAttribute("user",user);
+        session.removeAttribute("user");
+        session.setAttribute("user",user);
         return "profile";
     }
 
