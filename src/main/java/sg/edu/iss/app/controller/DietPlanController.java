@@ -188,7 +188,7 @@ public class DietPlanController {
         List<Food>fl=new ArrayList<Food>();
         for (FoodImage food : foodImagesList) {
             double calorie = food.getFood().getCalorie();
-            if (total <= recommendedCalories && count < 5) {
+            if (total+calorie-caloriesBurnt <= recommendedCalories && count < 5) {
                 total += calorie;
                 foodInfo.add(food);
                 food.getFood().getDietPlan().add(dietPlan);
@@ -198,6 +198,7 @@ public class DietPlanController {
                 count++;
             }
         }
+        
         dietPlan.setFood(fl);
         dietPlanService.savePlan(dietPlan);
 
