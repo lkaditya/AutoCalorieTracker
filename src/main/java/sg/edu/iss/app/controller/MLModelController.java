@@ -9,19 +9,13 @@ import java.io.InputStreamReader;
 import java.nio.file.FileSystems;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FileUtils;
-import org.datavec.image.loader.ImageLoader;
-import org.deeplearning4j.nn.modelimport.keras.KerasModelImport;
-import org.deeplearning4j.nn.modelimport.keras.exceptions.InvalidKerasConfigurationException;
-import org.deeplearning4j.nn.modelimport.keras.exceptions.UnsupportedKerasConfigurationException;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
-import org.nd4j.linalg.api.ndarray.INDArray;
+//import org.deeplearning4j.nn.modelimport.keras.exceptions.InvalidKerasConfigurationException;
+//import org.deeplearning4j.nn.modelimport.keras.exceptions.UnsupportedKerasConfigurationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -66,7 +60,7 @@ public class MLModelController {
 
 	//predict the image submitted and store that inside the localhost server folder
 	@RequestMapping("/predict")
-	public ResponseEntity<Food> predictFood(@RequestBody MultipartFile image) throws IOException, InvalidKerasConfigurationException, UnsupportedKerasConfigurationException{
+	public ResponseEntity<Food> predictFood(@RequestBody MultipartFile image) throws IOException/*, InvalidKerasConfigurationException, UnsupportedKerasConfigurationException*/{
 		
 
 		InputStream is = image.getInputStream();
@@ -129,34 +123,34 @@ public class MLModelController {
         return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(image);
     }
     
-    public String predictExecuteDL4J(BufferedImage originalImage) throws IOException, InvalidKerasConfigurationException, UnsupportedKerasConfigurationException {
-		//current hardcoding mapping from python result
-		Map<Integer,String>mapping= new HashMap<Integer,String>();
-		mapping.put(0, "laksa");
-		mapping.put(1, "chicken rice");
-		mapping.put(2, "cheeseburger");
-		mapping.put(3, "fish and chips");
-		mapping.put(4, "pizza");
-
-
-		MultiLayerNetwork model=KerasModelImport.importKerasSequentialModelAndWeights(modeldir+"IdentifyFoodRGB.h5");
-		ImageLoader iml= new ImageLoader(length,width,channel);
-		INDArray features2= iml.asMatrix(originalImage).reshape(1,width,length,channel);
-	
-		// get the prediction
-		double max=0.0;
-		int maxindex=0;
-		for(int x=0;x<mapping.size();x++) {
-			double el=model.output(features2).getRow(0).getDouble(x);
-			if(el>max) {
-				max=el;
-				maxindex=x;
-			}
-		}
-		String name=mapping.get(maxindex);
-		
-		return name;    	
-    }
+//    public String predictExecuteDL4J(BufferedImage originalImage) throws IOException, InvalidKerasConfigurationException, UnsupportedKerasConfigurationException {
+//		//current hardcoding mapping from python result
+//		Map<Integer,String>mapping= new HashMap<Integer,String>();
+//		mapping.put(0, "laksa");
+//		mapping.put(1, "chicken rice");
+//		mapping.put(2, "cheeseburger");
+//		mapping.put(3, "fish and chips");
+//		mapping.put(4, "pizza");
+//
+//
+//		MultiLayerNetwork model=KerasModelImport.importKerasSequentialModelAndWeights(modeldir+"IdentifyFoodRGB.h5");
+//		ImageLoader iml= new ImageLoader(length,width,channel);
+//		INDArray features2= iml.asMatrix(originalImage).reshape(1,width,length,channel);
+//	
+//		// get the prediction
+//		double max=0.0;
+//		int maxindex=0;
+//		for(int x=0;x<mapping.size();x++) {
+//			double el=model.output(features2).getRow(0).getDouble(x);
+//			if(el>max) {
+//				max=el;
+//				maxindex=x;
+//			}
+//		}
+//		String name=mapping.get(maxindex);
+//		
+//		return name;    	
+//    }
     
 	public String predictExecutePython(String abspath) {
 	String res = "";
