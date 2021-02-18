@@ -117,20 +117,20 @@
             </div>
             <div class="form-group">
                 <label for="userDetails">Select Height Category</label>
-                <label for="height1" style = "display:inline-block;"> <img th:src="@{/image/m2.png}" style="width:100px;height:100px"> {{height1}} </label>
+                <label for="height1" style = "display:inline-block;"> <img th:src="@{/image/m2.png}" style="width:100px;height:100px" :src="imgUrl1" > {{height1}} </label>
                 <input type="radio" id="height1" name="height" value="155" required="required" th:field="*{height}">
-                <label for="height2" style = "display:inline-block;"> <img th:src="@{/image/m2.png}" style="width:100px;height:100px"> {{height2}}</label>
+                <label for="height2" style = "display:inline-block;"> <img th:src="@{/image/m2.png}" style="width:100px;height:100px" :src="imgUrl2"> {{height2}}</label>
                 <input type="radio" id="height2" name="height" value="168" required="required" th:field="*{height}">
-                <label for="height3" style = "display:inline-block;"> <img th:src="@{/image/m2.png}" style="width:100px;height:100px"> {{height3}}</label>
+                <label for="height3" style = "display:inline-block;"> <img th:src="@{/image/m2.png}" style="width:100px;height:100px" :src="imgUrl3"> {{height3}}</label>
                 <input type="radio" id="height3" name="height" value="175" required="required" th:field="*{height}">
             </div>
             <div class="form-group">
                 <label for="userDetails">Select Weight Category</label>
-                <label for="weight1" style = "display:inline-block;"> <img th:src="@{/image/m1.png}" style="width:100px;height:100px"> {{weight1}} </label>
+                <label for="weight1" style = "display:inline-block;"> <img th:src="@{/image/m1.png}" style="width:100px;height:100px" :src="imgUrlW1"> {{weight1}} </label>
                 <input type="radio" id="weight1" name="weight" value="55" required="required" th:field="*{weight}">
-                <label for="weight2" style = "display:inline-block;"> <img th:src="@{/image/m2.png}" style="width:100px;height:100px"> {{weight2}} </label>
+                <label for="weight2" style = "display:inline-block;"> <img th:src="@{/image/m2.png}" style="width:100px;height:100px" :src="imgUrlW2"> {{weight2}} </label>
                 <input type="radio" id="weight2" name="weight" value="68" required="required" th:field="*{weight}">
-                <label for="weight3" style = "display:inline-block;"> <img th:src="@{/image/m3.png}" style="width:100px;height:100px"> {{weight3}} </label>
+                <label for="weight3" style = "display:inline-block;"> <img th:src="@{/image/m3.png}" style="width:100px;height:100px" :src="imgUrlW3"> {{weight3}} </label>
                 <input type="radio" id="weight3" name="weight" value="80" required="required" th:field="*{weight}">
             </div>
             <div class="form-group">
@@ -159,7 +159,12 @@
             weight1:"",
             weight2:"",
             weight3:"",
-            // netCalories:[],
+            imgUrl1:"",
+            imgUrl2:"",
+            imgUrl3:"",
+            imgUrlW1:"",
+            imgUrlW2:"",
+            imgUrlW3:"",
 
         },
         created() {
@@ -167,23 +172,19 @@
         },
         methods:{
             male(){
-                // axios.get('/plan/showTomorrowPlan').then((res) => {
-                //     if (res.data) {
-                //
-                //         this.tableData=res.data.data.foodInfos;
-                //         this.netCalories=res.data.data.netCalories;
-                //         this.activityName=res.data.data.activity.activityName;
-                //         this.caloriesBurnt=res.data.data.activity.caloriesBurnt;
-                //         console.log(res.data.data.activity)
-                //
-                //     }
-                // });
                 this.height1="<160cm";
                 this.height2="160cm-175cm";
                 this.height3=">175cm";
                 this.weight1="<60kg";
                 this.weight2="60kg-75kg";
                 this.weight3=">75kg";
+                this.imgUrl1="https://i.imgur.com/KUQTuAg.png";
+                this.imgUrl2="https://i.imgur.com/KUQTuAg.png";
+                this.imgUrl3="https://i.imgur.com/KUQTuAg.png";
+
+                this.imgUrlW1="https://i.imgur.com/DZeTw2n.png";
+                this.imgUrlW2="https://i.imgur.com/KUQTuAg.png";
+                this.imgUrlW3="https://i.imgur.com/RPAPJVW.png";
 
             },
 
@@ -194,6 +195,13 @@
                 this.weight1="<50kg";
                 this.weight2="50kg-65kg";
                 this.weight3=">65kg";
+                this.imgUrl1="https://i.imgur.com/QuILeH4.png";
+                this.imgUrl2="https://i.imgur.com/QuILeH4.png";
+                this.imgUrl3="https://i.imgur.com/QuILeH4.png";
+
+                this.imgUrlW1="https://i.imgur.com/FxhdJof.png";
+                this.imgUrlW2="https://i.imgur.com/QuILeH4.png";
+                this.imgUrlW3="https://i.imgur.com/tBVyamQ.png";
             }
         }
 
