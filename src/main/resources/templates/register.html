@@ -4,103 +4,35 @@
     <meta charset="ISO-8859-1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <!--    <link rel="stylesheet" type="text/css" th:href="@{/css/css-upload.css}">-->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/css-dietPlan.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/register.css}">
     <script th:src="@{/js/vue.js}" rc="/js/vue.js"></script>
     <script th:src="@{/js/axios-0.18.0.js}"></script>
     <script src="/js/axios-0.18.0.js"></script>
 </head>
 
-<style>
-    @import url(https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800);
-
-    html, body {
-        font-family: 'Dosis';
-        font-weight: 300;
-        font-size: 36px;
-    }
-
-    .header {
-        width: 100%;
-        border-bottom: 1px solid black;
-        text-align: right;
-        position: relative;
-    }
-    .logo {
-        position: absolute;
-        top: 0;
-        left: 0;
-        font-size: 32px;
-        font-weight: 100;
-        padding: 26px;
-        border-right: 1px solid black;
-    }
-
-    .link {
-        display: inline-block;
-        padding: 15px 0;
-        margin: 15px 25px;
-        position: relative;
-        text-decoration: none;
-        text-transform: uppercase;
-        color: #0f0f0f;
-        font-weight: 800;
-        font-size: 24px;
-    }
-    .bar {
-        width: 100%;
-        display: inline-block;
-        border-bottom: 5px solid black;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        opacity: 0;
-        transition: all 300ms;
-    }
-
-    body {
-        font-size: 14px;
-        line-height: 0.428571;
-        color: #333;
-        background-color: #fff;
-
-    }
-    #box{
-
-        margin:70px 312px;
-
-    }
-    #box2{
-        width: 207px;
-        height: 272px;
-        margin: -21px 5px;
-    }
-
-    #container{
-        margin-left: 414px;
-        margin-bottom: 100px;
-    }
-
-</style>
 
 <body>
 
 <div id="register">
 
 </div>
-<img src="image/AppLogo.jpeg" alt="AppLogo" width="180" height="120">
+<div class="logo">
+    <img src="image/AppLogo.jpeg" width="250" height="180" th:align="center">
+</div>
+
 <div id="app">
     <div class="signup-form">
         <form th:action="@{/registerProcess}" method="post" th:object="${user}">
-            <h2>Welcome</h2>
-            <p class="hint-text">Sign up to start your new account</p>
-            <div class="form-group">
+            <h1>Welcome</h1>
+            <h3 class="hint-text">Sign up to start your new account</h3>
+            <div class="form-group" style="font-size: 20px">
                 <input type="email" class="form-control" name="email" placeholder="Email" required="required" th:field="*{email}">
             </div>
-            <div class="form-group">
+            <div class="form-group" style="font-size: 20px">
                 <input type="password" class="form-control" name="password" placeholder="Password" required="required" th:field="*{password}">
             </div>
-            <div class="form-group">
-                <label for="userDetails">Select Birth Year</label>
+            <div class="form-group" style="font-size: 18px">
+                <label for="userDetails" style="margin-right: 20px">Select Birth Year</label>
                 <select id="userDetails" name="birthYear" placeholder="Birth Year" required="required" th:field="*{birthYear}">
                     <option value="birthYear"> Select birth Year</option>
                     <option th:each="year: ${strArray}"
@@ -108,23 +40,32 @@
                             th:text="${year}"></option>
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="font-size: 18px">
+                <label for="userDetails" style="margin-right: 20px">Select Activity Level:</label>
+                <label for="Sedentary" > Sedentary </label>
+                <input type="radio"  id="Sedentary" name="sedentary" value="Sedentary" required="required" th:field="*{activityLevel}">
+                <label for="Moderate" style="margin-right: 20px"> Moderate</label>
+                <input type="radio" id="Moderate" name="Moderate" value="Moderate" required="required" th:field="*{activityLevel}">
+                <label for="Active" style="margin-right: 20px"> Active</label>
+                <input type="radio" id="Active" name="Active" value="Active" required="required" th:field="*{activityLevel}">
+            </div>
+            <div class="form-group" style="font-size: 18px">
                 <label for="userDetails">Select Gender</label>
-                <label for="male" style = "display:inline-block;"> <img th:src="@{/image/m2.png}" style="width:100px;height:100px"> Male </label>
+                <label for="male" style = "display:inline-block;"> <img th:src="@{/image/m2.png}" style="width:100px;height:100px"><span>Male </span> </label>
                 <input type="radio" id="male" name="male" value="MALE" required="required" th:field="*{gender}" @click="male">
                 <label for="female" style = "display:inline-block;"> <img th:src="@{/image/female.png}" style="width:100px;height:100px"> Female </label>
                 <input type="radio" id="female" name="female" value="FEMALE" required="required" th:field="*{gender}" @click="female">
             </div>
-            <div class="form-group">
+            <div class="form-group" style="font-size: 18px">
                 <label for="userDetails">Select Height Category</label>
-                <label for="height1" style = "display:inline-block;"> <img th:src="@{/image/m2.png}" style="width:100px;height:100px" :src="imgUrl1" > {{height1}} </label>
+                <label for="height1" style = "display:inline-block;"> <img th:src="@{/image/m2.png}" style="width:100px;height:60px" :src="imgUrl1" > {{height1}} </label>
                 <input type="radio" id="height1" name="height" value="155" required="required" th:field="*{height}">
-                <label for="height2" style = "display:inline-block;"> <img th:src="@{/image/m2.png}" style="width:100px;height:100px" :src="imgUrl2"> {{height2}}</label>
+                <label for="height2" style = "display:inline-block;"> <img th:src="@{/image/m2.png}" style="width:100px;height:80px" :src="imgUrl2"> {{height2}}</label>
                 <input type="radio" id="height2" name="height" value="168" required="required" th:field="*{height}">
                 <label for="height3" style = "display:inline-block;"> <img th:src="@{/image/m2.png}" style="width:100px;height:100px" :src="imgUrl3"> {{height3}}</label>
                 <input type="radio" id="height3" name="height" value="175" required="required" th:field="*{height}">
             </div>
-            <div class="form-group">
+            <div class="form-group" style="font-size: 18px">
                 <label for="userDetails">Select Weight Category</label>
                 <label for="weight1" style = "display:inline-block;"> <img th:src="@{/image/m1.png}" style="width:100px;height:100px" :src="imgUrlW1"> {{weight1}} </label>
                 <input type="radio" id="weight1" name="weight" value="55" required="required" th:field="*{weight}">
@@ -133,20 +74,11 @@
                 <label for="weight3" style = "display:inline-block;"> <img th:src="@{/image/m3.png}" style="width:100px;height:100px" :src="imgUrlW3"> {{weight3}} </label>
                 <input type="radio" id="weight3" name="weight" value="80" required="required" th:field="*{weight}">
             </div>
-            <div class="form-group">
-                <label for="userDetails">Select Activity Level:</label>
-                <label for="Sedentary"> Sedentary </label>
-                <input type="radio" id="Sedentary" name="sedentary" value="Sedentary" required="required" th:field="*{activityLevel}">
-                <label for="Moderate"> Moderate</label>
-                <input type="radio" id="Moderate" name="Moderate" value="Moderate" required="required" th:field="*{activityLevel}">
-                <label for="Active"> Active</label>
-                <input type="radio" id="Active" name="Active" value="Active" required="required" th:field="*{activityLevel}">
-            </div>
-            <div class="form-group">
+            <div class="form-group" style="font-size: 18px">
                 <input type="submit" class="btn btn-success btn-lg btn-block">
             </div>
         </form>
-        <div class="text-center">Already have an account? <a th:href="@{/login}">Sign in</a></div>
+        <div class="text-center" style="font-size: 18px">Already have an account? <a th:href="@{/login}">Sign in</a></div>
     </div>
 </div>
 <script type="text/javascript">
