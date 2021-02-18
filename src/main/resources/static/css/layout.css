@@ -18,7 +18,7 @@ html, body {
     left: 0;
     font-size: 32px;
     font-weight: 100;
-    padding: 26px;
+    padding: 10px;
     border-right: 1px solid black;
 }
 
@@ -53,9 +53,13 @@ body {
     background-color: #fff;
 
 }
-#box{
 
-    margin:70px 312px;
+
+#box{
+    alignment: center;
+    width: 80%;
+    margin: 0 auto;
+    /*margin:70px 312px;*/
 
 }
 #box2{
@@ -65,12 +69,13 @@ body {
 }
 
 #container{
-    margin-left: 414px;
-    margin-bottom: 100px;
+    /*margin-bottom: 100px;*/
+    alignment: center;
+    width: 80%;
+    margin: 0 auto;
 }
 
-.link2{
-
-
-
+#img{
+    margin-bottom: 60px;
 }
+

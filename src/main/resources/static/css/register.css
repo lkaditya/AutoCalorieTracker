@@ -1,0 +1,64 @@
+@import url(https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800);
+/* Pen-specific styles */
+* {
+    box-sizing: border-box;
+}
+
+html{
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 100px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+
+}
+
+body {
+    font-family: 'Dosis';
+    font-weight: 300;
+
+}
+
+section {
+    /*color: #fff;*/
+    text-align: center;
+}
+
+div {
+    height: 100%;
+}
+
+article {
+    position: relative;
+    margin-top: 400px;
+    top: 50%;
+    left: 50%;
+    padding: 1rem;
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0 0 0.75rem 0;
+}
+h3{
+    font-size: 20px;
+    width: 550px;
+}
+
+form{
+    width: 50%;
+    alignment: center;
+    margin: 0 auto;
+}
+
+.logo{
+    width: 50%;
+    alignment: center;
+    margin: 0 auto;
+}
+.form-group{
+    font-size: 20px;
+}

@@ -10,15 +10,12 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}">
 </head>
 <style>
-    #container{
-        height: 1000px;
-        width: 800px;
-    }
 
-    #box2{
+    #box2 {
 
         margin-bottom: 60px;
     }
+
     .thumbnail {
         display: block;
         padding: 5px;
@@ -33,43 +30,48 @@
         height: 300px;
     }
 
-    #hello{
+    #hello {
         margin-left: 1500px;
         height: 50px;
-        MARGIN-TOP: 30PX;
+        MARGIN-TOP: 20PX;
         font-size: 20px;
 
     }
+    .thumbnail>img {
+        display: block;
+        max-width: 100%;
+        height: 126px;
+    }
+    
 </style>
 
 <body>
-<header th:insert="layout/layout.html :: header"></header>
-<div th:replace="layout/layout.html :: menu" ></div>
-<DIV id="hello" th:text="${session.user.email}"></DIV>
-<div id="box">
+    <header th:insert="layout/layout.html :: header"></header>
+    <div th:replace="layout/layout.html :: menu"></div>
+    <div id="hello" th:text="Welcome+' &nbsp; &nbsp;'+${session.user.email}" align="right"
+     style="margin-right: 25px; font-weight: bold"></div>
+    <h1 style="text-align:center">Daily History</h1>
 
-    <div id="main" style="width: 800px;height:400px;" class="bar-chart" align="center"></div>
+    <div id="box" style="alignment: center">
 
-</div>
+        <div id="main" style="height:400px;margin-bottom: 60px" class="bar-chart" align="center"></div>
 
-<script src="/js/vue.js"></script>
-<script src="/js/axios-0.18.0.js"></script>
-<script type="text/javascript">
-
-
+        <script src="/js/vue.js"></script>
+        <script src="/js/axios-0.18.0.js"></script>
+        <script type="text/javascript">
 
 
     var myChart = echarts.init(document.getElementById('main'));
-    var checkName='';
+    var checkName = '';
 
 
     axios.get("/history/getData").then((res) => {
         var num = res.data.data.localDataList.length - 1;
 
-        option={
+        option = {
             // color: ["#7BC37D"],
             title: {
-                text: 'Weekly Calories'
+                text: '               Calories'
             },
             tooltip: {},
             legend: {
@@ -109,15 +111,15 @@
                 }
             ],
             series: [{
-                name: 'Calories',
+                name: 'Daily Calories',
                 type: 'bar',
                 data: res.data.data.caloriesList,
                 itemStyle: {
                     barBoardRadius: 20,
                     color: function (param) {
-                        if(checkName === param.name){
+                        if (checkName === param.name) {
                             return '#2f4554';
-                        }else {
+                        } else {
                             return "#7BC37D";
                         }
 
@@ -131,32 +133,33 @@
                         }
                     },
                     data: [
-                        {type: 'average', name: 'Average Calories',
-                            label:{
-                                show:true,
-                                position:'end',
+                        {
+                            type: 'average', name: 'Average Calories',
+                            label: {
+                                show: true,
+                                position: 'end',
                                 formatter: '{b}: {c}'
 
                             },
-                            lineStyle:{
+                            lineStyle: {
 
-                                color:"#3398DB",
+                                color: "#3398DB",
                             },
 
                         },
                         {
-                            label:{
-                                show:true,
-                                position:'end',
+                            label: {
+                                show: true,
+                                position: 'end',
                                 formatter: '{b}: {c}'
 
                             },
-                            lineStyle:{
-                                type:"solid",
-                                color:"#BA402B",
+                            lineStyle: {
+                                type: "solid",
+                                color: "#BA402B",
                             },
-                            name:'Recommendation Calories',
-                            yAxis:res.data.data.recommendedCalories,
+                            name: 'Recommended Calories',
+                            yAxis: res.data.data.recommendedCalories,
 
                         },
                     ]
@@ -166,9 +169,8 @@
             }]
         }
         myChart.setOption(option
-            );
+        );
     });
-
 
 
     myChart.on('click', function (params) {
@@ -178,7 +180,7 @@
         myChart.setOption(option);
 
         axios.get('/history/getImageByData?data=' + name).then((res) => {
-            if (res.data){
+            if (res.data) {
 
                 var imagesInfo = res.data.data.imagesInfo;
                 var foodNames = res.data.data.foodNames;
@@ -188,21 +190,21 @@
             }
 
 
-            var info="";
+            var info = "";
 
             for (let i = 0; i < Calories.length; i++) {
-                var div="    <div id='box2' height='200px' width='200px' class=\"col-sm-6 col-md-4\">\n" +
+                var div = "    <div id='box2' height='200px' width='200px' class=\"col-sm-6 col-md-4\">\n" +
                     "            <div class=\"thumbnail\">\n" +
-                    "                <img src=\" "+imagesInfo[i]+" \" >\n" +
+                    "                <img src=\" " + imagesInfo[i] + " \" >\n" +
                     "                <div class=\"caption\">\n" +
-                    "                  <h3>"+foodNames[i]+"</h3>\n" +
-                    "                  <p>"+Calories[i]+" Calories</p>\n" +
-                    "                  <p>"+timeSeries[i]+"</p>\n" +
+                    "                  <h3>" + foodNames[i] + "</h3>\n" +
+                    "                  <p>" + Calories[i] + " Calories</p>\n" +
+                    "                  <p>" + timeSeries[i] + "</p>\n" +
                     "            </div>\n" +
                     "        </div>\n" +
                     "    </div>";
 
-                info+=div;
+                info += div;
 
 
             }
@@ -213,18 +215,12 @@
     })
 
 
-
 </script>
-
-
-
-<div id="container" class="row" >
-
-
-</div>
-
+        <div id="img">
+            <div id="container" class="row" ></div>
+        </div>
+    </div>
 <div th:replace="layout/layout.html :: footer"></div>
+
 </body>
-
-
 </html>

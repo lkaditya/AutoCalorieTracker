@@ -27,11 +27,11 @@ public class ProfileController {
         view.addObject("user", user);
         return view;
     }
-    
-    @RequestMapping(value = "/profile/edit", method = RequestMethod.GET)
-    public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+
+    @RequestMapping(value = "/profile/edit/{id}")
+    public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, HttpSession session,@PathVariable("id") Long id) {
         ModelAndView view = new ModelAndView("editProfile");
-        User user = (User)session.getAttribute("user");
+        User user = userService.findById(id);
         view.addObject("user", user);
         return view;
     }

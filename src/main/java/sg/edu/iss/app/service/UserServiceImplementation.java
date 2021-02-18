@@ -62,7 +62,7 @@ public class UserServiceImplementation implements UserService{
 			return BMR*1.55;
 		}
 	}
-	
+
 	public double calculateBMR(User user) {
 		int currentyear=LocalDate.now().getYear();
 		int BirthYear = Integer.parseInt(user.getBirthYear());
@@ -72,7 +72,7 @@ public class UserServiceImplementation implements UserService{
 		}
 		double BMR=10*user.getWeight()+(6.25*user.getHeight())-(5*(currentyear-BirthYear))-161;
 		return BMR;
-		
+
 	}
 
 	@Override

@@ -3,10 +3,7 @@ package sg.edu.iss.app.controller;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Instant;
@@ -54,4 +51,20 @@ public class MLModelControllerTest {
 //		System.out.println(f.getName());
 	}
 
+	@Test
+	void query1() {
+		try {
+//            Process process = Runtime.getRuntime().exec("python C:/Users/admin/java_call_python.py 101");
+			Process process = Runtime.getRuntime().exec("python D:/NUS/ADproject/java_call_python.py 101");
+			BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+			String line;
+			while ((line = in.readLine()) != null) {
+				System.out.println(line);
+			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
