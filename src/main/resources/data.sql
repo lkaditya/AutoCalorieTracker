@@ -67,83 +67,83 @@ INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload,
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (4,"Fish and chips","http://localhost:8080/api/image/img4.jpg",NULL,1611361312,681,4);
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (5,"Chicken curry","http://localhost:8080/api/image/img5.jpg",NULL,1611361312,897,5);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (6,"Hamburger","http://localhost:8080/api/image/img1.jpg",1,1611361312,640,2);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (7,"Omelette","http://localhost:8080/api/image/img3.jpg",1,1611332512,554,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (8,"Chicken curry","http://localhost:8080/api/image/img5.jpg",2,1611361312,788,4);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (6,"Hamburger","http://localhost:8080/api/image/img1.jpg",1,1611361312,640,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (7,"Omelette","http://localhost:8080/api/image/img3.jpg",1,1611332512,554,3);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (8,"Chicken curry","http://localhost:8080/api/image/img5.jpg",2,1611361312,788,5);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (9,"Chicken curry","http://localhost:8080/api/image/img5.jpg",2,1611447712,987,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (9,"Chicken curry","http://localhost:8080/api/image/img5.jpg",2,1611447712,987,5);
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (10,"Fish and chips","http://localhost:8080/api/image/img4.jpg",3,1611444112,456,4);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (11,"Pizza","http://localhost:8080/api/image/img2.jpg",3,1611447712,321,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (12,"Fish and chips","http://localhost:8080/api/image/img4.jpg",3,1611444112,555,5);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (13,"Pizza","http://localhost:8080/api/image/img2.jpg",3,1611444112,800,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (14,"Chicken curry","http://localhost:8080/api/image/img5.jpg",4,1611530512,600,2);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (15,"Fish and chips","http://localhost:8080/api/image/img4.jpg",4,1611530600,700,3);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (16,"Omelette","http://localhost:8080/api/image/img3.jpg",5,1612175875,800,4);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (17,"Chicken curry","http://localhost:8080/api/image/img5.jpg",6,1611631312,400,4);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (18,"Pizza","http://localhost:8080/api/image/img2.jpg",6,1611632000,300,5);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (11,"Pizza","http://localhost:8080/api/image/img2.jpg",3,1611447712,321,2);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (12,"Fish and chips","http://localhost:8080/api/image/img4.jpg",3,1611444112,555,4);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (13,"Pizza","http://localhost:8080/api/image/img2.jpg",3,1611444112,800,2);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (14,"Chicken curry","http://localhost:8080/api/image/img5.jpg",4,1611530512,600,5);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (15,"Fish and chips","http://localhost:8080/api/image/img4.jpg",4,1611530600,700,4);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (16,"Omelette","http://localhost:8080/api/image/img3.jpg",5,1612175875,800,3);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (17,"Chicken curry","http://localhost:8080/api/image/img5.jpg",6,1611631312,400,5);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (18,"Pizza","http://localhost:8080/api/image/img2.jpg",6,1611632000,300,2);
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (19,"Pizza","http://localhost:8080/api/image/img2.jpg",7,1611714112,554,2);
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (20,"Hamburger","http://localhost:8080/api/image/img1.jpg",7,1611714202,500,1);
 
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (21,"Chicken curry","http://localhost:8080/api/image/img5.jpg",10,1611444112,555,5);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (22,"Chicken curry","http://localhost:8080/api/image/img5.jpg",11,1612175875,800,4);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (23,"Fish and chips","http://localhost:8080/api/image/img4.jpg",11,1612175875,500,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (22,"Chicken curry","http://localhost:8080/api/image/img5.jpg",11,1612175875,800,5);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (23,"Fish and chips","http://localhost:8080/api/image/img4.jpg",11,1612175875,500,4);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (24,"Omelette","http://localhost:8080/api/image/img3.jpg",12,1611714112,859,2);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (24,"Omelette","http://localhost:8080/api/image/img3.jpg",12,1611714112,859,3);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (25,"Pizza","http://localhost:8080/api/image/img2.jpg",13,1611714112,777,3);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (25,"Pizza","http://localhost:8080/api/image/img2.jpg",13,1611714112,777,2);
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (26,"Hamburger","http://localhost:8080/api/image/img1.jpg",13,1611714202,888,1);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (27,"Omelette","http://localhost:8080/api/image/img3.jpg",14,1612436776,900,2);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (27,"Omelette","http://localhost:8080/api/image/img3.jpg",14,1612436776,900,3);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (28,"Chicken curry","http://localhost:8080/api/image/img5.jpg",15,1612523176,897,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (29,"Pizza","http://localhost:8080/api/image/img2.jpg",15,1612523176,999,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (28,"Chicken curry","http://localhost:8080/api/image/img5.jpg",15,1612523176,897,5);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (29,"Pizza","http://localhost:8080/api/image/img2.jpg",15,1612523176,999,2);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (30,"Chicken curry","http://localhost:8080/api/image/img5.jpg",16,1612609576,897,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (30,"Chicken curry","http://localhost:8080/api/image/img5.jpg",16,1612609576,897,5);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (31,"Pizza","http://localhost:8080/api/image/img2.jpg",17,1612609576,2222,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (31,"Pizza","http://localhost:8080/api/image/img2.jpg",17,1612609576,2222,2);
 
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (32,"Hamburger","http://localhost:8080/api/image/img1.jpg",18,1612609576,640,1);
 
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (33,"Hamburger","http://localhost:8080/api/image/img1.jpg",19,1612609576,640,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (34,"Pizza","http://localhost:8080/api/image/img2.jpg",19,1612609576,620,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (35,"Omelette","http://localhost:8080/api/image/img3.jpg",19,1612609576,196,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (34,"Pizza","http://localhost:8080/api/image/img2.jpg",19,1612609576,620,2);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (35,"Omelette","http://localhost:8080/api/image/img3.jpg",19,1612609576,196,3);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (36,"Pizza","http://localhost:8080/api/image/img2.jpg",20,1612609576,620,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (37,"Omelette","http://localhost:8080/api/image/img3.jpg",20,1612609576,196,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (38,"Fish and chips","http://localhost:8080/api/image/img4.jpg",20,1612609576,681,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (36,"Pizza","http://localhost:8080/api/image/img2.jpg",20,1612609576,620,2);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (37,"Omelette","http://localhost:8080/api/image/img3.jpg",20,1612609576,196,3);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (38,"Fish and chips","http://localhost:8080/api/image/img4.jpg",20,1612609576,681,4);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (39,"Omelette","http://localhost:8080/api/image/img3.jpg",21,1612609576,196,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (40,"Fish and chips","http://localhost:8080/api/image/img4.jpg",21,1612609576,681,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (41,"Chicken curry","http://localhost:8080/api/image/img5.jpg",21,1612609576,897,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (39,"Omelette","http://localhost:8080/api/image/img3.jpg",21,1612609576,196,3);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (40,"Fish and chips","http://localhost:8080/api/image/img4.jpg",21,1612609576,681,4);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (41,"Chicken curry","http://localhost:8080/api/image/img5.jpg",21,1612609576,897,5);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (42,"Fish and chips","http://localhost:8080/api/image/img4.jpg",22,1612609576,681,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (43,"Chicken curry","http://localhost:8080/api/image/img5.jpg",22,1612609576,897,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (42,"Fish and chips","http://localhost:8080/api/image/img4.jpg",22,1612609576,681,4);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (43,"Chicken curry","http://localhost:8080/api/image/img5.jpg",22,1612609576,897,5);
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (44,"Hamburger","http://localhost:8080/api/image/img1.jpg",22,1612609576,640,1);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (45,"Chicken curry","http://localhost:8080/api/image/img5.jpg",23,1612609576,897,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (45,"Chicken curry","http://localhost:8080/api/image/img5.jpg",23,1612609576,897,5);
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (46,"Hamburger","http://localhost:8080/api/image/img1.jpg",23,1612609576,640,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (47,"Pizza","http://localhost:8080/api/image/img2.jpg",23,1612609576,620,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (47,"Pizza","http://localhost:8080/api/image/img2.jpg",23,1612609576,620,2);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (48,"Chicken curry","http://localhost:8080/api/image/img5.jpg",24,1612609576,897,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (48,"Chicken curry","http://localhost:8080/api/image/img5.jpg",24,1612609576,897,5);
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (49,"Hamburger","http://localhost:8080/api/image/img1.jpg",24,1612609576,640,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (50,"Pizza","http://localhost:8080/api/image/img2.jpg",24,1612609576,620,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (50,"Pizza","http://localhost:8080/api/image/img2.jpg",24,1612609576,620,2);
 
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (51,"Hamburger","http://localhost:8080/api/image/img1.jpg",25,1612609576,640,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (52,"Pizza","http://localhost:8080/api/image/img2.jpg",25,1612609576,620,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (53,"Omelette","http://localhost:8080/api/image/img3.jpg",25,1612609576,196,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (52,"Pizza","http://localhost:8080/api/image/img2.jpg",25,1612609576,620,2);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (53,"Omelette","http://localhost:8080/api/image/img3.jpg",25,1612609576,196,3);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (54,"Pizza","http://localhost:8080/api/image/img2.jpg",26,1612609576,620,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (55,"Omelette","http://localhost:8080/api/image/img3.jpg",26,1612609576,196,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (56,"Fish and chips","http://localhost:8080/api/image/img4.jpg",26,1612609576,681,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (54,"Pizza","http://localhost:8080/api/image/img2.jpg",26,1612609576,620,2);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (55,"Omelette","http://localhost:8080/api/image/img3.jpg",26,1612609576,196,3);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (56,"Fish and chips","http://localhost:8080/api/image/img4.jpg",26,1612609576,681,4);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (57,"Omelette","http://localhost:8080/api/image/img3.jpg",27,1612609576,196,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (58,"Fish and chips","http://localhost:8080/api/image/img4.jpg",27,1612609576,681,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (59,"Chicken curry","http://localhost:8080/api/image/img5.jpg",27,1612609576,897,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (57,"Omelette","http://localhost:8080/api/image/img3.jpg",27,1612609576,196,3);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (58,"Fish and chips","http://localhost:8080/api/image/img4.jpg",27,1612609576,681,4);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (59,"Chicken curry","http://localhost:8080/api/image/img5.jpg",27,1612609576,897,5);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (60,"Fish and chips","http://localhost:8080/api/image/img4.jpg",28,1612609576,681,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (61,"Chicken curry","http://localhost:8080/api/image/img5.jpg",28,1612609576,897,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (60,"Fish and chips","http://localhost:8080/api/image/img4.jpg",28,1612609576,681,4);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (61,"Chicken curry","http://localhost:8080/api/image/img5.jpg",28,1612609576,897,5);
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (62,"Hamburger","http://localhost:8080/api/image/img1.jpg",28,1612609576,640,1);
 
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (63,"Chicken curry","http://localhost:8080/api/image/img5.jpg",29,1612609576,897,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (65,"Pizza","http://localhost:8080/api/image/img2.jpg",29,1612609576,620,1);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (63,"Chicken curry","http://localhost:8080/api/image/img5.jpg",29,1612609576,897,5);
+INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (65,"Pizza","http://localhost:8080/api/image/img2.jpg",29,1612609576,620,2);

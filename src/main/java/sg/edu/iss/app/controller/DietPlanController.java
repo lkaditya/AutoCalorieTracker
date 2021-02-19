@@ -82,7 +82,8 @@ public class DietPlanController {
 
 
             for (Food food : foodList) {
-                FoodImage foodImage = food.getFoodImage().get(0);
+                String name = food.getName();
+                FoodImage foodImage = imageService.findImageByNameAndId(name);
                 foodInfo.add(foodImage);
             }
             Map<String, Object> map = new HashMap<>();
@@ -138,7 +139,8 @@ public class DietPlanController {
 
 
             for (Food food : foodList) {
-                FoodImage foodImage = food.getFoodImage().get(0);
+                String name = food.getName();
+                FoodImage foodImage = imageService.findImageByNameAndId(name);
                 foodInfo.add(foodImage);
             }
             Map<String, Object> map = new HashMap<>();

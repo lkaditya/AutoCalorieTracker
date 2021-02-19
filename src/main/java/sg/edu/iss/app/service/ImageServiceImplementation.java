@@ -97,6 +97,10 @@ public class ImageServiceImplementation implements ImageService {
 		return imagerepo.findAllByImageId();
 	}
 
-
+	@Override
+	public FoodImage findImageByNameAndId(String name) {
+		FoodImage foodImage = imagerepo.findFoodImageByIdAndFoodName(name);
+		return foodImage;
+	}
 
 }
