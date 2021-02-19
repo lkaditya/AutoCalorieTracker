@@ -53,11 +53,11 @@ public class UserServiceImplementation implements UserService {
 	public double calculateRecommendedCalorie(User user) {
 		double BMR=calculateBMR(user);
 		if(user.getActivityLevel().equalsIgnoreCase("sedentary")) {
-			return BMR*1.2;
+			return Math.floor(BMR*1.2);
 		}else if(user.getActivityLevel().equalsIgnoreCase("moderate")) {
-			return BMR*1.375;
+			return Math.floor(BMR*1.375);
 		}else {
-			return BMR*1.55;
+			return Math.floor(BMR*1.55);
 		}
 	}
 

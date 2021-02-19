@@ -87,7 +87,7 @@ public class historyController {
             localDataList.add(date);
             for (FoodImage listOfFoodImage : images) {
 
-                double calorie = listOfFoodImage.getFood().getCalorie();
+                double calorie = listOfFoodImage.getCalorie();
                 totalCalories+=calorie;
             }
 

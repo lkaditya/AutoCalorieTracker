@@ -146,5 +146,4 @@ INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload,
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (62,"Hamburger","http://localhost:8080/api/image/img1.jpg",28,1612609576,640,1);
 
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (63,"Chicken curry","http://localhost:8080/api/image/img5.jpg",29,1612609576,897,1);
-INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (64,"Hamburger","http://localhost:8080/api/image/img1.jpg",29,1612609576,640,1);
 INSERT INTO food_image (id, food_name, url, daily_history_id, epoch_date_upload, calorie, food_id) VALUES (65,"Pizza","http://localhost:8080/api/image/img2.jpg",29,1612609576,620,1);
