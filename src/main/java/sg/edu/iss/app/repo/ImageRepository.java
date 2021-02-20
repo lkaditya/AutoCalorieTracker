@@ -26,4 +26,7 @@ public interface ImageRepository extends JpaRepository<FoodImage, Long> {
 	@Query("select  f from FoodImage f where f.id <6")
 	public List<FoodImage> findAllByImageId();
 
+    @Query("select  f from FoodImage f where f.foodName =:name And f.dailyHistory.id is null")
+    public FoodImage findFoodImageByIdAndFoodName(@Param("name") String name);
+
 }
