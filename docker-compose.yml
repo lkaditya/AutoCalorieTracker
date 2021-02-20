@@ -1,13 +1,27 @@
 version: "3"
 
 services:
+#  python:
+ #   image: python:3.8
+ #   networks:
+  #    - backend
+#  tensorflow:
+#    image: tensorflow/tensorflow
+#    networks:
+#      - backend
+  #tensorflowdevel:
+    #image: tensorflow/tensorflow:devel-gpu
+  #tensorflowgpu:
+   # image: tensorflow/tensorflow:latest-gpu-jupyter
   fwdapps:
     image: autocalorietracker:latest
     container_name: autocalorietracker_container
-
+    #networks:
+     # - backend
 #    expose:
 #      - "8080"
     ports:
       - "8080:8080"
-
-
+      
+#networks:
+#  backend:

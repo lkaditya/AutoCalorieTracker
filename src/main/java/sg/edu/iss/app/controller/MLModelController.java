@@ -50,12 +50,14 @@ public class MLModelController {
 	@Autowired
 	private DailyHistoryService historyservice;
 	
-	private final String modeldir="/home/site/wwwroot/model/";
+//	private final String modeldir="/home/site/wwwroot/model/";
+	private final String modeldir="/opt/app/model/";
 //	src/main/resources/model/
 //	private String FILE_PATH_ROOT = "D:/testing/static/image/";
-	private String FILE_PATH_ROOT = "/tmp/";
-	//private String urldomain="http://localhost:8080";
-	private String urldomain="https://autocalorietrackerstore.blob.core.windows.net/images";
+	//private String FILE_PATH_ROOT = "/tmp/";
+	private String FILE_PATH_ROOT ="/opt/app/image/";
+	private String urldomain="http://localhost:8080";
+	//private String urldomain="https://autocalorietrackerstore.blob.core.windows.net/images";
 //	private final int length=200;//64 for fruit
 //	private final int width=200;//64 for fruit
 //	private final int channel=3;//3 for fruit
@@ -75,7 +77,7 @@ public class MLModelController {
 		String email=imagename.split("_")[0];
 		System.out.println(email);
 		User user=userservice.findUserByEmail(email);
-		
+		 	
 		String uploadedname = azureAdapter.upload(image, imagename);
 		System.out.println(uploadedname+" is uploaded");
 		//below if using local server
